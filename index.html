@@ -264,6 +264,16 @@
 
     <!-- HERO -->
     <section class="mm-hero" aria-labelledby="hero-heading">
+
+      <!-- Build 5: Strip reveal background — clip-path expands on page load -->
+      <div class="mm-hero-reveal-bg" aria-hidden="true"></div>
+
+      <!-- Build 2: Hairline crosshair overlay — graphic design detail -->
+      <div class="mm-hero-cross" aria-hidden="true">
+        <div class="mm-hero-cross-v"></div>
+        <div class="mm-hero-cross-h"></div>
+      </div>
+
       <div class="mm-container">
         <div class="stack">
           <!-- Eyebrow is now visible to search engines — contains keyword signal -->
@@ -316,6 +326,29 @@
           <div class="mm-hero-3d-ring"></div>
         </div>
       </div>
+
+      <!-- Build 1: Spinning circular local badge — CSS SVG textPath -->
+      <div class="mm-hero-badge" aria-hidden="true">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">
+          <defs>
+            <path id="badge-circle"
+              d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/>
+          </defs>
+          <text font-family="'Cinzel', Optima, serif"
+                font-size="14.5"
+                letter-spacing="2.8"
+                fill="currentColor">
+            <textPath href="#badge-circle">
+              JACKSONVILLE FL · MARKETING AGENCY · OWN IT ·&nbsp;&nbsp;
+            </textPath>
+          </text>
+          <!-- Center mark -->
+          <circle cx="100" cy="100" r="3" fill="currentColor" opacity="0.5"/>
+          <circle cx="100" cy="100" r="8" fill="none"
+                  stroke="currentColor" stroke-width="0.75" opacity="0.3"/>
+        </svg>
+      </div>
+
     </section>
 
     <!-- TRUST BAR — marquee (JS will clone items) -->
@@ -364,6 +397,55 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Build 3: FULL-VIEWPORT CINZEL HEADING — services transition -->
+    <section class="mm-service-break" aria-hidden="true">
+      <span class="mm-service-break-text">
+        The <em>Six</em> Service Lines
+      </span>
+      <span class="mm-service-break-rule"></span>
+    </section>
+
+    <!-- Build 4: EDITORIAL SPLIT SERVICE LAYOUT — three featured services -->
+    <section class="mm-services-editorial" aria-label="Featured service lines">
+
+      <div class="mm-svc-row" data-reveal-row>
+        <div class="mm-svc-content">
+          <span class="mm-svc-num">— 01 / 06</span>
+          <h3>Email &amp; SMS</h3>
+          <p>The capture, the lifecycle, the revenue reporting. Hand-built on platforms you own outright — not rented from a social feed that can be revoked tomorrow.</p>
+          <a href="services.html#email-sms" class="mm-svc-link">
+            Read the approach ↗
+          </a>
+        </div>
+        <div class="mm-svc-image svc-img--email" data-label="EMAIL · SMS" aria-hidden="true"></div>
+      </div>
+
+      <div class="mm-svc-row" data-reveal-row>
+        <div class="mm-svc-content">
+          <span class="mm-svc-num">— 02 / 06</span>
+          <h3>Website Strategy &amp; Creation</h3>
+          <p>The foundation everything else points at. Built to convert, built to last — designed to outlive a redesign cycle and earn its keep as a revenue asset.</p>
+          <a href="services.html#website" class="mm-svc-link">
+            Read the approach ↗
+          </a>
+        </div>
+        <div class="mm-svc-image svc-img--web" data-label="WEBSITE" aria-hidden="true"></div>
+      </div>
+
+      <div class="mm-svc-row" data-reveal-row>
+        <div class="mm-svc-content">
+          <span class="mm-svc-num">— 03 / 06</span>
+          <h3>SEO</h3>
+          <p>Durable organic discovery. We treat search as compounding real estate — not a monthly retainer you pay forever and stop ranking the moment you cancel.</p>
+          <a href="services.html#seo" class="mm-svc-link">
+            Read the approach ↗
+          </a>
+        </div>
+        <div class="mm-svc-image svc-img--seo" data-label="SEO" aria-hidden="true"></div>
+      </div>
+
     </section>
 
     <!-- SERVICES GRID -->
