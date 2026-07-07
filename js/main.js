@@ -55,13 +55,11 @@
     const panelId = btn.getAttribute('aria-controls');
     const panel   = document.getElementById(panelId);
 
-    /* Set initial aria-hidden on panels */
     if (panel) panel.setAttribute('aria-hidden', 'true');
 
     btn.addEventListener('click', function () {
       const expanded = this.getAttribute('aria-expanded') === 'true';
 
-      /* Collapse all others */
       const parent = this.closest('.mm-accordion');
       if (parent) {
         parent.querySelectorAll('.mm-accordion-btn').forEach(function (other) {
@@ -198,14 +196,12 @@
       let ringX  = -100, ringY  = -100;
       let rafId;
 
-      /* Dot follows instantly */
       document.addEventListener('mousemove', function (e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
         cursorDot.style.transform = 'translate(' + mouseX + 'px, ' + mouseY + 'px) translate(-50%, -50%)';
       });
 
-      /* Ring follows with lerp */
       function lerpCursor() {
         const ease = 0.12;
         ringX += (mouseX - ringX) * ease;
@@ -215,7 +211,6 @@
       }
       lerpCursor();
 
-      /* Cursor state changes */
       const hoverTargets = 'a, button, [role="button"], label, .mm-accordion-btn';
       const textTargets  = 'input, textarea';
 
@@ -246,8 +241,6 @@
 
   /* ============================================================
      SCROLL ANIMATIONS — IntersectionObserver
-     Elements with [data-animate] fade in when entering viewport
-     Elements with [data-stagger] animate their children in sequence
      ============================================================ */
   if ('IntersectionObserver' in window && !prefersReduced) {
     const animateObserver = new IntersectionObserver(function (entries) {
@@ -262,22 +255,18 @@
       rootMargin: '0px 0px -48px 0px'
     });
 
-    /* Observe individual elements */
     document.querySelectorAll('[data-animate]').forEach(function (el) {
       animateObserver.observe(el);
     });
 
-    /* Observe stagger parents */
     document.querySelectorAll('[data-stagger]').forEach(function (el) {
       animateObserver.observe(el);
     });
 
-    /* Reveal lines */
     document.querySelectorAll('.mm-reveal-line').forEach(function (el) {
       animateObserver.observe(el);
     });
   } else {
-    /* No observer support or reduced motion — show everything */
     document.querySelectorAll('[data-animate], [data-stagger], .mm-reveal-line').forEach(function (el) {
       el.classList.add('is-visible');
       el.style.opacity = '1';
@@ -312,7 +301,6 @@
     function tick(now) {
       const elapsed  = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      /* Ease out cubic */
       const eased    = 1 - Math.pow(1 - progress, 3);
       const current  = target * eased;
 
@@ -344,7 +332,6 @@
      ============================================================ */
   const logosList = document.querySelector('.mm-trust-bar .logos');
   if (logosList && !prefersReduced) {
-    /* Clone the list items for seamless infinite scroll */
     const items = Array.from(logosList.children);
     items.forEach(function (item) {
       const clone = item.cloneNode(true);
@@ -380,8 +367,6 @@
 
   /* ============================================================
      EXIT-INTENT POPUP
-     Triggers on mouse leaving top of viewport.
-     Shows once per session. Fully accessible (focus trap + Escape).
      ============================================================ */
   const popupOverlay = document.getElementById('mm-popup-overlay');
   const popupClose   = document.getElementById('mm-popup-close');
@@ -398,7 +383,6 @@
       popupOverlay.classList.add('is-open');
       popupOverlay.removeAttribute('hidden');
 
-      /* Move focus into popup */
       const firstFocusable = popupOverlay.querySelector(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
@@ -414,7 +398,6 @@
       }, 400);
     }
 
-    /* Focus trap */
     popupOverlay.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         closePopup();
@@ -444,26 +427,82 @@
       }
     });
 
-    /* Close buttons */
     if (popupClose)   popupClose.addEventListener('click', closePopup);
     if (popupDismiss) popupDismiss.addEventListener('click', closePopup);
 
-    /* Close on overlay backdrop click */
     popupOverlay.addEventListener('click', function (e) {
       if (e.target === popupOverlay) closePopup();
     });
 
-    /* Trigger: mouse leaves top of viewport (exit intent) */
     if (!prefersReduced) {
       document.addEventListener('mouseleave', function (e) {
         if (e.clientY <= 0) openPopup();
       });
 
-      /* Fallback: show after 30 seconds if no exit intent */
       setTimeout(function () {
         if (!popupShown) openPopup();
       }, 30000);
     }
+  }
+
+  /* ============================================================
+     BUILD 5 — HERO STRIP REVEAL
+     Double RAF so browser paints initial clip-path before opening.
+     ============================================================ */
+  var heroEl = document.querySelector('.mm-hero');
+  if (heroEl) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        heroEl.classList.add('reveal-open');
+      });
+    });
+  }
+
+  /* ============================================================
+     BUILD 3 — SERVICE BREAK HEADING REVEAL
+     ============================================================ */
+  var serviceBreakText = document.querySelector('.mm-service-break-text');
+  var serviceBreakRule = document.querySelector('.mm-service-break-rule');
+
+  if (serviceBreakText && 'IntersectionObserver' in window) {
+    var breakObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          serviceBreakText.classList.add('is-visible');
+          if (serviceBreakRule) serviceBreakRule.classList.add('is-visible');
+          breakObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    breakObserver.observe(serviceBreakText);
+  } else if (serviceBreakText) {
+    serviceBreakText.classList.add('is-visible');
+    if (serviceBreakRule) serviceBreakRule.classList.add('is-visible');
+  }
+
+  /* ============================================================
+     BUILD 4 — EDITORIAL SERVICE ROW REVEALS
+     ============================================================ */
+  var svcRows = document.querySelectorAll('[data-reveal-row]');
+
+  if (svcRows.length && 'IntersectionObserver' in window && !prefersReduced) {
+    var rowObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          rowObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    svcRows.forEach(function (row) {
+      rowObserver.observe(row);
+    });
+  } else {
+    svcRows.forEach(function (row) {
+      row.classList.add('is-visible');
+    });
   }
 
 })();
