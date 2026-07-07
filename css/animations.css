@@ -144,7 +144,9 @@ body.cursor-hidden .mm-cursor-ring { opacity: 0; }
    ============================================================ */
 .mm-services .item {
   transform-style: preserve-3d;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1), background var(--dur-base) var(--ease-out), box-shadow 400ms ease;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              background var(--dur-base) var(--ease-out),
+              box-shadow 400ms ease;
   perspective: 800px;
 }
 
@@ -497,23 +499,34 @@ body.cursor-hidden .mm-cursor-ring { opacity: 0; }
 /* ============================================================
    BUILD 5 — HORIZONTAL STRIP HERO REVEAL
    ============================================================ */
+.mm-hero { position: relative; }
+
 .mm-hero-reveal-bg {
   position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(160deg, var(--paper-bone) 0%, var(--paper-parchment) 35%, var(--stone-tan) 65%, rgba(72, 17, 12, 0.15) 100%);
-  clip-path: inset(calc(50% - 3px) 0 calc(50% - 3px) 0);
+  background: linear-gradient(160deg,
+    var(--paper-bone) 0%,
+    var(--paper-parchment) 35%,
+    var(--stone-tan) 65%,
+    rgba(72, 17, 12, 0.15) 100%);
+  clip-path: inset(50% 0 50% 0);
   transition: clip-path 1.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mm-hero.reveal-open .mm-hero-reveal-bg { clip-path: inset(0 0 0 0); }
 
 @media (prefers-reduced-motion: reduce) {
-  .mm-hero-reveal-bg { clip-path: inset(0 0 0 0) !important; transition: none !important; }
+  .mm-hero-reveal-bg {
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
+  }
 }
 
-.mm-hero .mm-container, .mm-hero .mm-hero-3d,
-.mm-hero .mm-hero-badge, .mm-hero .mm-hero-cross {
-  position: relative; z-index: 2;
-}
+/* Ensure hero content sits above the reveal layer */
+.mm-hero .mm-container { position: relative; z-index: 2; }
+
+.mm-hero .mm-hero-3d,
+.mm-hero .mm-hero-badge,
+.mm-hero .mm-hero-cross { z-index: 2; }
 
 /* ============================================================
    NAV — scroll state
