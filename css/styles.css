@@ -1268,15 +1268,14 @@ button { cursor: pointer; }
   overflow: hidden;
 }
 .mm-footer::before {
-  content: 'MM';
+  content: '';
   position: absolute;
-  bottom: -40px;
+  bottom: -24px;
   right: var(--pad-x);
-  font-family: var(--font-display);
-  font-size: clamp(120px, 18vw, 260px);
-  color: rgba(233,212,195,0.022);
-  line-height: 1;
-  letter-spacing: -0.04em;
+  width: clamp(140px, 18vw, 260px);
+  height: clamp(140px, 18vw, 260px);
+  background: url('../assets/logos/mm-white-submark-logo.png') no-repeat center / contain;
+  opacity: 0.04;
   pointer-events: none;
   user-select: none;
 }
@@ -1300,7 +1299,7 @@ button { cursor: pointer; }
   max-width: 280px;
 }
 .footer-wordmark img {
-  width: 220px;
+  width: 64px;
   height: auto;
   display: block;
   margin: -20px 0 4px -6px; /* compensate for logo's transparent padding */
