@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Marketing Maison — Jacksonville FL Marketing Agency</title>
+  <meta name="description" content="Marketing Maison was founded by Franchesca Bethel in Jacksonville, FL with one conviction: strategic, integrated marketing shouldn't be reserved for brands with eight-figure budgets." />
+  <meta name="keywords" content="Marketing Maison about, Franchesca Bethel, Jacksonville FL marketing agency, boutique marketing agency, strategic marketing Florida" />
+  <link rel="canonical" href="https://www.themarketingmaison.co/about.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.themarketingmaison.co/about.html" />
+  <meta property="og:title" content="About | Marketing Maison — Jacksonville FL" />
+  <meta property="og:description" content="Built from belief. Driven by results. Meet the founder behind Marketing Maison." />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* ── About Hero (Founder-Forward, Full-Viewport) ─────────── */
+    .about-hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    /* Placeholder background — swap in Franchesca's photo via background-image on .about-hero-bg */
+    .about-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #13273f 0%, #0c1c2e 50%, #3a1810 100%);
+      background-size: cover;
+      background-position: center top;
+      z-index: 0;
+    }
+    /* Grid texture overlay */
+    .about-hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(233,212,195,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233,212,195,0.02) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+    /* Dark scrim over photo */
+    .about-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(12,28,46,0.60);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .about-hero-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: calc(var(--nav-h) + 60px) var(--pad-x) 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+    }
+    .about-hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.60);
+      margin: 0;
+    }
+    .about-hero h1 {
+      font-family: var(--font-edit);
+      font-size: clamp(60px, 10vw, 152px);
+      font-weight: 300;
+      line-height: 1.0;
+      color: var(--cream);
+      margin: 0;
+      max-width: 14ch;
+    }
+    .about-hero h1 em {
+      font-style: italic;
+      display: block;
+    }
+
+    /* ── Origin Story ───────────────────────────────────────── */
+    .origin-section {
+      background: var(--cream);
+      padding: clamp(80px, 11vw, 160px) var(--pad-x);
+    }
+    .origin-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 100px;
+      align-items: start;
+    }
+    .origin-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .origin-label::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+    }
+    .origin-pull {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--charcoal);
+    }
+    .origin-pull em {
+      font-style: italic;
+      color: var(--wine);
+    }
+    .origin-body {
+      padding-top: 60px;
+    }
+    .origin-body p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: rgba(19,39,63,0.6);
+      margin-bottom: 24px;
+    }
+    .origin-body p:last-child { margin-bottom: 0; }
+    .origin-signature {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(19,39,63,0.1);
+    }
+    .origin-sig-photo {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--stone);
+    }
+    .origin-sig-name {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .origin-sig-title {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ── Values ─────────────────────────────────────────────── */
+    .values-section {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: clamp(80px, 11vw, 160px) var(--pad-x);
+      position: relative;
+      overflow: hidden;
+    }
+    .values-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(233,212,195,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233,212,195,0.018) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+    .values-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .values-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+    .values-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .values-label::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+    }
+    .values-sub {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(16px, 1.4vw, 20px);
+      color: rgba(233,212,195,0.45);
+      max-width: 360px;
+      text-align: right;
+      line-height: 1.6;
+    }
+    .values-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .value-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 0 60px;
+      padding: 52px 0;
+      border-top: 1px solid rgba(233,212,195,0.07);
+      align-items: start;
+    }
+    .value-row:last-child { border-bottom: 1px solid rgba(233,212,195,0.07); }
+    .value-num {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 300;
+      color: rgba(233,212,195,0.08);
+      line-height: 1;
+    }
+    .value-title {
+      font-family: var(--font-edit);
+      font-size: clamp(30px, 4vw, 60px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+      padding-top: 8px;
+    }
+    .value-title em {
+      font-style: italic;
+      color: var(--stone);
+    }
+    .value-body {
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(233,212,195,0.5);
+      padding-top: 14px;
+    }
+
+    /* ── Differentiators ────────────────────────────────────── */
+    .diff-section {
+      background: var(--cream-dark);
+      padding: clamp(80px, 10vw, 140px) var(--pad-x);
+    }
+    .diff-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .diff-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+    .diff-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 20px;
+    }
+    .diff-heading {
+      font-family: var(--font-edit);
+      font-size: clamp(30px, 3.8vw, 56px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--charcoal);
+    }
+    .diff-heading em { font-style: italic; color: var(--wine); }
+    .diff-intro {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: rgba(19,39,63,0.45);
+      line-height: 1.85;
+      padding-top: 20px;
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(19,39,63,0.08);
+      border: 1px solid rgba(19,39,63,0.08);
+    }
+    .diff-card {
+      background: var(--cream-dark);
+      padding: 44px 40px;
+    }
+    .diff-card-num {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--stone);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .diff-card h3 {
+      font-family: var(--font-edit);
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 300;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .diff-card h3 em { font-style: italic; color: var(--wine); }
+    .diff-card p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: rgba(19,39,63,0.5);
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .about-hero h1 { font-size: clamp(52px, 12vw, 100px); }
+      .origin-inner { grid-template-columns: 1fr; gap: 60px; }
+      .origin-body { padding-top: 0; }
+      .values-top { flex-direction: column; align-items: flex-start; gap: 24px; }
+      .values-sub { text-align: left; }
+      .value-row { grid-template-columns: 60px 1fr; }
+      .value-body { grid-column: 2; }
+      .diff-top { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 680px) {
+      .value-row { grid-template-columns: 1fr; }
+      .value-num { display: none; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .about-hero h1 { font-size: clamp(48px, 14vw, 80px); }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ── Navigation ── -->
+  <nav class="mm-nav scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav-left">
+      <div class="nav-socials" aria-label="Social media links">
+        <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://facebook.com/marketingmaison" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/marketingmaison" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="contact.html" class="nav-book" aria-label="Book a call with Marketing Maison">Book a Call</a>
+    </div>
+
+    <div class="nav-wordmark">
+      <a href="index.html" aria-label="Marketing Maison homepage">
+        <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" class="nav-logo" width="190" height="190" loading="eager" />
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" role="list">
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="dispatch.html">The Dispatch</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-overlay">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <img src="assets/logos/mm-white-primary-logo.png" alt="" class="nav-overlay-logo" aria-hidden="true" />
+    <a href="about.html" aria-current="page">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="dispatch.html">The Dispatch</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html">Book a Call</a>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ── ABOUT HERO ── -->
+    <section class="about-hero" aria-labelledby="about-hero-heading">
+      <!-- Background: swap in Franchesca's photo by adding style="background-image: url('../assets/your-photo.jpg');" to .about-hero-bg -->
+      <div class="about-hero-bg" aria-hidden="true"></div>
+      <div class="about-hero-inner">
+        <p class="about-hero-eyebrow" data-fade>Meet Our Founder &amp; CEO</p>
+        <h1 id="about-hero-heading" data-fade>
+          The Mind<br />
+          <em>Behind the</em><br />
+          Maison.
+        </h1>
+      </div>
+    </section>
+
+    <!-- ── ORIGIN STORY ── -->
+    <section class="origin-section" aria-labelledby="origin-heading">
+      <div class="origin-inner">
+        <div data-fade>
+          <p class="origin-label">The Origin</p>
+          <blockquote class="origin-pull" id="origin-heading">
+            "I watched too many great businesses struggle — not because they lacked a product, but because their marketing was <em>scattered, siloed, and uninspired."</em>
+          </blockquote>
+        </div>
+        <div class="origin-body" data-fade>
+          <p>Marketing Maison was founded in 2024 with a conviction that had been building for years: that small and mid-sized businesses deserve the same caliber of strategic marketing that Fortune 500 brands receive — cohesive, integrated, and built to compound.</p>
+          <p>Jacksonville is a city full of ambitious entrepreneurs, growing brands, and businesses with genuine stories to tell. The problem wasn't ambition. It was fragmentation — three agencies, four freelancers, and nobody talking to each other. Every channel working in isolation. Every dollar working against itself.</p>
+          <p>Marketing Maison was the answer to that. Nine service lines, one partner, one strategy. Everything talking to everything. That's how marketing is supposed to work.</p>
+          <div class="origin-signature">
+            <div class="origin-sig-photo" aria-hidden="true">F</div>
+            <div>
+              <span class="origin-sig-name">Franchesca Bethel</span>
+              <span class="origin-sig-title">Founder &amp; CEO, Marketing Maison</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── VALUES ── -->
+    <section class="values-section" aria-labelledby="values-heading">
+      <div class="values-inner">
+        <div class="values-top" data-fade>
+          <p class="values-label">Our Philosophy</p>
+          <p class="values-sub">Three words. One way of working. No exceptions.</p>
+        </div>
+
+        <div class="values-list">
+          <div class="value-row" data-fade>
+            <span class="value-num" aria-hidden="true">01</span>
+            <h2 class="value-title" id="values-heading">Own <em>It.</em></h2>
+            <p class="value-body">We don't believe in outsourcing accountability. When you work with Marketing Maison, we take full ownership of your strategy, your execution, and your results. If something isn't working, we say so — and we fix it. You'll never wonder what we're doing or why. Radical transparency is the baseline.</p>
+          </div>
+          <div class="value-row" data-fade>
+            <span class="value-num" aria-hidden="true">02</span>
+            <h2 class="value-title">Build <em>It.</em></h2>
+            <p class="value-body">We build marketing systems that hold up — not campaigns that spike and fade. Everything we create is designed to compound over time: content that earns trust, SEO that grows in authority, email programs that deepen relationships, and brand infrastructure that makes every new channel easier to launch. We're playing the long game, and we want you playing it with us.</p>
+          </div>
+          <div class="value-row" data-fade>
+            <span class="value-num" aria-hidden="true">03</span>
+            <h2 class="value-title">Scale <em>It.</em></h2>
+            <p class="value-body">Growth without infrastructure collapses under its own weight. Before we scale anything, we make sure what's working has the systems, data, and operational foundation to sustain the momentum. Scaling isn't just spending more — it's spending smarter, measuring precisely, and knowing exactly which levers to pull.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DIFFERENTIATORS ── -->
+    <section class="diff-section" aria-labelledby="diff-heading">
+      <div class="diff-inner">
+        <div class="diff-top">
+          <div data-fade>
+            <p class="diff-label">Why Marketing Maison</p>
+            <h2 class="diff-heading" id="diff-heading">What makes us<br /><em>different</em></h2>
+          </div>
+          <p class="diff-intro" data-fade>We're not a jack-of-all-trades freelancer or a bloated agency with layers between you and the work. We're something in between — and better than both.</p>
+        </div>
+
+        <div class="diff-grid" data-fade>
+          <div class="diff-card">
+            <span class="diff-card-num">01 /</span>
+            <h3>Everything <em>talks</em> to everything.</h3>
+            <p>SEO informs content. Content feeds email. Email fuels social. Social drives search. When nine service lines are under one strategy, every dollar multiplies instead of competing.</p>
+          </div>
+          <div class="diff-card">
+            <span class="diff-card-num">02 /</span>
+            <h3>No account manager. Just <em>strategy.</em></h3>
+            <p>You work directly with the people doing the work and building the thinking. No middlemen, no telephone game. Faster decisions, better outcomes.</p>
+          </div>
+          <div class="diff-card">
+            <span class="diff-card-num">03 /</span>
+            <h3>Jacksonville-rooted. <em>Nationally</em> capable.</h3>
+            <p>We know the Jacksonville market — the communities, the audiences, the local search landscape — and we bring that proximity to every client. We serve clients across Florida and beyond.</p>
+          </div>
+          <div class="diff-card">
+            <span class="diff-card-num">04 /</span>
+            <h3>Data is the <em>first</em> language.</h3>
+            <p>Every recommendation comes with a rationale rooted in real data. We set up measurement before we start spending, so you always know what's working and what's next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FULL CTA ── -->
+    <section class="cta-full" aria-labelledby="about-cta-heading">
+      <div class="cta-full::before" aria-hidden="true"></div>
+      <div class="cta-inner" data-fade>
+        <p class="cta-label">Ready to Work Together</p>
+        <h2 class="cta-headline" id="about-cta-heading">
+          Let's build<br /><em>something real.</em>
+        </h2>
+        <a href="contact.html" class="oval-btn oval-btn-lg" aria-label="Book a discovery call with Marketing Maison">
+          <svg class="oval-border" viewBox="0 0 320 88" preserveAspectRatio="none" aria-hidden="true">
+            <ellipse cx="160" cy="44" rx="156" ry="40"/>
+          </svg>
+          <span class="oval-btn-text">Book a discovery call</span>
+        </a>
+        <p class="cta-fine">30 minutes · No commitment · Response within 24 hours</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="mm-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-wordmark">
+            <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" width="220" height="220" loading="lazy" />
+          </div>
+          <p>Own it. Build it. Scale it. — Jacksonville, FL's strategic marketing agency.</p>
+          <div class="footer-socials" aria-label="Follow Marketing Maison">
+            <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://facebook.com/marketingmaison" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://linkedin.com/company/marketingmaison" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul role="list">
+            <li><a href="services.html#biz-dev">Business Development</a></li>
+            <li><a href="services.html#content">Content Creation</a></li>
+            <li><a href="services.html#social">Social Media</a></li>
+            <li><a href="services.html#email-sms">Email &amp; SMS</a></li>
+            <li><a href="services.html#seo">SEO Optimization</a></li>
+            <li><a href="services.html#organic-campaigns">Organic Campaigns</a></li>
+            <li><a href="services.html#website">Website Creation</a></li>
+            <li><a href="services.html#ai-tools">AI Tools</a></li>
+            <li><a href="services.html#events">Event Management</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" aria-current="page">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="dispatch.html">The Dispatch</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul role="list">
+            <li><a href="contact.html">Book a Strategy Call</a></li>
+            <li><span>Jacksonville, FL</span></li>
+            <li><a href="mailto:hello@marketingmaison.com">hello@marketingmaison.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024–2026 Marketing Maison. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
