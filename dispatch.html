@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Dispatch | Marketing Maison Weekly Newsletter — Jacksonville FL</title>
+  <meta name="description" content="The Dispatch is Marketing Maison's free weekly newsletter — marketing strategy, Jacksonville business insights, platform updates, and practical growth tips for founders and marketing leads." />
+  <meta name="keywords" content="marketing newsletter Jacksonville FL, small business marketing tips, marketing strategy newsletter, Jacksonville business newsletter, Marketing Maison Dispatch" />
+  <link rel="canonical" href="https://www.themarketingmaison.co/dispatch.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.themarketingmaison.co/dispatch.html" />
+  <meta property="og:title" content="The Dispatch | Marketing Maison's Free Weekly Newsletter" />
+  <meta property="og:description" content="Marketing strategy, platform updates, and Jacksonville business insights. Free. Weekly. Curated for founders and marketing leads who are serious about growth." />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* ── Dispatch Hero ──────────────────────────────────── */
+    .dispatch-hero {
+      background: var(--charcoal);
+      padding: calc(var(--nav-h) + 72px) var(--pad-x) 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dispatch-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(246,241,232,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(246,241,232,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    /* Wine glow bottom right */
+    .dispatch-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: clamp(200px, 35vw, 500px);
+      height: clamp(200px, 35vw, 500px);
+      background: radial-gradient(circle at bottom right, rgba(72,17,12,0.3), transparent 70%);
+      pointer-events: none;
+    }
+
+    .dispatch-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .dispatch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px;
+      background: rgba(72,17,12,0.25);
+      border: 1px solid rgba(72,17,12,0.5);
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 20px;
+    }
+    .dispatch-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--wine);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .dispatch-hero h1 {
+      font-size: clamp(52px, 8vw, 112px);
+      color: var(--cream);
+      line-height: 0.92;
+      margin-bottom: 20px;
+    }
+    .dispatch-hero h1 em {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      color: var(--stone);
+      display: block;
+    }
+    .dispatch-hero p {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(16px, 1.6vw, 20px);
+      color: rgba(246,241,232,0.5);
+      line-height: 1.65;
+    }
+
+    /* Right side: signup card */
+    .dispatch-signup-card {
+      background: rgba(246,241,232,0.04);
+      border: 1px solid rgba(246,241,232,0.1);
+      border-radius: var(--radius-sm);
+      padding: 48px 44px;
+    }
+    .dispatch-signup-card h2 {
+      font-size: clamp(20px, 2vw, 26px);
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .dispatch-signup-card p {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--stone);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .dispatch-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .dispatch-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: rgba(246,241,232,0.4);
+      letter-spacing: 0.06em;
+    }
+    .dispatch-meta-item::before {
+      content: '✓';
+      color: var(--stone);
+      font-size: 11px;
+    }
+
+    /* ── What's Inside Section ─────────────────────────── */
+    .topics-section {
+      background: var(--cream);
+      padding: var(--section-y) 0;
+    }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(25,26,30,0.08);
+      border: 1px solid rgba(25,26,30,0.08);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .topic-card {
+      padding: 40px 36px;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: background var(--transition);
+    }
+    .topic-card:hover { background: var(--cream-dark); }
+    .topic-icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .topic-card h3 {
+      font-size: clamp(16px, 1.4vw, 19px);
+      color: var(--charcoal);
+      margin-bottom: 0;
+    }
+    .topic-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    /* ── Sample Issues ─────────────────────────────────── */
+    .issues-section {
+      background: var(--cream-dark);
+      padding: var(--section-y) 0;
+    }
+    .issues-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 860px;
+    }
+    .issue-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(25,26,30,0.08);
+      transition: opacity var(--transition);
+    }
+    .issue-item:first-child { border-top: 1px solid rgba(25,26,30,0.08); }
+    .issue-item:hover { opacity: 0.8; }
+    .issue-date {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      white-space: nowrap;
+      padding-top: 4px;
+      min-width: 90px;
+    }
+    .issue-title {
+      font-family: var(--font-display);
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: var(--charcoal);
+      margin-bottom: 7px;
+    }
+    .issue-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── Bottom Signup ─────────────────────────────────── */
+    .dispatch-cta {
+      background: var(--wine);
+      padding: var(--section-y) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dispatch-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 64px, rgba(246,241,232,0.025) 64px, rgba(246,241,232,0.025) 65px),
+        repeating-linear-gradient(90deg, transparent, transparent 64px, rgba(246,241,232,0.025) 64px, rgba(246,241,232,0.025) 65px);
+    }
+    .dispatch-cta-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+    .dispatch-cta h2 {
+      font-size: clamp(30px, 4vw, 56px);
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .dispatch-cta h2 em {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      color: var(--stone);
+    }
+    .dispatch-cta p {
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: clamp(16px, 1.5vw, 19px);
+      color: rgba(246,241,232,0.55);
+      line-height: 1.65;
+    }
+    .dispatch-cta .form-field {
+      border-color: rgba(246,241,232,0.2);
+    }
+    .dispatch-cta .form-field:focus-within {
+      border-color: rgba(246,241,232,0.4);
+    }
+    .dispatch-cta .form-fine { color: rgba(246,241,232,0.3); }
+
+    @media (max-width: 900px) {
+      .dispatch-hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .topics-grid { grid-template-columns: 1fr 1fr; }
+      .dispatch-cta-inner { grid-template-columns: 1fr; gap: 44px; }
+    }
+    @media (max-width: 580px) {
+      .topics-grid { grid-template-columns: 1fr; }
+      .issue-item { flex-direction: column; gap: 8px; }
+      .dispatch-signup-card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="mm-nav scrolled" role="navigation" aria-label="Main navigation">
+    <div class="nav-left">
+      <div class="nav-socials" aria-label="Social media links">
+        <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://facebook.com/marketingmaison" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/marketingmaison" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="contact.html" class="nav-book" aria-label="Book a call with Marketing Maison">Book a Call</a>
+    </div>
+
+    <div class="nav-wordmark">
+      <a href="index.html" aria-label="Marketing Maison homepage">MARKETING MAISON</a>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" role="list">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="dispatch.html" aria-current="page">The Dispatch</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-overlay">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <a href="services.html">Services</a>
+    <a href="dispatch.html" aria-current="page">The Dispatch</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html">Book a Call</a>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="dispatch-hero" aria-labelledby="dispatch-heading">
+      <div class="dispatch-hero-inner">
+        <div data-fade-left>
+          <span class="dispatch-badge">Weekly Newsletter</span>
+          <h1 id="dispatch-heading">
+            The<br/><em>Dispatch.</em>
+          </h1>
+          <p>
+            Marketing strategy, platform updates, and Jacksonville business insights — curated every week for founders and marketing leads who are done guessing.
+          </p>
+        </div>
+
+        <div class="dispatch-signup-card" data-fade-right>
+          <h2>Join the Dispatch</h2>
+          <p>Free, weekly, and worth opening.</p>
+          <form class="newsletter-form" novalidate aria-label="Subscribe to The Dispatch newsletter">
+            <div class="form-field">
+              <label for="dispatch-email" class="sr-only">Your email address</label>
+              <input
+                type="email"
+                id="dispatch-email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+              />
+              <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+            </div>
+            <p class="form-fine">No spam. Unsubscribe anytime.</p>
+          </form>
+          <div class="dispatch-meta" aria-label="Newsletter details">
+            <span class="dispatch-meta-item">Sent every Thursday</span>
+            <span class="dispatch-meta-item">5-minute read</span>
+            <span class="dispatch-meta-item">No sponsored content</span>
+            <span class="dispatch-meta-item">Forever free</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-section" aria-hidden="true" role="presentation">
+      <div class="marquee-track">
+        <span class="marquee-item">Strategy</span>
+        <span class="marquee-item">Platform Updates</span>
+        <span class="marquee-item">Jacksonville Business</span>
+        <span class="marquee-item">SEO Insights</span>
+        <span class="marquee-item">AI in Marketing</span>
+        <span class="marquee-item">Email &amp; SMS</span>
+        <span class="marquee-item">Content Playbooks</span>
+        <span class="marquee-item">Growth Tactics</span>
+        <span class="marquee-item">Strategy</span>
+        <span class="marquee-item">Platform Updates</span>
+        <span class="marquee-item">Jacksonville Business</span>
+        <span class="marquee-item">SEO Insights</span>
+        <span class="marquee-item">AI in Marketing</span>
+        <span class="marquee-item">Email &amp; SMS</span>
+        <span class="marquee-item">Content Playbooks</span>
+        <span class="marquee-item">Growth Tactics</span>
+      </div>
+    </div>
+
+    <!-- What's inside -->
+    <section class="topics-section" aria-labelledby="topics-heading">
+      <div class="container">
+        <div class="section-head centered" data-fade>
+          <p class="eyebrow no-rule center">What's Inside</p>
+          <h2 id="topics-heading">Six Topics. Every Week.</h2>
+          <p class="head-body mt-16" style="color:var(--text-muted)">We don't fill space. Every issue is edited to what you can actually use — not what sounds impressive in a subject line.</p>
+        </div>
+
+        <div class="topics-grid stagger" role="list">
+          <article class="topic-card" role="listitem" data-fade>
+            <span class="topic-icon" aria-hidden="true">📈</span>
+            <h3>Marketing Strategy</h3>
+            <p>Frameworks, case studies, and tactical breakdowns of what's working right now across organic channels — applied to the size and stage of businesses like yours.</p>
+          </article>
+          <article class="topic-card" role="listitem" data-fade>
+            <span class="topic-icon" aria-hidden="true">🔄</span>
+            <h3>Platform Updates</h3>
+            <p>Every week Instagram, LinkedIn, Google, and the email platforms change something. We filter the noise and surface only what actually affects your strategy.</p>
+          </article>
+          <article class="topic-card" role="listitem" data-fade>
+            <span class="topic-icon" aria-hidden="true">🌴</span>
+            <h3>Jacksonville Spotlight</h3>
+            <p>Local business wins, market opportunities unique to Northeast Florida, and community events worth knowing about — for brands invested in the Jacksonville market.</p>
+          </article>
+          <article class="topic-card" role="listitem" data-fade>
+            <span class="topic-icon" aria-hidden="true">⚡</span>
+            <h3>AI in Marketing</h3>
+            <p>Practical applications of AI tools for marketing teams — not hype cycles. How to use Claude, ChatGPT, and automation tools to actually save time this week.</p>
+          </article>
+          <article class="topic-card" role="listitem" data-fade>
+            <span class="topic-icon" aria-hidden="true">✉️</span>
+            <h3>Email &amp; SMS Playbooks</h3>
+            <p>Real campaign breakdowns, subject line swipe files, and automation blueprints you can copy and deploy. Practical sequences, not theory.</p>
+          </article>
+          <article class="topic-card" role="listitem" data-fade>
+            <span class="topic-icon" aria-hidden="true">🎯</span>
+            <h3>One Thing to Do This Week</h3>
+            <p>Every issue ends with one specific, actionable task you can complete in under an hour that will move the needle on your marketing. No fluff. Just do it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample Issues -->
+    <section class="issues-section" aria-labelledby="issues-heading">
+      <div class="container">
+        <div class="section-head" data-fade>
+          <div>
+            <p class="eyebrow">Past Issues</p>
+            <h2 id="issues-heading">Recent Dispatches</h2>
+          </div>
+          <div>
+            <p class="head-body">See what you've been missing. Browse recent issues before you subscribe — you'll know within two minutes if this is for you.</p>
+          </div>
+        </div>
+
+        <div class="issues-list" role="list">
+          <article class="issue-item" role="listitem" data-fade>
+            <span class="issue-date">Jul 31, 2026</span>
+            <div>
+              <h3 class="issue-title">The Instagram Algorithm Just Changed — Here's What It Means for Your Business</h3>
+              <p class="issue-desc">Meta's latest feed ranking update deprioritizes link-in-bio posts. Here's how Jacksonville businesses should adapt their content strategy for the next 90 days.</p>
+            </div>
+          </article>
+          <article class="issue-item" role="listitem" data-fade>
+            <span class="issue-date">Jul 24, 2026</span>
+            <div>
+              <h3 class="issue-title">How to Build an Email Welcome Sequence That Converts in 5 Emails</h3>
+              <p class="issue-desc">The template we use for every new client onboarding — broken down step by step, with subject line formulas and send timing you can steal today.</p>
+            </div>
+          </article>
+          <article class="issue-item" role="listitem" data-fade>
+            <span class="issue-date">Jul 17, 2026</span>
+            <div>
+              <h3 class="issue-title">Local SEO for Jacksonville: The 3 Changes That Move the Needle Fastest</h3>
+              <p class="issue-desc">Google Business Profile optimization, citation consistency, and review velocity — the three levers that actually improve local rankings for Northeast Florida businesses.</p>
+            </div>
+          </article>
+          <article class="issue-item" role="listitem" data-fade>
+            <span class="issue-date">Jul 10, 2026</span>
+            <div>
+              <h3 class="issue-title">The AI Tools We Actually Use at Marketing Maison (And How)</h3>
+              <p class="issue-desc">No vendor pitches. Just the specific tools in our stack, what we use each for, and the prompts that save us the most time each week.</p>
+            </div>
+          </article>
+          <article class="issue-item" role="listitem" data-fade>
+            <span class="issue-date">Jul 3, 2026</span>
+            <div>
+              <h3 class="issue-title">Content Calendar vs. Content System: Why One Works and One Doesn't</h3>
+              <p class="issue-desc">Most content calendars die by week three. Here's the system framework that keeps content consistent — even when you're busy running your actual business.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA / Signup -->
+    <section class="dispatch-cta" aria-labelledby="dispatch-cta-heading">
+      <div class="dispatch-cta-inner">
+        <div data-fade-left>
+          <p class="eyebrow no-rule" style="color:rgba(246,241,232,0.4);margin-bottom:16px">The Dispatch</p>
+          <h2 id="dispatch-cta-heading">
+            Marketing Insight,<br/><em>Every Thursday.</em>
+          </h2>
+          <p>Join founders and marketing leads across Jacksonville and Florida who read The Dispatch every week to stay sharp and stay ahead.</p>
+        </div>
+        <div data-fade-right>
+          <form class="newsletter-form" novalidate aria-label="Subscribe to The Dispatch newsletter">
+            <div class="form-field">
+              <label for="dispatch-email-2" class="sr-only">Your email address</label>
+              <input
+                type="email"
+                id="dispatch-email-2"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+              />
+              <button type="submit">Subscribe Free</button>
+            </div>
+            <p class="form-fine">No spam. No sponsored content. Unsubscribe anytime.</p>
+          </form>
+          <p style="margin-top:24px;font-size:13px;color:rgba(246,241,232,0.3)">
+            Already subscribed? <a href="contact.html" style="color:var(--stone);text-decoration:underline;text-underline-offset:3px">Book a discovery call instead →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mm-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-wordmark">MARKETING MAISON</div>
+          <p>A strategic marketing agency rooted in Jacksonville, FL — building brands that last.</p>
+          <div class="footer-socials" aria-label="Follow Marketing Maison">
+            <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://facebook.com/marketingmaison" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://linkedin.com/company/marketingmaison" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul role="list">
+            <li><a href="services.html#biz-dev">Business Development</a></li>
+            <li><a href="services.html#content">Content Creation</a></li>
+            <li><a href="services.html#social">Social Media</a></li>
+            <li><a href="services.html#email-sms">Email &amp; SMS</a></li>
+            <li><a href="services.html#seo">SEO Optimization</a></li>
+            <li><a href="services.html#organic-campaigns">Organic Campaigns</a></li>
+            <li><a href="services.html#website">Website Creation</a></li>
+            <li><a href="services.html#ai-tools">AI Tools</a></li>
+            <li><a href="services.html#events">Event Management</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="dispatch.html" aria-current="page">The Dispatch</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul role="list">
+            <li><a href="contact.html">Book a Strategy Call</a></li>
+            <li><span>Jacksonville, FL</span></li>
+            <li><a href="mailto:hello@marketingmaison.com">hello@marketingmaison.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024–2026 Marketing Maison. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
