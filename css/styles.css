@@ -124,13 +124,17 @@ button { cursor: pointer; }
   text-align: center;
 }
 .nav-wordmark a {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-.nav-wordmark img { margin: 0 auto; }
+.nav-logo {
+  width: 190px;
+  height: auto;
+  display: block;
+  /* The logo PNG has transparent padding — negative margin pulls it optically tighter */
+  margin: -18px auto;
+}
 
 /* Right: links + hamburger */
 .nav-right {
@@ -190,6 +194,13 @@ button { cursor: pointer; }
   transition: opacity 0.4s var(--ease);
 }
 .nav-overlay.open { opacity: 1; pointer-events: all; }
+.nav-overlay-logo {
+  width: 180px;
+  height: auto;
+  opacity: 0.2;
+  margin-bottom: 24px;
+  margin-top: -30px;
+}
 .nav-overlay a {
   font-family: var(--font-edit);
   font-size: clamp(36px, 8vw, 64px);
@@ -1267,15 +1278,12 @@ button { cursor: pointer; }
   margin: 20px 0 28px;
   max-width: 280px;
 }
-.footer-wordmark {
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(245,240,232,0.6);
+.footer-wordmark img {
+  width: 220px;
+  height: auto;
+  display: block;
+  margin: -20px 0 4px -6px; /* compensate for logo's transparent padding */
 }
-.footer-wordmark img { margin-bottom: 4px; }
 .footer-socials {
   display: flex;
   gap: 12px;
