@@ -1,0 +1,861 @@
+/* Marketing Maison — Animations & Interactive Layer
+   Awwwards-inspired: scroll reveals · custom cursor · 3D tilt · marquee · popup
+   All motion respects prefers-reduced-motion
+   ============================================================ */
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, [role="button"], input, select, textarea, label { cursor: none; }
+}
+
+.mm-cursor-dot,
+.mm-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  transition: opacity 300ms ease;
+}
+
+.mm-cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--mulled-wine);
+}
+
+.mm-cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--mulled-wine);
+  background: transparent;
+  transition: width 250ms var(--ease-out),
+              height 250ms var(--ease-out),
+              border-color 250ms var(--ease-out),
+              background 250ms var(--ease-out),
+              opacity 300ms ease;
+}
+
+body.cursor-hover .mm-cursor-ring {
+  width: 56px;
+  height: 56px;
+  border-color: var(--mulled-wine);
+  background: rgba(72, 17, 12, 0.07);
+}
+
+body.cursor-hover .mm-cursor-dot {
+  opacity: 0;
+}
+
+body.cursor-text .mm-cursor-ring {
+  width: 4px;
+  height: 28px;
+  border-radius: 2px;
+  border-color: var(--charcoal-smoke);
+}
+
+body.cursor-hidden .mm-cursor-dot,
+body.cursor-hidden .mm-cursor-ring {
+  opacity: 0;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .mm-cursor-dot,
+  .mm-cursor-ring { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-cursor-dot,
+  .mm-cursor-ring { display: none; }
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS — base states
+   Sections start invisible; JS adds .is-visible via IntersectionObserver
+   ============================================================ */
+[data-animate] {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"]    { transform: translateY(40px); }
+[data-animate="fade-down"]  { transform: translateY(-30px); }
+[data-animate="fade-left"]  { transform: translateX(40px); }
+[data-animate="fade-right"] { transform: translateX(-40px); }
+[data-animate="fade-in"]    { transform: none; }
+[data-animate="scale-up"]   { transform: scale(0.92); }
+
+[data-animate].is-visible {
+  animation: reveal-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes reveal-in {
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Stagger children — parent gets data-stagger, children get data-animate */
+[data-stagger] > [data-animate]:nth-child(1)  { animation-delay: 0ms; }
+[data-stagger] > [data-animate]:nth-child(2)  { animation-delay: 80ms; }
+[data-stagger] > [data-animate]:nth-child(3)  { animation-delay: 160ms; }
+[data-stagger] > [data-animate]:nth-child(4)  { animation-delay: 240ms; }
+[data-stagger] > [data-animate]:nth-child(5)  { animation-delay: 320ms; }
+[data-stagger] > [data-animate]:nth-child(6)  { animation-delay: 400ms; }
+
+/* When parent is visible, trigger children */
+[data-stagger].is-visible > [data-animate] {
+  animation: reveal-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate].is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ============================================================
+   COUNT-UP NUMBERS — hero stats
+   Numbers start at 0, count up when in view
+   ============================================================ */
+.proof-num[data-countup] {
+  transition: color 200ms ease;
+}
+
+/* ============================================================
+   TRUST BAR MARQUEE
+   ============================================================ */
+.mm-trust-bar {
+  overflow: hidden;
+}
+
+.mm-trust-bar .logos {
+  display: flex;
+  gap: 0;
+  flex-wrap: nowrap;
+  width: max-content;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.mm-trust-bar .logo-item {
+  flex-shrink: 0;
+  padding: 0 40px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.mm-trust-bar .logo-item::after {
+  content: '·';
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--rule-hairline);
+  font-size: 20px;
+}
+
+.mm-trust-bar .logos:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-trust-bar .logos { animation: none; }
+}
+
+/* ============================================================
+   3D CARD TILT — service cards
+   JS calculates rotateX/Y based on mouse position within card
+   ============================================================ */
+.mm-services .item {
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              background var(--dur-base) var(--ease-out),
+              box-shadow 400ms ease;
+  perspective: 800px;
+}
+
+.mm-services .item.is-tilting {
+  transition: transform 80ms linear,
+              box-shadow 80ms linear;
+  box-shadow: 0 20px 60px rgba(72, 17, 12, 0.12);
+}
+
+.mm-services .item:not(.is-tilting) {
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg) !important;
+}
+
+/* Inner content lifts in 3D */
+.mm-services .item h3,
+.mm-services .item .num,
+.mm-services .item p,
+.mm-services .item .more {
+  transform: translateZ(16px);
+  will-change: transform;
+}
+
+/* ============================================================
+   3D HERO DECORATION — floating geometric shape
+   ============================================================ */
+.mm-hero-3d {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  perspective: 600px;
+  z-index: 0;
+}
+
+.mm-hero-3d-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: float-rotate 18s ease-in-out infinite;
+}
+
+/* Six faces of the cube */
+.mm-hero-3d-face {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: 50%;
+  left: 50%;
+  margin-top: -70px;
+  margin-left: -70px;
+  border: 1.5px solid rgba(72, 17, 12, 0.18);
+  background: rgba(72, 17, 12, 0.03);
+  backdrop-filter: blur(2px);
+}
+
+.mm-hero-3d-face:nth-child(1) { transform: rotateY(0deg) translateZ(70px); }
+.mm-hero-3d-face:nth-child(2) { transform: rotateY(90deg) translateZ(70px); }
+.mm-hero-3d-face:nth-child(3) { transform: rotateY(180deg) translateZ(70px); }
+.mm-hero-3d-face:nth-child(4) { transform: rotateY(-90deg) translateZ(70px); }
+.mm-hero-3d-face:nth-child(5) { transform: rotateX(90deg) translateZ(70px); }
+.mm-hero-3d-face:nth-child(6) { transform: rotateX(-90deg) translateZ(70px); }
+
+/* Outer ring */
+.mm-hero-3d-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(72, 17, 12, 0.12);
+  animation: ring-rotate 12s linear infinite reverse;
+}
+
+.mm-hero-3d-ring:nth-child(7) {
+  inset: 20px;
+  border-color: rgba(26, 45, 89, 0.10);
+  animation-duration: 16s;
+}
+
+@keyframes float-rotate {
+  0%   { transform: rotateX(8deg) rotateY(0deg) rotateZ(2deg); }
+  33%  { transform: rotateX(12deg) rotateY(120deg) rotateZ(-2deg); }
+  66%  { transform: rotateX(4deg) rotateY(240deg) rotateZ(4deg); }
+  100% { transform: rotateX(8deg) rotateY(360deg) rotateZ(2deg); }
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg) rotateX(60deg); }
+  to   { transform: rotate(360deg) rotateX(60deg); }
+}
+
+/* Hide on small screens — text takes priority */
+@media (max-width: 1100px) { .mm-hero-3d { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-hero-3d-inner { animation: none; }
+  .mm-hero-3d-ring  { animation: none; }
+}
+
+/* ============================================================
+   EXIT-INTENT POPUP
+   ============================================================ */
+.mm-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 16, 14, 0.72);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 350ms ease, visibility 350ms ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.mm-popup-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mm-popup {
+  background: var(--paper-cream);
+  max-width: 560px;
+  width: 100%;
+  position: relative;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 4px solid var(--mulled-wine);
+}
+
+.mm-popup-overlay.is-open .mm-popup {
+  transform: translateY(0) scale(1);
+}
+
+.mm-popup-inner {
+  padding: 48px 40px 40px;
+}
+
+.mm-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--rule-hairline);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--charcoal-smoke);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+
+.mm-popup-close:hover {
+  background: var(--paper-bone);
+  border-color: var(--charcoal-smoke);
+}
+
+.mm-popup-close:focus-visible {
+  outline: 3px solid var(--mulled-wine);
+  outline-offset: 2px;
+}
+
+.mm-popup .mm-eyebrow {
+  margin-bottom: 16px;
+}
+
+.mm-popup h2 {
+  font-family: var(--font-editorial);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.1;
+  color: var(--charcoal-smoke);
+  margin-bottom: 14px;
+}
+
+.mm-popup h2 em {
+  color: var(--mulled-wine);
+  font-style: italic;
+}
+
+.mm-popup p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--charcoal-500);
+  margin-bottom: 28px;
+}
+
+.mm-popup .ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mm-popup-dismiss {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--charcoal-400);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  align-self: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mm-popup-dismiss:hover { color: var(--charcoal-smoke); }
+
+/* Decorative accent bar inside popup */
+.mm-popup::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--mulled-wine) 0%, var(--maison-navy) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-popup-overlay,
+  .mm-popup { transition: none; }
+}
+
+/* ============================================================
+   SECTION REVEAL LINES — decorative hairlines that draw in
+   ============================================================ */
+.mm-reveal-line {
+  display: block;
+  height: 1px;
+  background: var(--mulled-wine);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mm-reveal-line.is-visible {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-reveal-line { transform: scaleX(1) !important; }
+}
+
+/* ============================================================
+   BUILD 1 — SPINNING LOCAL BADGE
+   Circular SVG textPath badge in hero, "JACKSONVILLE FL · MARKETING AGENCY ·"
+   ============================================================ */
+.mm-hero-badge {
+  position: absolute;
+  right: 6%;
+  bottom: 9%;
+  width: 158px;
+  height: 158px;
+  color: var(--mulled-wine);
+  opacity: 0.52;
+  animation: badge-spin 20s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+.mm-hero-badge svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@keyframes badge-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Center dot */
+.mm-hero-badge-dot {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mulled-wine);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 3;
+  right: calc(6% + 76px);  /* center of badge */
+  bottom: calc(9% + 76px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-hero-badge { animation: none; }
+}
+
+/* Hide on mobile — text is priority */
+@media (max-width: 900px) {
+  .mm-hero-badge { display: none; }
+}
+
+/* ============================================================
+   BUILD 2 — HAIRLINE CROSSHAIR OVERLAY
+   Two 1px decorative lines over the hero — graphic design detail
+   ============================================================ */
+.mm-hero-cross {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.mm-hero-cross-v {
+  position: absolute;
+  left: 62%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(72, 17, 12, 0.13);
+}
+
+.mm-hero-cross-h {
+  position: absolute;
+  top: 44%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(72, 17, 12, 0.11);
+}
+
+/* Small intersection marker at the cross point */
+.mm-hero-cross-v::before,
+.mm-hero-cross-v::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border: 1px solid rgba(72, 17, 12, 0.22);
+  border-radius: 50%;
+}
+
+.mm-hero-cross-v::before { top: calc(44% - 2.5px); }
+.mm-hero-cross-v::after  { display: none; }
+
+@media (max-width: 768px) {
+  .mm-hero-cross { display: none; }
+}
+
+/* ============================================================
+   BUILD 3 — FULL-VIEWPORT CINZEL SERVICE HEADING
+   Enormous display type at the transition into the services section
+   ============================================================ */
+.mm-service-break {
+  padding: 60px 0 20px;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid var(--rule-hairline);
+}
+
+.mm-service-break-text {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 9vw, 122px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--charcoal-smoke);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 950ms var(--ease-out), transform 950ms var(--ease-out);
+  will-change: opacity, transform;
+  padding: 0 var(--mm-gutter, 24px);
+}
+
+.mm-service-break-text em {
+  color: var(--mulled-wine);
+  font-style: italic;
+  font-family: var(--font-editorial);
+}
+
+.mm-service-break-text.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Rule that draws in under the heading */
+.mm-service-break-rule {
+  display: block;
+  height: 1px;
+  background: var(--charcoal-smoke);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1100ms var(--ease-out) 200ms;
+  will-change: transform;
+  margin: 20px var(--mm-gutter, 24px) 0;
+}
+
+.mm-service-break-rule.is-visible {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-service-break-text,
+  .mm-service-break-rule {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   BUILD 4 — EDITORIAL SPLIT SERVICE LAYOUT
+   Each service gets a full-bleed image panel + editorial text
+   Inspired by horeca-social.com's editorial column layouts
+   ============================================================ */
+.mm-services-editorial {
+  padding: 0;
+  border-bottom: 1px solid var(--rule-hairline);
+}
+
+.mm-svc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+  border-top: 1px solid var(--rule-hairline);
+}
+
+.mm-svc-row:nth-child(even) .mm-svc-image { order: -1; }
+
+.mm-svc-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 64px);
+  gap: 20px;
+}
+
+.mm-svc-num {
+  font-family: var(--font-utility);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--charcoal-400);
+  text-transform: uppercase;
+}
+
+.mm-svc-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--charcoal-smoke);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.mm-svc-content p {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.7;
+  color: var(--charcoal-500);
+  max-width: 420px;
+  margin: 0;
+}
+
+.mm-svc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-utility);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mulled-wine);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  width: fit-content;
+  transition: gap 220ms var(--ease-out), color 180ms ease;
+}
+
+.mm-svc-link:hover { gap: 14px; }
+
+.mm-svc-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+}
+
+/* Branded placeholder panels — each service gets a distinct gradient */
+.mm-svc-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transition: transform 600ms var(--ease-out);
+}
+
+.mm-svc-row:hover .mm-svc-image::before {
+  transform: scale(1.03);
+}
+
+.mm-svc-image.svc-img--email::before {
+  background: linear-gradient(145deg,
+    var(--paper-parchment) 0%,
+    var(--stone-tan) 40%,
+    var(--mulled-wine) 100%);
+}
+
+.mm-svc-image.svc-img--web::before {
+  background: linear-gradient(145deg,
+    var(--maison-navy) 0%,
+    #2a3f6e 50%,
+    #0f1a35 100%);
+}
+
+.mm-svc-image.svc-img--seo::before {
+  background: linear-gradient(145deg,
+    var(--charcoal-smoke) 0%,
+    #2c2d34 50%,
+    var(--mulled-wine) 100%);
+}
+
+/* Decorative text overlay on image panels */
+.mm-svc-image::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.08);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Scroll-reveal for each row */
+.mm-svc-row {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+}
+
+.mm-svc-row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mm-svc-row:nth-child(2) { transition-delay: 100ms; }
+.mm-svc-row:nth-child(3) { transition-delay: 200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-svc-row {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .mm-svc-row {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .mm-svc-row:nth-child(even) .mm-svc-image { order: 0; }
+  .mm-svc-image { min-height: 240px; }
+}
+
+/* ============================================================
+   BUILD 5 — HORIZONTAL STRIP HERO REVEAL
+   Hero background clips open from a horizontal strip on load
+   ============================================================ */
+.mm-hero {
+  position: relative;
+}
+
+/* The reveal layer sits behind content, animates clip-path */
+.mm-hero-reveal-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(
+      160deg,
+      var(--paper-bone) 0%,
+      var(--paper-parchment) 35%,
+      var(--stone-tan) 65%,
+      rgba(72, 17, 12, 0.15) 100%
+    );
+  clip-path: inset(50% 0 50% 0);
+  transition: clip-path 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Grain texture overlay for depth */
+.mm-hero-reveal-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.mm-hero.reveal-open .mm-hero-reveal-bg {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-hero-reveal-bg {
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
+  }
+}
+
+/* Ensure hero content sits above the reveal layer */
+.mm-hero .mm-container {
+  position: relative;
+  z-index: 2;
+}
+
+.mm-hero .mm-hero-3d,
+.mm-hero .mm-hero-badge,
+.mm-hero .mm-hero-cross {
+  z-index: 2;
+}
+
+/* ============================================================
+   NAV — scroll state
+   ============================================================ */
+.mm-nav.scrolled {
+  height: 60px;
+  box-shadow: 0 2px 24px rgba(18, 16, 14, 0.08);
+  transition: height 300ms ease, box-shadow 300ms ease;
+}
+
+/* ============================================================
+   HERO — text stagger
+   ============================================================ */
+.mm-hero h1 .line {
+  display: block;
+  overflow: hidden;
+}
+
+.mm-hero h1 .line-inner {
+  display: block;
+  transform: translateY(100%);
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mm-hero.is-loaded h1 .line-inner {
+  transform: translateY(0);
+}
+
+.mm-hero h1 .line:nth-child(2) .line-inner { transition-delay: 80ms; }
+.mm-hero h1 .line:nth-child(3) .line-inner { transition-delay: 160ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-hero h1 .line-inner { transform: none !important; transition: none !important; }
+}
