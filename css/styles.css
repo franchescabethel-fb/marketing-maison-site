@@ -507,7 +507,7 @@ button { cursor: pointer; }
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.08em;
-  color: rgba(19,39,63,0.4);
+  color: rgba(19,39,63,0.78);
   line-height: 1.5;
 }
 
@@ -537,7 +537,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: 13px;
-  color: rgba(19,39,63,0.3);
+  color: rgba(19,39,63,0.72);
 }
 
 .service-rows { margin-top: 0; }
@@ -680,7 +680,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: clamp(15px, 1.4vw, 18px);
-  color: rgba(233,212,195,0.45);
+  color: rgba(233,212,195,0.72);
   line-height: 1.85;
   margin-bottom: 36px;
 }
@@ -697,7 +697,7 @@ button { cursor: pointer; }
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.1em;
-  color: rgba(233,212,195,0.4);
+  color: rgba(233,212,195,0.70);
   transition: border-color 0.2s, color 0.2s;
 }
 .who-tag:hover { border-color: var(--stone); color: var(--cream); }
@@ -764,7 +764,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: clamp(14px, 1.3vw, 17px);
-  color: rgba(19,39,63,0.45);
+  color: rgba(19,39,63,0.78);
   line-height: 1.85;
 }
 
@@ -800,7 +800,7 @@ button { cursor: pointer; }
 .ps-body {
   font-size: 14px;
   line-height: 1.85;
-  color: rgba(19,39,63,0.5);
+  color: rgba(19,39,63,0.78);
 }
 .ps-tag {
   font-size: 10px;
@@ -961,7 +961,7 @@ button { cursor: pointer; }
 .pr.featured .pr-name,
 .pr.featured .pr-desc { color: var(--cream); }
 .pr.featured .pr-price { color: var(--stone); }
-.pr.featured .pr-mo { color: rgba(233,212,195,0.3); }
+.pr.featured .pr-mo { color: rgba(233,212,195,0.65); }
 .pr.featured .pr-cta-link { border-color: rgba(233,212,195,0.25); color: var(--cream); }
 .pr.featured .pr-cta-link:hover { background: var(--cream); color: var(--charcoal); }
 
@@ -989,7 +989,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: 13px;
-  color: rgba(19,39,63,0.4);
+  color: rgba(19,39,63,0.78);
   line-height: 1.6;
 }
 .pr-price {
@@ -1005,7 +1005,7 @@ button { cursor: pointer; }
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 400;
-  color: rgba(19,39,63,0.3);
+  color: rgba(19,39,63,0.72);
   display: block;
   text-align: right;
   margin-top: 6px;
@@ -1062,7 +1062,7 @@ button { cursor: pointer; }
 .faq-sub {
   font-size: 14px;
   line-height: 1.8;
-  color: rgba(19,39,63,0.45);
+  color: rgba(19,39,63,0.78);
   margin-bottom: 32px;
 }
 .faq-link {
@@ -1118,7 +1118,7 @@ button { cursor: pointer; }
   padding-bottom: 28px;
   font-size: 14px;
   line-height: 1.9;
-  color: rgba(19,39,63,0.5);
+  color: rgba(19,39,63,0.78);
 }
 .accordion-panel-inner a { color: var(--wine); text-decoration: underline; text-underline-offset: 3px; }
 
@@ -1151,7 +1151,7 @@ button { cursor: pointer; }
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(233,212,195,0.35);
+  color: rgba(233,212,195,0.65);
   margin-bottom: 48px;
 }
 .cta-headline {
@@ -1162,13 +1162,13 @@ button { cursor: pointer; }
   color: var(--cream);
   margin-bottom: 64px;
 }
-.cta-headline em { font-style: italic; color: rgba(233,212,195,0.45); }
+.cta-headline em { font-style: italic; color: rgba(233,212,195,0.72); }
 .cta-fine {
   margin-top: 28px;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(233,212,195,0.25);
+  color: rgba(233,212,195,0.62);
 }
 
 /* CTA oval variant */
@@ -1213,7 +1213,7 @@ button { cursor: pointer; }
 .nl-body {
   font-size: 14px;
   line-height: 1.8;
-  color: rgba(233,212,195,0.35);
+  color: rgba(233,212,195,0.65);
 }
 .nl-form {
   display: flex;
@@ -1255,7 +1255,7 @@ button { cursor: pointer; }
 .nl-row button:hover { background: var(--wine-mid); }
 .nl-fine {
   font-size: 11px;
-  color: rgba(233,212,195,0.18);
+  color: rgba(233,212,195,0.55);
 }
 .nl-fine a { color: var(--stone); text-decoration: underline; text-underline-offset: 3px; }
 
@@ -1293,7 +1293,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: 13px;
-  color: rgba(233,212,195,0.28);
+  color: rgba(233,212,195,0.62);
   line-height: 1.75;
   margin: 20px 0 28px;
   max-width: 280px;
@@ -1315,7 +1315,7 @@ button { cursor: pointer; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(233,212,195,0.35);
+  color: rgba(233,212,195,0.65);
   transition: border-color 0.2s, color 0.2s;
 }
 .footer-socials a:hover { border-color: var(--stone); color: var(--stone); }
@@ -1326,19 +1326,19 @@ button { cursor: pointer; }
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(233,212,195,0.2);
+  color: rgba(233,212,195,0.58);
   margin-bottom: 20px;
 }
 .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
 .footer-col li a {
   font-size: 13px;
-  color: rgba(233,212,195,0.38);
+  color: rgba(233,212,195,0.68);
   transition: color 0.2s;
 }
 .footer-col li a:hover { color: var(--cream); }
 .footer-col li span {
   font-size: 13px;
-  color: rgba(233,212,195,0.18);
+  color: rgba(233,212,195,0.55);
 }
 
 .footer-bottom {
@@ -1348,10 +1348,10 @@ button { cursor: pointer; }
   flex-wrap: wrap;
   gap: 16px;
 }
-.footer-copy { font-size: 11px; color: rgba(233,212,195,0.16); }
+.footer-copy { font-size: 11px; color: rgba(233,212,195,0.48); }
 .footer-legal { display: flex; gap: 24px; }
-.footer-legal a { font-size: 11px; color: rgba(233,212,195,0.16); transition: color 0.2s; }
-.footer-legal a:hover { color: rgba(233,212,195,0.4); }
+.footer-legal a { font-size: 11px; color: rgba(233,212,195,0.48); transition: color 0.2s; }
+.footer-legal a:hover { color: rgba(233,212,195,0.70); }
 
 /* ── SCROLL ANIMATIONS ────────────────────────────────────── */
 [data-fade] {
