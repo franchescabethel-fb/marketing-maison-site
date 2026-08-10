@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="css/styles.css" />
 
   <style>
-    /* ── Services Hero ──────────────────────────────────── */
+    /* ── Services Hero ──────────────────────────────────────── */
     .svc-hero {
       background: var(--charcoal);
-      padding: calc(var(--nav-h) + 80px) var(--pad-x) 88px;
+      padding: calc(var(--nav-h) + 100px) var(--pad-x) 100px;
       position: relative;
       overflow: hidden;
     }
@@ -28,17 +28,9 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(246,241,232,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(246,241,232,0.02) 1px, transparent 1px);
+        linear-gradient(rgba(233,212,195,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233,212,195,0.018) 1px, transparent 1px);
       background-size: 80px 80px;
-    }
-    .svc-hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: clamp(240px, 35vw, 460px);
-      height: clamp(240px, 35vw, 460px);
-      background: radial-gradient(circle at bottom left, rgba(72,17,12,0.3), transparent 70%);
       pointer-events: none;
     }
     .svc-hero-inner {
@@ -47,161 +39,203 @@
       max-width: var(--max-w);
       margin: 0 auto;
     }
+    .svc-hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .svc-hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+      flex-shrink: 0;
+    }
     .svc-hero h1 {
-      font-size: clamp(40px, 6.5vw, 96px);
+      font-family: var(--font-edit);
+      font-size: clamp(48px, 7vw, 104px);
+      font-weight: 300;
       color: var(--cream);
-      margin-bottom: 28px;
-      max-width: 800px;
+      margin-bottom: 32px;
       line-height: 1.0;
     }
     .svc-hero h1 em {
-      font-family: var(--font-editorial);
       font-style: italic;
-      color: var(--stone);
+      color: rgba(233,212,195,0.45);
     }
-    .svc-hero p {
-      font-family: var(--font-editorial);
+    .svc-hero-desc {
+      font-family: var(--font-edit);
       font-style: italic;
-      font-size: clamp(17px, 1.7vw, 21px);
-      color: rgba(246,241,232,0.5);
-      max-width: 580px;
-      line-height: 1.65;
+      font-size: clamp(16px, 1.6vw, 20px);
+      color: rgba(233,212,195,0.55);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 56px;
     }
-    .svc-hero-nav {
+    .svc-jump-nav {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 40px;
     }
-    .svc-hero-nav a {
-      padding: 8px 18px;
-      border: 1px solid rgba(246,241,232,0.15);
-      border-radius: 20px;
+    .svc-jump-nav a {
+      padding: 9px 20px;
+      border: 1px solid rgba(233,212,195,0.12);
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.12em;
-      color: rgba(246,241,232,0.55);
-      transition: all var(--transition);
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.48);
       text-decoration: none;
+      transition: border-color var(--transition), color var(--transition);
     }
-    .svc-hero-nav a:hover {
-      border-color: var(--stone);
+    .svc-jump-nav a:hover {
+      border-color: rgba(233,212,195,0.4);
       color: var(--cream);
     }
 
-    /* ── Individual Service Sections ─────────────────── */
-    .svc-section {
-      padding: var(--section-y) 0;
-      border-bottom: 1px solid rgba(25,26,30,0.08);
+    /* ── Service List ───────────────────────────────────────── */
+    .svc-list {
+      background: var(--black);
     }
-    .svc-section:nth-child(even) { background: var(--cream-dark); }
-    .svc-section:nth-child(odd)  { background: var(--cream); }
-
-    .svc-layout {
+    .svc-row {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 80px;
+      grid-template-columns: 100px 1fr 340px;
+      gap: 0 72px;
+      padding: 80px var(--pad-x);
+      border-bottom: 1px solid rgba(233,212,195,0.05);
+      max-width: calc(var(--max-w) + var(--pad-x) * 2);
+      margin: 0 auto;
       align-items: start;
     }
-    .svc-section:nth-child(even) .svc-layout {
-      direction: rtl;
-    }
-    .svc-section:nth-child(even) .svc-layout > * {
-      direction: ltr;
+    .svc-row:nth-child(even) {
+      background: rgba(19,39,63,0.25);
     }
 
-    .svc-meta {
-      position: sticky;
-      top: calc(var(--nav-h) + 32px);
+    /* Large decorative number */
+    .svc-num-deco {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(64px, 7vw, 108px);
+      font-weight: 300;
+      color: rgba(233,212,195,0.05);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      padding-top: 8px;
     }
-    .svc-meta .svc-num {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.24em;
+
+    /* Info column */
+    .svc-info {}
+    .svc-icon {
+      width: 28px;
+      height: 28px;
       color: var(--stone);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: block;
     }
-    .svc-meta h2 {
-      font-size: clamp(26px, 3vw, 42px);
-      margin-bottom: 20px;
-    }
-    .svc-meta .svc-tagline {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(16px, 1.5vw, 20px);
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-    .svc-meta .btn { display: inline-flex; }
-
-    .svc-detail h3 {
-      font-size: clamp(14px, 1.2vw, 16px);
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      margin-bottom: 16px;
-      color: var(--charcoal);
-    }
-    .svc-detail p {
-      font-size: 15px;
-      line-height: 1.82;
-      color: var(--text-muted);
-      margin-bottom: 32px;
-    }
-
-    .svc-deliverables {
-      background: var(--charcoal);
-      padding: 36px;
-      border-radius: var(--radius-sm);
-      margin-top: 8px;
-    }
-    .svc-deliverables h3 {
+    .svc-label {
       font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.35);
+      margin-bottom: 14px;
+      display: block;
+    }
+    .svc-info h2 {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.2vw, 48px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .svc-tagline {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(15px, 1.3vw, 17px);
+      color: rgba(233,212,195,0.50);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .svc-body p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(233,212,195,0.48);
+      margin-bottom: 0;
+    }
+    .svc-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 32px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--stone);
-      margin-bottom: 20px;
+      text-decoration: none;
+      transition: color var(--transition), gap var(--transition);
     }
-    .svc-deliverables ul {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px 24px;
+    .svc-cta-link::after { content: '→'; }
+    .svc-cta-link:hover {
+      color: var(--cream);
+      gap: 16px;
     }
-    .svc-deliverables li {
+
+    /* Deliverables column */
+    .svc-delivers {
+      padding-top: 4px;
+    }
+    .svc-delivers-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.30);
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(233,212,195,0.07);
+      display: block;
+    }
+    .svc-delivers ul {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+    .svc-delivers li {
       font-size: 13px;
-      color: rgba(246,241,232,0.65);
-      padding-left: 16px;
-      position: relative;
       line-height: 1.5;
+      color: rgba(233,212,195,0.55);
+      padding-left: 18px;
+      position: relative;
     }
-    .svc-deliverables li::before {
+    .svc-delivers li::before {
       content: '—';
       position: absolute;
       left: 0;
       color: var(--wine);
-      font-size: 11px;
+      font-size: 10px;
+      top: 1px;
     }
 
-    /* Icon accent */
-    .svc-icon {
-      width: 52px;
-      height: 52px;
-      background: rgba(72,17,12,0.08);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      font-size: 22px;
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .svc-row { grid-template-columns: 80px 1fr 280px; gap: 0 48px; }
     }
-
-    @media (max-width: 900px) {
-      .svc-layout { grid-template-columns: 1fr; gap: 44px; }
-      .svc-section:nth-child(even) .svc-layout { direction: ltr; }
-      .svc-meta { position: static; }
-      .svc-deliverables ul { grid-template-columns: 1fr; }
+    @media (max-width: 860px) {
+      .svc-row {
+        grid-template-columns: 1fr;
+        padding: 60px var(--pad-x);
+        gap: 40px;
+      }
+      .svc-num-deco { display: none; }
+      .svc-delivers { border-top: 1px solid rgba(233,212,195,0.07); padding-top: 36px; }
     }
   </style>
 </head>
@@ -260,12 +294,12 @@
     <!-- Hero -->
     <section class="svc-hero" aria-labelledby="svc-hero-heading">
       <div class="svc-hero-inner">
-        <p class="eyebrow no-rule" style="color:var(--stone)">Nine Disciplines</p>
-        <h1 id="svc-hero-heading">
-          Nine Disciplines.<br/><em>One Integrated Strategy.</em>
+        <p class="svc-hero-eyebrow" data-fade>Nine Disciplines</p>
+        <h1 id="svc-hero-heading" data-fade>
+          Nine Disciplines.<br /><em>One Integrated Strategy.</em>
         </h1>
-        <p>Every service line at Marketing Maison is built to amplify the others. We don't sell à la carte channels — we architect systems.</p>
-        <nav class="svc-hero-nav" aria-label="Jump to service">
+        <p class="svc-hero-desc" data-fade>Every service line at Marketing Maison is built to amplify the others. We don't sell à la carte channels — we architect systems.</p>
+        <nav class="svc-jump-nav" aria-label="Jump to service" data-fade>
           <a href="#business-development">Business Development</a>
           <a href="#content-creation">Content Creation</a>
           <a href="#social-media">Social Media</a>
@@ -279,373 +313,294 @@
       </div>
     </section>
 
-    <!-- #01 Business Development -->
-    <section class="svc-section" id="business-development" aria-labelledby="svc1-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-left>
-            <div class="svc-icon" aria-hidden="true">🏗</div>
-            <span class="svc-num">#01</span>
+    <!-- Service List -->
+    <div class="svc-list">
+
+      <!-- #01 Business Development -->
+      <section id="business-development" aria-labelledby="svc1-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">01</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            <span class="svc-label">#01</span>
             <h2 id="svc1-heading">Business Development</h2>
-            <p class="svc-tagline">
-              Strategic positioning and partnership systems that transform your vision into a scalable, repeatable revenue engine.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-right>
-            <h3>What It Means</h3>
-            <p>
-              Business development isn't about aggressive outreach — it's about building the right relationships in the right rooms. We help you identify your highest-value market segments, craft a positioning framework that differentiates you in a crowded Jacksonville market, and build the systems (CRM, pipeline stages, partner programs) that make growth predictable.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              We start with a deep competitive landscape analysis specific to your sector and geography. From there we identify your best-fit ICP (ideal customer profile), develop outreach and partnership frameworks, and build the tracking infrastructure to know what's working. Every engagement includes quarterly positioning reviews to ensure your market message stays sharp.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>Competitive landscape audit</li>
-                <li>ICP definition + persona development</li>
-                <li>Positioning framework &amp; messaging</li>
-                <li>Partnership identification + outreach</li>
-                <li>CRM setup and pipeline architecture</li>
-                <li>Revenue tracking dashboard</li>
-                <li>Quarterly strategy reviews</li>
-                <li>Referral program design</li>
-              </ul>
+            <p class="svc-tagline">Strategic positioning and partnership systems that transform your vision into a scalable, repeatable revenue engine.</p>
+            <div class="svc-body">
+              <p>Business development isn't about aggressive outreach — it's about building the right relationships in the right rooms. We identify your highest-value market segments, craft a positioning framework that differentiates you, and build the systems that make growth predictable.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>Competitive landscape audit</li>
+              <li>ICP definition + persona development</li>
+              <li>Positioning framework &amp; messaging</li>
+              <li>Partnership identification + outreach</li>
+              <li>CRM setup and pipeline architecture</li>
+              <li>Revenue tracking dashboard</li>
+              <li>Quarterly strategy reviews</li>
+              <li>Referral program design</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #02 Content Creation -->
-    <section class="svc-section" id="content-creation" aria-labelledby="svc2-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-right>
-            <div class="svc-icon" aria-hidden="true">✍️</div>
-            <span class="svc-num">#02</span>
+      <!-- #02 Content Creation -->
+      <section id="content-creation" aria-labelledby="svc2-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">02</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span class="svc-label">#02</span>
             <h2 id="svc2-heading">Content Creation</h2>
-            <p class="svc-tagline">
-              Brand-voice content across every format that earns attention and search rankings — without paying for every impression.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-left>
-            <h3>What It Means</h3>
-            <p>
-              Great content isn't about volume — it's about building something your audience actually wants to read, watch, or share. We develop a content strategy rooted in your brand voice, your audience's real questions, and the keywords that drive discoverability. Then we produce it: blog posts, short-form video scripts, email copy, graphics, and more.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              Before we write a single word, we audit your existing content library and conduct keyword and audience research specific to your market in Jacksonville and beyond. We identify the gaps your competitors are missing and build a content calendar that addresses them. Every piece is optimized for both human readers and search engines — no keyword stuffing, just genuinely useful content structured to rank.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>Content strategy + editorial calendar</li>
-                <li>SEO-optimized blog posts</li>
-                <li>Short-form video scripts</li>
-                <li>Email copy + sequences</li>
-                <li>Social captions + graphics</li>
-                <li>Brand voice guide</li>
-                <li>Lead magnet development</li>
-                <li>Monthly content performance report</li>
-              </ul>
+            <p class="svc-tagline">Brand-voice content across every format that earns attention and search rankings — without paying for every impression.</p>
+            <div class="svc-body">
+              <p>Great content isn't about volume — it's about building something your audience actually wants to read, watch, or share. We develop a content strategy rooted in your brand voice, your audience's real questions, and the keywords that drive discoverability.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>Content strategy + editorial calendar</li>
+              <li>SEO-optimized blog posts</li>
+              <li>Short-form video scripts</li>
+              <li>Email copy + sequences</li>
+              <li>Social captions + graphics</li>
+              <li>Brand voice guide</li>
+              <li>Lead magnet development</li>
+              <li>Monthly content performance report</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #03 Social Media Management -->
-    <section class="svc-section" id="social-media" aria-labelledby="svc3-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-left>
-            <div class="svc-icon" aria-hidden="true">📱</div>
-            <span class="svc-num">#03</span>
+      <!-- #03 Social Media -->
+      <section id="social-media" aria-labelledby="svc3-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">03</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span class="svc-label">#03</span>
             <h2 id="svc3-heading">Social Media Management</h2>
-            <p class="svc-tagline">
-              Full-service social management that builds a community of people who genuinely want to buy from you.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-right>
-            <h3>What It Means</h3>
-            <p>
-              We handle everything — strategy, content creation, scheduling, community engagement, and monthly analytics — across Instagram, LinkedIn, and any other platforms that make sense for your brand. The goal isn't vanity metrics: it's building an engaged audience that converts into clients, customers, and advocates.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              Social media management at Marketing Maison begins with a platform audit and competitor analysis. We establish your brand's visual and verbal identity in the feed, create a 30-day content calendar, and build a consistent publishing cadence. We actively manage comments and DMs to foster community, and report on the metrics that actually matter — reach, saves, profile visits, and link clicks.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>Platform audit + competitor analysis</li>
-                <li>Monthly content calendar</li>
-                <li>Custom graphics + Reels scripts</li>
-                <li>Daily post scheduling</li>
-                <li>Community management + DMs</li>
-                <li>Hashtag strategy</li>
-                <li>Monthly analytics report</li>
-                <li>Profile optimization</li>
-              </ul>
+            <p class="svc-tagline">Full-service social management that builds a community of people who genuinely want to buy from you.</p>
+            <div class="svc-body">
+              <p>We handle everything — strategy, content creation, scheduling, community engagement, and monthly analytics — across Instagram, LinkedIn, and platforms that make sense for your brand. The goal isn't vanity metrics: it's building an engaged audience that converts.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>Platform audit + competitor analysis</li>
+              <li>Monthly content calendar</li>
+              <li>Custom graphics + Reels scripts</li>
+              <li>Daily post scheduling</li>
+              <li>Community management + DMs</li>
+              <li>Hashtag strategy</li>
+              <li>Monthly analytics report</li>
+              <li>Profile optimization</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #04 Email & SMS -->
-    <section class="svc-section" id="email-sms" aria-labelledby="svc4-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-right>
-            <div class="svc-icon" aria-hidden="true">✉️</div>
-            <span class="svc-num">#04</span>
+      <!-- #04 Email & SMS -->
+      <section id="email-sms" aria-labelledby="svc4-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">04</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="svc-label">#04</span>
             <h2 id="svc4-heading">Email &amp; SMS Marketing</h2>
-            <p class="svc-tagline">
-              Your highest-ROI marketing channel — built on a list you own outright, not an algorithm you rent.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-left>
-            <h3>What It Means</h3>
-            <p>
-              Email and SMS give you a direct line to your audience that no platform can take away. We build full acquisition and retention systems: welcome sequences that convert new subscribers into buyers, nurture flows that keep existing customers engaged, and re-engagement campaigns that win back the ones who've gone quiet.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              We start with your subscriber list health and deliverability audit. From there we map out your full customer lifecycle and identify the automations that will have the biggest impact first. We write and design each sequence, set up the technical infrastructure (including DKIM, SPF, and DMARC for deliverability), and continuously A/B test subject lines, send times, and CTAs to maximize open and click rates.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>List health + deliverability audit</li>
-                <li>Welcome &amp; onboarding sequence</li>
-                <li>Nurture email flows</li>
-                <li>Promotional campaign templates</li>
-                <li>SMS opt-in setup + sequences</li>
-                <li>A/B testing program</li>
-                <li>Win-back campaigns</li>
-                <li>Monthly performance reporting</li>
-              </ul>
+            <p class="svc-tagline">Your highest-ROI marketing channel — built on a list you own outright, not an algorithm you rent.</p>
+            <div class="svc-body">
+              <p>Email and SMS give you a direct line to your audience that no platform can take away. We build full acquisition and retention systems: welcome sequences that convert new subscribers into buyers, nurture flows that keep existing customers engaged, and re-engagement campaigns that win back the ones who've gone quiet.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>List health + deliverability audit</li>
+              <li>Welcome &amp; onboarding sequence</li>
+              <li>Nurture email flows</li>
+              <li>Promotional campaign templates</li>
+              <li>SMS opt-in setup + sequences</li>
+              <li>A/B testing program</li>
+              <li>Win-back campaigns</li>
+              <li>Monthly performance reporting</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #05 SEO -->
-    <section class="svc-section" id="seo" aria-labelledby="svc5-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-left>
-            <div class="svc-icon" aria-hidden="true">🔍</div>
-            <span class="svc-num">#05</span>
+      <!-- #05 SEO -->
+      <section id="seo" aria-labelledby="svc5-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">05</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span class="svc-label">#05</span>
             <h2 id="svc5-heading">SEO Optimization</h2>
-            <p class="svc-tagline">
-              Local and organic search optimization that puts your Jacksonville business in front of people actively looking for you.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-right>
-            <h3>What It Means</h3>
-            <p>
-              Search engine optimization is the long game that pays compounding dividends. We handle both technical SEO (site speed, Core Web Vitals, structured data, mobile optimization) and on-page SEO (keyword strategy, content optimization, internal linking), with a specific focus on local SEO signals that help Jacksonville-area businesses dominate their geographic search results.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              We begin with a full technical site audit to identify quick wins and structural issues. Simultaneously we conduct keyword research specific to your industry and Jacksonville market, mapping search intent to your existing and planned content. We handle Google Business Profile optimization, citation building, and schema markup to strengthen local signals. Every month you'll see exactly which rankings moved and why.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>Technical SEO audit + fixes</li>
-                <li>Keyword research + mapping</li>
-                <li>On-page content optimization</li>
-                <li>Google Business Profile management</li>
-                <li>Local citation building</li>
-                <li>Schema markup implementation</li>
-                <li>Core Web Vitals improvements</li>
-                <li>Monthly ranking + traffic reports</li>
-              </ul>
+            <p class="svc-tagline">Local and organic search optimization that puts your Jacksonville business in front of people actively looking for you.</p>
+            <div class="svc-body">
+              <p>SEO is the long game that pays compounding dividends. We handle technical SEO, on-page optimization, and local SEO signals — with a specific focus on helping Jacksonville-area businesses dominate their geographic search results.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>Technical SEO audit + fixes</li>
+              <li>Keyword research + mapping</li>
+              <li>On-page content optimization</li>
+              <li>Google Business Profile management</li>
+              <li>Local citation building</li>
+              <li>Schema markup implementation</li>
+              <li>Core Web Vitals improvements</li>
+              <li>Monthly ranking + traffic reports</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #06 AI Tools & Dashboards -->
-    <section class="svc-section" id="ai-tools" aria-labelledby="svc6-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-right>
-            <div class="svc-icon" aria-hidden="true">⚡</div>
-            <span class="svc-num">#06</span>
-            <h2 id="svc6-heading">AI Tools &amp; Dashboards</h2>
-            <p class="svc-tagline">
-              Custom automations and analytics dashboards that cut operational overhead and surface what actually moves the needle.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-left>
-            <h3>What It Means</h3>
-            <p>
-              AI is no longer optional — it's a competitive advantage. We build custom AI workflows that automate the repetitive parts of your marketing operation (content repurposing, first-draft generation, social listening, reporting), and we design analytics dashboards that give you a real-time view of what's working across every channel.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              We audit your current marketing stack and identify the highest-leverage automation opportunities first. We then build and test AI-assisted workflows using tools like Claude, ChatGPT, and Zapier — integrated into your existing platforms. Alongside the automations, we design a custom reporting dashboard (typically in Google Looker Studio or Notion) that consolidates your key metrics into one clean view you'll actually use.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>Marketing stack audit</li>
-                <li>AI workflow design + build</li>
-                <li>Content repurposing automation</li>
-                <li>Custom reporting dashboard</li>
-                <li>Social listening setup</li>
-                <li>Automated monthly reports</li>
-                <li>Team training + documentation</li>
-                <li>Ongoing optimization support</li>
-              </ul>
+      <!-- #06 Organic Campaign Strategy -->
+      <section id="organic-campaigns" aria-labelledby="svc6-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">06</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            <span class="svc-label">#06</span>
+            <h2 id="svc6-heading">Data-Driven Organic Campaign Strategy</h2>
+            <p class="svc-tagline">Organic content campaigns rooted in real analytics — built on what the data says your audience actually responds to.</p>
+            <div class="svc-body">
+              <p>Most brands post content and hope something sticks. We start with your performance data, identify what your specific audience genuinely responds to, and build campaigns around those insights. Every piece of content has a purpose, a target, and a measurement framework.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>Cross-channel performance audit</li>
+              <li>Audience insight + trend analysis</li>
+              <li>Quarterly campaign strategy</li>
+              <li>Content performance benchmarks</li>
+              <li>Channel-specific content tracks</li>
+              <li>Campaign measurement framework</li>
+              <li>Monthly performance reviews</li>
+              <li>Ongoing strategy optimization</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #07 Event Management -->
-    <section class="svc-section" id="events" aria-labelledby="svc7-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-left>
-            <div class="svc-icon" aria-hidden="true">🎯</div>
-            <span class="svc-num">#07</span>
-            <h2 id="svc7-heading">Event Management</h2>
-            <p class="svc-tagline">
-              In-person and virtual events that deepen community, generate evergreen content, and create moments people talk about long after they leave.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-right>
-            <h3>What It Means</h3>
-            <p>
-              Events are one of the most underutilized marketing channels for Jacksonville businesses. Done right, a single event generates weeks of social content, strengthens customer relationships, earns press coverage, and creates the kind of brand memories no ad can replicate. We handle everything from concept to recap content — so you can show up and be present.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              We begin with an event strategy session to identify what type of event fits your brand, your audience, and your goals. From there we handle all logistics, promotion, and on-site coordination. Every event includes a content capture plan so you leave with months of social and email content. We also build the pre-event email and social promotion campaign and follow up with post-event nurture sequences to convert attendees into clients.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>Event concept + strategy</li>
-                <li>Venue sourcing (Jacksonville area)</li>
-                <li>Full logistics coordination</li>
-                <li>Pre-event promotion campaign</li>
-                <li>On-site content capture plan</li>
-                <li>Post-event email nurture</li>
-                <li>Social content from event</li>
-                <li>Attendee follow-up sequence</li>
-              </ul>
+      <!-- #07 Website Creation -->
+      <section id="website" aria-labelledby="svc7-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">07</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="svc-label">#07</span>
+            <h2 id="svc7-heading">Website Creation &amp; Optimization</h2>
+            <p class="svc-tagline">High-converting websites built to reflect your brand, rank in search, and turn visitors into clients from day one.</p>
+            <div class="svc-body">
+              <p>Your website is your hardest-working team member. We design and build fast, beautiful, accessible websites that reflect your brand at its best, load quickly, and guide visitors toward the action you want them to take.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>UX + conversion audit</li>
+              <li>Custom design + development</li>
+              <li>Mobile-first, fast-loading build</li>
+              <li>ADA/WCAG accessibility compliance</li>
+              <li>On-page SEO implementation</li>
+              <li>Analytics + tracking setup</li>
+              <li>Landing page optimization</li>
+              <li>Ongoing CRO support</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #08 Website Creation & Optimization -->
-    <section class="svc-section" id="website" aria-labelledby="svc8-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-right>
-            <div class="svc-icon" aria-hidden="true">🌐</div>
-            <span class="svc-num">#08</span>
-            <h2 id="svc8-heading">Website Creation &amp; Optimization</h2>
-            <p class="svc-tagline">
-              High-converting websites built to reflect your brand, rank in search, and turn visitors into clients from day one.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-left>
-            <h3>What It Means</h3>
-            <p>
-              Your website is your hardest-working team member — and most businesses are leaving serious money on the table because theirs isn't optimized for conversion. We design and build fast, beautiful, accessible websites and landing pages that reflect your brand at its best, load in under two seconds, and guide visitors toward the action you want them to take.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              We start with a conversion and UX audit of your existing site (or a competitive benchmark if you're building from scratch). We map out the visitor journey, identify friction points, and design a site architecture that supports both SEO and conversion goals. Every site we build is mobile-first, WCAG-accessible, and connected to your analytics stack from launch day — so you know exactly how it's performing from day one.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>UX + conversion audit</li>
-                <li>Custom design + development</li>
-                <li>Mobile-first, fast-loading build</li>
-                <li>ADA/WCAG accessibility compliance</li>
-                <li>On-page SEO implementation</li>
-                <li>Analytics + tracking setup</li>
-                <li>Landing page optimization</li>
-                <li>Ongoing CRO support</li>
-              </ul>
+      <!-- #08 AI Tools & Dashboards -->
+      <section id="ai-tools" aria-labelledby="svc8-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">08</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg>
+            <span class="svc-label">#08</span>
+            <h2 id="svc8-heading">AI Tools &amp; Dashboards</h2>
+            <p class="svc-tagline">Custom automations and analytics dashboards that cut operational overhead and surface what actually moves the needle.</p>
+            <div class="svc-body">
+              <p>AI is no longer optional — it's a competitive advantage. We build custom AI workflows that automate the repetitive parts of your marketing operation, and design analytics dashboards that give you a real-time view of what's working across every channel.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>Marketing stack audit</li>
+              <li>AI workflow design + build</li>
+              <li>Content repurposing automation</li>
+              <li>Custom reporting dashboard</li>
+              <li>Social listening setup</li>
+              <li>Automated monthly reports</li>
+              <li>Team training + documentation</li>
+              <li>Ongoing optimization support</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- #09 Data-Driven Organic Campaign Strategy -->
-    <section class="svc-section" id="organic-campaigns" aria-labelledby="svc9-heading">
-      <div class="container">
-        <div class="svc-layout">
-          <div class="svc-meta" data-fade-left>
-            <div class="svc-icon" aria-hidden="true">📊</div>
-            <span class="svc-num">#09</span>
-            <h2 id="svc9-heading">Data-Driven Organic Campaign Strategy</h2>
-            <p class="svc-tagline">
-              Organic content campaigns rooted in real analytics — built on what the data says your audience actually responds to.
-            </p>
-            <a href="contact.html" class="btn btn-primary">Start with a discovery call</a>
-          </div>
-          <div class="svc-detail" data-fade-right>
-            <h3>What It Means</h3>
-            <p>
-              Most brands post content and hope something sticks. Data-driven organic campaign strategy is different: we start with your performance data, identify the content types, topics, and formats that your specific audience genuinely responds to, and build campaigns around those insights. Every piece of content has a purpose, a target, and a measurement framework.
-            </p>
-            <h3>Our Approach</h3>
-            <p>
-              We analyze your existing organic performance across all channels — social, search, email, and web — and identify the patterns your top-performing content has in common. From there we develop quarterly campaign themes with specific content tracks for each channel, tied to measurable goals. We produce a monthly content performance report that goes beyond vanity metrics to show what's actually driving leads, retention, and revenue.
-            </p>
-            <div class="svc-deliverables">
-              <h3>What You Get</h3>
-              <ul>
-                <li>Cross-channel performance audit</li>
-                <li>Audience insight + trend analysis</li>
-                <li>Quarterly campaign strategy</li>
-                <li>Content performance benchmarks</li>
-                <li>Channel-specific content tracks</li>
-                <li>Campaign measurement framework</li>
-                <li>Monthly performance reviews</li>
-                <li>Ongoing strategy optimization</li>
-              </ul>
+      <!-- #09 Event Management -->
+      <section id="events" aria-labelledby="svc9-heading">
+        <div class="svc-row">
+          <div class="svc-num-deco" aria-hidden="true">09</div>
+          <div class="svc-info" data-fade>
+            <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span class="svc-label">#09</span>
+            <h2 id="svc9-heading">Event Management</h2>
+            <p class="svc-tagline">In-person and virtual events that deepen community, generate evergreen content, and create moments people talk about long after they leave.</p>
+            <div class="svc-body">
+              <p>Events are one of the most underutilized marketing channels for Jacksonville businesses. Done right, a single event generates weeks of social content, strengthens customer relationships, and creates the kind of brand memories no ad can replicate.</p>
             </div>
+            <a href="contact.html" class="svc-cta-link">Start with a discovery call</a>
+          </div>
+          <div class="svc-delivers" data-fade>
+            <span class="svc-delivers-label">What You Get</span>
+            <ul>
+              <li>Event concept + strategy</li>
+              <li>Venue sourcing (Jacksonville area)</li>
+              <li>Full logistics coordination</li>
+              <li>Pre-event promotion campaign</li>
+              <li>On-site content capture plan</li>
+              <li>Post-event email nurture</li>
+              <li>Social content from event</li>
+              <li>Attendee follow-up sequence</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+    </div><!-- /.svc-list -->
 
     <!-- CTA -->
-    <section class="cta-section" aria-labelledby="svc-cta-heading">
-      <div class="cta-inner">
-        <p class="eyebrow">Next Step</p>
-        <h2 id="svc-cta-heading">Not Sure Where<br/><em>to Start?</em></h2>
-        <p>That's exactly what the discovery call is for. We'll figure out which service lines will move the needle most for your specific situation — and in what order.</p>
-        <a href="contact.html" class="btn btn-cream btn-lg">Book a Free Discovery Call</a>
+    <section class="cta-full" aria-labelledby="svc-cta-heading">
+      <div class="cta-inner" data-fade>
+        <p class="cta-label">Next Step</p>
+        <h2 class="cta-headline" id="svc-cta-heading">
+          Not sure where<br /><em>to start?</em>
+        </h2>
+        <a href="contact.html" class="oval-btn oval-btn-lg" aria-label="Book a free discovery call with Marketing Maison">
+          <svg class="oval-border" viewBox="0 0 320 88" preserveAspectRatio="none" aria-hidden="true">
+            <ellipse cx="160" cy="44" rx="156" ry="40"/>
+          </svg>
+          <span class="oval-btn-text">Book a free discovery call</span>
+        </a>
         <p class="cta-fine">30 minutes · No commitment · Response within 24 hours</p>
       </div>
     </section>
@@ -677,9 +632,9 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul role="list">
-            <li><a href="services.html#biz-dev">Business Development</a></li>
-            <li><a href="services.html#content">Content Creation</a></li>
-            <li><a href="services.html#social">Social Media</a></li>
+            <li><a href="services.html#business-development">Business Development</a></li>
+            <li><a href="services.html#content-creation">Content Creation</a></li>
+            <li><a href="services.html#social-media">Social Media</a></li>
             <li><a href="services.html#email-sms">Email &amp; SMS</a></li>
             <li><a href="services.html#seo">SEO Optimization</a></li>
             <li><a href="services.html#organic-campaigns">Organic Campaigns</a></li>
