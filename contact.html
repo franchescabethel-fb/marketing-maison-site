@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="css/styles.css" />
 
   <style>
-    /* ── Contact Hero ──────────────────────────────────── */
+    /* ── Contact Hero ───────────────────────────────────────── */
     .contact-hero {
       background: var(--charcoal);
-      padding: calc(var(--nav-h) + 72px) var(--pad-x) 80px;
+      padding: calc(var(--nav-h) + 100px) var(--pad-x) 100px;
       position: relative;
       overflow: hidden;
     }
@@ -28,17 +28,10 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(246,241,232,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(246,241,232,0.02) 1px, transparent 1px);
+        linear-gradient(rgba(233,212,195,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233,212,195,0.018) 1px, transparent 1px);
       background-size: 80px 80px;
-    }
-    .contact-hero::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: clamp(200px, 28vw, 380px);
-      height: clamp(200px, 28vw, 380px);
-      background: radial-gradient(circle at top right, rgba(72,17,12,0.35), transparent 70%);
+      pointer-events: none;
     }
     .contact-hero-inner {
       position: relative;
@@ -47,201 +40,325 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+      gap: 100px;
+      align-items: start;
     }
-    .contact-hero h1 {
-      font-size: clamp(36px, 5vw, 72px);
-      color: var(--cream);
-      line-height: 1.02;
-      margin-bottom: 20px;
-    }
-    .contact-hero h1 em {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      color: var(--stone);
-    }
-    .contact-hero p {
-      font-family: var(--font-editorial);
-      font-style: italic;
-      font-size: clamp(16px, 1.6vw, 20px);
-      color: rgba(246,241,232,0.55);
-      line-height: 1.65;
-    }
-
-    /* What to expect panel */
-    .expect-panel {
-      background: rgba(246,241,232,0.04);
-      border: 1px solid rgba(246,241,232,0.08);
-      border-radius: var(--radius-sm);
-      padding: 44px 40px;
-    }
-    .expect-panel h2 {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+    .contact-hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .contact-hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+      flex-shrink: 0;
+    }
+    .contact-hero h1 {
+      font-family: var(--font-edit);
+      font-size: clamp(40px, 5.5vw, 80px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.05;
       margin-bottom: 28px;
+    }
+    .contact-hero h1 em {
+      font-style: italic;
+      color: rgba(233,212,195,0.45);
+    }
+    .contact-hero-desc {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: rgba(233,212,195,0.52);
+      line-height: 1.75;
+    }
+
+    /* What to Expect panel */
+    .expect-panel {
+      padding-top: 12px;
+    }
+    .expect-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.35);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(233,212,195,0.07);
+      display: block;
     }
     .expect-steps {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
     .expect-step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(246,241,232,0.06);
-      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 0 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(233,212,195,0.05);
+      align-items: start;
     }
     .expect-step:last-child { border-bottom: none; }
     .expect-step-num {
-      width: 32px;
-      height: 32px;
-      border: 1px solid rgba(246,241,232,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 12px;
-      color: var(--stone);
-      flex-shrink: 0;
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(36px, 3.5vw, 52px);
+      font-weight: 300;
+      color: rgba(233,212,195,0.08);
+      line-height: 1;
     }
     .expect-step h3 {
-      font-size: 14px;
+      font-family: var(--font-edit);
+      font-size: clamp(18px, 1.8vw, 24px);
+      font-weight: 300;
       color: var(--cream);
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      padding-top: 4px;
     }
     .expect-step p {
       font-size: 13px;
-      color: rgba(246,241,232,0.45);
-      line-height: 1.65;
+      line-height: 1.75;
+      color: rgba(233,212,195,0.48);
     }
 
-    /* ── Contact Form Section ──────────────────────────── */
+    /* ── Form Section ───────────────────────────────────────── */
     .contact-form-section {
-      background: var(--cream);
-      padding: var(--section-y) 0;
+      background: var(--black);
+      padding: clamp(80px, 10vw, 140px) var(--pad-x);
     }
     .contact-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 80px;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 100px;
       align-items: start;
     }
 
     /* Left info column */
     .contact-info {
       position: sticky;
-      top: calc(var(--nav-h) + 32px);
+      top: calc(var(--nav-h) + 40px);
+    }
+    .contact-info-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.35);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .contact-info-eyebrow::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--wine);
+      flex-shrink: 0;
     }
     .contact-info h2 {
-      font-size: clamp(24px, 2.5vw, 36px);
+      font-family: var(--font-edit);
+      font-size: clamp(24px, 2.8vw, 40px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
       margin-bottom: 20px;
     }
-    .contact-info p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--text-muted);
-      margin-bottom: 36px;
+    .contact-info-desc {
+      font-size: 14px;
+      line-height: 1.85;
+      color: rgba(233,212,195,0.50);
+      margin-bottom: 48px;
     }
-    .contact-detail-list {
+    .contact-details {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      margin-bottom: 36px;
+      gap: 28px;
     }
     .contact-detail {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 18px;
     }
     .contact-detail-icon {
-      width: 38px;
-      height: 38px;
-      background: rgba(72,17,12,0.06);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-    .contact-detail h3 {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+      width: 20px;
+      height: 20px;
       color: var(--stone);
-      margin-bottom: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
     }
-    .contact-detail p {
+    .contact-detail-text h3 {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.35);
+      margin-bottom: 4px;
+    }
+    .contact-detail-text p,
+    .contact-detail-text a {
       font-size: 14px;
-      color: var(--charcoal);
-      margin: 0;
-      line-height: 1.4;
+      color: rgba(233,212,195,0.70);
+      line-height: 1.5;
+      text-decoration: none;
     }
-    .contact-detail a {
-      color: var(--wine);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .contact-detail-text a:hover { color: var(--cream); }
+
+    /* Jacksonville note */
+    .contact-jax-note {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(233,212,195,0.07);
+    }
+    .contact-jax-note p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(233,212,195,0.42);
+    }
+    .contact-jax-note strong {
+      color: rgba(233,212,195,0.65);
+      font-weight: 500;
     }
 
     /* Right form */
-    .contact-form-wrap {
-      background: var(--charcoal);
-      padding: 52px 48px;
-      border-radius: var(--radius-sm);
-    }
-    .contact-form-wrap h2 {
-      font-size: clamp(22px, 2.2vw, 30px);
+    .contact-form-wrap {}
+    .contact-form-heading {
+      font-family: var(--font-edit);
+      font-size: clamp(22px, 2.4vw, 34px);
+      font-weight: 300;
       color: var(--cream);
       margin-bottom: 8px;
     }
-    .contact-form-wrap > p {
-      font-family: var(--font-editorial);
+    .contact-form-sub {
+      font-family: var(--font-edit);
       font-style: italic;
-      font-size: 16px;
-      color: var(--stone);
-      margin-bottom: 36px;
-      line-height: 1.5;
+      font-size: 15px;
+      color: rgba(233,212,195,0.42);
+      margin-bottom: 44px;
+    }
+
+    /* Form fields — inherit global styles, override for dark bg */
+    #contact-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 20px;
+    }
+    #contact-form .form-group {
+      margin-bottom: 24px;
+    }
+    #contact-form label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(233,212,195,0.48);
+      display: block;
+      margin-bottom: 10px;
+    }
+    #contact-form input,
+    #contact-form select,
+    #contact-form textarea {
+      width: 100%;
+      background: rgba(233,212,195,0.04);
+      border: 1px solid rgba(233,212,195,0.10);
+      color: var(--cream);
+      font-size: 14px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color var(--transition);
+      appearance: none;
+      font-family: inherit;
+    }
+    #contact-form input::placeholder,
+    #contact-form textarea::placeholder {
+      color: rgba(233,212,195,0.22);
+    }
+    #contact-form input:focus,
+    #contact-form select:focus,
+    #contact-form textarea:focus {
+      border-color: rgba(233,212,195,0.35);
+    }
+    #contact-form select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(233,212,195,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    #contact-form select option { background: var(--charcoal); color: var(--cream); }
+    #contact-form textarea { resize: vertical; min-height: 110px; }
+
+    .contact-submit-btn {
+      width: 100%;
+      background: var(--cream);
+      color: var(--charcoal);
+      border: none;
+      padding: 18px 32px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      margin-top: 8px;
+    }
+    .contact-submit-btn:hover {
+      background: var(--stone);
+      color: var(--charcoal);
+    }
+    .contact-form-fine {
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(233,212,195,0.32);
+      text-align: center;
+      line-height: 1.6;
     }
 
     /* Success state */
     #form-success {
       display: none;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 24px;
     }
-    #form-success .success-icon {
-      font-size: 40px;
-      margin-bottom: 16px;
+    #form-success svg {
+      width: 36px; height: 36px;
+      color: var(--stone);
+      margin: 0 auto 24px;
       display: block;
     }
     #form-success h3 {
-      font-size: 24px;
+      font-family: var(--font-edit);
+      font-size: clamp(24px, 2.5vw, 36px);
+      font-weight: 300;
       color: var(--cream);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     #form-success p {
-      font-family: var(--font-editorial);
+      font-family: var(--font-edit);
       font-style: italic;
       font-size: 16px;
-      color: var(--stone);
-      line-height: 1.6;
+      color: rgba(233,212,195,0.52);
+      line-height: 1.7;
     }
 
+    /* ── Responsive ─────────────────────────────────────────── */
     @media (max-width: 1000px) {
-      .contact-hero-inner { grid-template-columns: 1fr; gap: 48px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .contact-hero-inner { grid-template-columns: 1fr; gap: 64px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 64px; }
       .contact-info { position: static; }
     }
-    @media (max-width: 600px) {
-      .contact-form-wrap { padding: 36px 28px; }
+    @media (max-width: 560px) {
+      #contact-form .form-row { grid-template-columns: 1fr; gap: 0; }
     }
   </style>
 </head>
@@ -300,17 +417,18 @@
     <!-- Hero -->
     <section class="contact-hero" aria-labelledby="contact-hero-heading">
       <div class="contact-hero-inner">
-        <div data-fade-left>
-          <p class="eyebrow no-rule" style="color:var(--stone)">Discovery Call</p>
+        <div data-fade>
+          <p class="contact-hero-eyebrow">Discovery Call</p>
           <h1 id="contact-hero-heading">
-            30 Minutes Could Change<br/><em>Everything.</em>
+            30 Minutes Could<br />Change <em>Everything.</em>
           </h1>
-          <p>
-            No pressure, no pitch deck. Just an honest conversation about where your marketing is today and what it would look like if it were working exactly the way you want it to.
+          <p class="contact-hero-desc">
+            No pressure, no pitch deck. Just an honest conversation about where your marketing is today — and what it would look like if it were working exactly the way you want it to.
           </p>
         </div>
-        <div class="expect-panel" data-fade-right>
-          <h2>What to Expect</h2>
+
+        <div class="expect-panel" data-fade>
+          <span class="expect-label">What to Expect</span>
           <div class="expect-steps">
             <div class="expect-step">
               <div class="expect-step-num" aria-hidden="true">1</div>
@@ -340,135 +458,126 @@
 
     <!-- Form Section -->
     <section class="contact-form-section" aria-labelledby="contact-form-heading">
-      <div class="container">
-        <div class="contact-grid">
+      <div class="contact-grid">
 
-          <!-- Left info -->
-          <div class="contact-info" data-fade-left>
-            <p class="eyebrow">Let's Connect</p>
-            <h2 id="contact-form-heading">Tell Us a Little About Your Brand</h2>
-            <p>
-              Fill out the form and we'll be in touch within one business day to schedule your discovery call at a time that works for you.
-            </p>
+        <!-- Left info -->
+        <div class="contact-info" data-fade>
+          <p class="contact-info-eyebrow">Let's Connect</p>
+          <h2 id="contact-form-heading">Tell us about your brand</h2>
+          <p class="contact-info-desc">
+            Fill out the form and we'll be in touch within one business day to schedule your discovery call at a time that works for you.
+          </p>
 
-            <div class="contact-detail-list">
-              <div class="contact-detail">
-                <div class="contact-detail-icon" aria-hidden="true">✉</div>
-                <div>
-                  <h3>Email</h3>
-                  <p><a href="mailto:hello@themarketingmaison.co">hello@themarketingmaison.co</a></p>
-                </div>
-              </div>
-              <div class="contact-detail">
-                <div class="contact-detail-icon" aria-hidden="true">📍</div>
-                <div>
-                  <h3>Location</h3>
-                  <p>Jacksonville, Florida</p>
-                </div>
-              </div>
-              <div class="contact-detail">
-                <div class="contact-detail-icon" aria-hidden="true">🕐</div>
-                <div>
-                  <h3>Response Time</h3>
-                  <p>Within 24 hours on business days</p>
-                </div>
-              </div>
-              <div class="contact-detail">
-                <div class="contact-detail-icon" aria-hidden="true">📅</div>
-                <div>
-                  <h3>Call Duration</h3>
-                  <p>30 minutes · Free · No commitment</p>
-                </div>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <div class="contact-detail-text">
+                <h3>Email</h3>
+                <a href="mailto:hello@themarketingmaison.co">hello@themarketingmaison.co</a>
               </div>
             </div>
-
-            <div style="padding:28px;background:rgba(72,17,12,0.05);border-left:2px solid var(--wine);border-radius:var(--radius-sm)">
-              <p class="eyebrow no-rule" style="color:var(--wine);margin-bottom:10px">Jacksonville &amp; Beyond</p>
-              <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">
-                We're proud to be Jacksonville-rooted and serve businesses across Florida and nationally for digital service lines.
-              </p>
+            <div class="contact-detail">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div class="contact-detail-text">
+                <h3>Location</h3>
+                <p>Jacksonville, Florida</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div class="contact-detail-text">
+                <h3>Response Time</h3>
+                <p>Within 24 hours on business days</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <div class="contact-detail-text">
+                <h3>Call Duration</h3>
+                <p>30 minutes · Free · No commitment</p>
+              </div>
             </div>
           </div>
 
-          <!-- Right form -->
-          <div class="contact-form-wrap" data-fade-right>
-            <h2>Book Your Discovery Call</h2>
-            <p>Free · 30 minutes · No obligation</p>
+          <div class="contact-jax-note">
+            <p><strong>Jacksonville-rooted, nationally capable.</strong> We know the Jacksonville market — the communities, the audiences, the local search landscape. We serve clients across Florida and beyond for digital service lines.</p>
+          </div>
+        </div>
 
-            <form id="contact-form" novalidate aria-label="Discovery call booking form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="first-name">First Name <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-                  <input type="text" id="first-name" name="first_name" autocomplete="given-name" required placeholder="Franchesca" />
-                </div>
-                <div class="form-group">
-                  <label for="last-name">Last Name <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-                  <input type="text" id="last-name" name="last_name" autocomplete="family-name" required placeholder="Smith" />
-                </div>
-              </div>
+        <!-- Right form -->
+        <div class="contact-form-wrap" data-fade>
+          <h2 class="contact-form-heading">Book Your Discovery Call</h2>
+          <p class="contact-form-sub">Free · 30 minutes · No obligation</p>
 
+          <form id="contact-form" novalidate aria-label="Discovery call booking form">
+            <div class="form-row">
               <div class="form-group">
-                <label for="email">Email Address <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-                <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@yourbrand.com" />
+                <label for="first-name">First Name <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                <input type="text" id="first-name" name="first_name" autocomplete="given-name" required placeholder="First name" />
               </div>
-
               <div class="form-group">
-                <label for="company">Business or Brand Name</label>
-                <input type="text" id="company" name="company" autocomplete="organization" placeholder="Your Business Name" />
+                <label for="last-name">Last Name <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+                <input type="text" id="last-name" name="last_name" autocomplete="family-name" required placeholder="Last name" />
               </div>
-
-              <div class="form-group">
-                <label for="website">Website (if you have one)</label>
-                <input type="url" id="website" name="website" autocomplete="url" placeholder="https://yourbrand.com" />
-              </div>
-
-              <div class="form-group">
-                <label for="service">Which service are you most interested in? <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
-                <select id="service" name="service" required>
-                  <option value="" disabled selected>Select a service line</option>
-                  <option value="business-development">Business Development</option>
-                  <option value="content-creation">Content Creation</option>
-                  <option value="social-media">Social Media Management</option>
-                  <option value="email-sms">Email &amp; SMS Marketing</option>
-                  <option value="seo">SEO Optimization</option>
-                  <option value="website">Website Creation &amp; Optimization</option>
-                  <option value="organic-campaigns">Data-Driven Organic Campaigns</option>
-                  <option value="ai-tools">AI Tools &amp; Dashboards</option>
-                  <option value="events">Event Management</option>
-                  <option value="multiple">Multiple / Not Sure Yet</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Tell us a bit about your goals</label>
-                <textarea id="message" name="message" rows="4" placeholder="What are you trying to accomplish? What's not working right now?"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="budget">Monthly marketing budget (optional)</label>
-                <select id="budget" name="budget">
-                  <option value="" disabled selected>Prefer not to say / Not sure yet</option>
-                  <option value="under-1k">Under $1,000/mo</option>
-                  <option value="1k-3k">$1,000 – $3,000/mo</option>
-                  <option value="3k-5k">$3,000 – $5,000/mo</option>
-                  <option value="5k-10k">$5,000 – $10,000/mo</option>
-                  <option value="10k-plus">$10,000+/mo</option>
-                </select>
-              </div>
-
-              <button type="submit" class="btn btn-cream btn-lg" style="width:100%;justify-content:center;margin-top:8px">
-                Send My Request
-              </button>
-              <p class="form-fine" style="margin-top:14px;text-align:center">
-                We'll reach out within 24 hours to schedule your call. No commitment required.
-              </p>
-            </form>
-
-            <div id="form-success" role="alert" aria-live="polite">
-              <span class="success-icon" aria-hidden="true">✓</span>
-              <h3>You're on our list.</h3>
-              <p>We'll be in touch within one business day to schedule your discovery call. Talk soon.</p>
             </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@yourbrand.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="company">Business or Brand Name</label>
+              <input type="text" id="company" name="company" autocomplete="organization" placeholder="Your business name" />
+            </div>
+
+            <div class="form-group">
+              <label for="website">Website (if you have one)</label>
+              <input type="url" id="website" name="website" autocomplete="url" placeholder="https://yourbrand.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Which service are you most interested in? <span aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service line</option>
+                <option value="business-development">Business Development</option>
+                <option value="content-creation">Content Creation</option>
+                <option value="social-media">Social Media Management</option>
+                <option value="email-sms">Email &amp; SMS Marketing</option>
+                <option value="seo">SEO Optimization</option>
+                <option value="website">Website Creation &amp; Optimization</option>
+                <option value="organic-campaigns">Data-Driven Organic Campaigns</option>
+                <option value="ai-tools">AI Tools &amp; Dashboards</option>
+                <option value="events">Event Management</option>
+                <option value="multiple">Multiple / Not Sure Yet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us about your goals</label>
+              <textarea id="message" name="message" rows="4" placeholder="What are you trying to accomplish? What's not working right now?"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Monthly marketing budget (optional)</label>
+              <select id="budget" name="budget">
+                <option value="" disabled selected>Prefer not to say / Not sure yet</option>
+                <option value="under-1k">Under $1,000/mo</option>
+                <option value="1k-3k">$1,000 – $3,000/mo</option>
+                <option value="3k-5k">$3,000 – $5,000/mo</option>
+                <option value="5k-10k">$5,000 – $10,000/mo</option>
+                <option value="10k-plus">$10,000+/mo</option>
+              </select>
+            </div>
+
+            <button type="submit" class="contact-submit-btn">Send My Request</button>
+            <p class="contact-form-fine">We'll reach out within 24 hours to schedule your call. No commitment required.</p>
+          </form>
+
+          <div id="form-success" role="alert" aria-live="polite">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>You're on our list.</h3>
+            <p>We'll be in touch within one business day to schedule your discovery call. Talk soon.</p>
           </div>
         </div>
       </div>
@@ -501,9 +610,9 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul role="list">
-            <li><a href="services.html#biz-dev">Business Development</a></li>
-            <li><a href="services.html#content">Content Creation</a></li>
-            <li><a href="services.html#social">Social Media</a></li>
+            <li><a href="services.html#business-development">Business Development</a></li>
+            <li><a href="services.html#content-creation">Content Creation</a></li>
+            <li><a href="services.html#social-media">Social Media</a></li>
             <li><a href="services.html#email-sms">Email &amp; SMS</a></li>
             <li><a href="services.html#seo">SEO Optimization</a></li>
             <li><a href="services.html#organic-campaigns">Organic Campaigns</a></li>
@@ -545,6 +654,5 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
