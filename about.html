@@ -20,7 +20,8 @@
     .about-hero {
       display: grid;
       grid-template-columns: 1fr 1.4fr 1fr;
-      min-height: 100svh;
+      min-height: calc(100svh - var(--nav-h));
+      margin-top: var(--nav-h);
       background: var(--charcoal);
       overflow: hidden;
     }
@@ -44,7 +45,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: calc(var(--nav-h) + 48px) 48px 72px;
+      padding: 48px 48px 72px;
       color: var(--cream);
       gap: 0;
     }
@@ -350,7 +351,7 @@
       .about-hero-media:first-child { display: none; } /* hide video on tablet */
       .about-hero-media:last-child { min-height: 380px; }
       .about-hero-content {
-        padding: 64px var(--pad-x) 72px;
+        padding: 56px var(--pad-x) 72px;
         order: 2;
       }
       .about-hero-media:last-child { order: 1; }
@@ -437,7 +438,10 @@
         <p class="about-hero-eyebrow" data-fade>Meet Our Founder &amp; CEO</p>
         <h1 id="about-hero-heading" data-fade><em>Hi, I'm Franchesca.</em></h1>
         <p class="about-hero-bio" data-fade>
-          Bio coming soon — send your copy and it'll live right here.
+          Franchesca Bethel doesn't build one brand — she builds ecosystems. A marketing strategist, brand builder, and multi-venture founder based in Jacksonville, Florida, Franchesca holds a BS in Fashion Merchandising and Retailing and an MBA in Operations and Supply Chain Management — pairing an eye for aesthetics with the operational rigor to actually scale it.
+        </p>
+        <p class="about-hero-bio" data-fade style="margin-top: 20px;">
+          With five years of e-commerce experience, she pairs sharp performance analysis and SEO instincts with an unmistakably elevated, feminine aesthetic. Marketing Maison is her agency — giving creatives and event hosts the marketing and PR firepower usually reserved for brands with bigger budgets.
         </p>
       </div>
 
