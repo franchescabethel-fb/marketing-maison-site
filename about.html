@@ -16,74 +16,61 @@
   <link rel="stylesheet" href="css/styles.css" />
 
   <style>
-    /* ── About Hero (Founder-Forward, Full-Viewport) ─────────── */
+    /* ── About Hero — Split Media Layout ─────────────────────── */
     .about-hero {
-      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
       min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: var(--charcoal);
       overflow: hidden;
-      background: var(--black);
     }
-    /* Placeholder background — swap in Franchesca's photo via background-image on .about-hero-bg */
-    .about-hero-bg {
+    .about-hero-media {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero-media video,
+    .about-hero-media img {
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, #13273f 0%, #0c1c2e 50%, #3a1810 100%);
-      background-size: cover;
-      background-position: center top;
-      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
-    /* Grid texture overlay */
-    .about-hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(233,212,195,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(233,212,195,0.02) 1px, transparent 1px);
-      background-size: 72px 72px;
-      pointer-events: none;
-    }
-    /* Dark scrim over photo */
-    .about-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(12,28,46,0.60);
-      z-index: 1;
-      pointer-events: none;
-    }
-    .about-hero-inner {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: calc(var(--nav-h) + 60px) var(--pad-x) 80px;
+    .about-hero-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 24px;
-      width: 100%;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + 48px) 48px 72px;
+      color: var(--cream);
+      gap: 0;
     }
     .about-hero-eyebrow {
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.45em;
       text-transform: uppercase;
-      color: rgba(233,212,195,0.60);
-      margin: 0;
+      color: rgba(233,212,195,0.62);
+      margin: 0 0 28px;
     }
     .about-hero h1 {
       font-family: var(--font-edit);
-      font-size: clamp(60px, 10vw, 152px);
-      font-weight: 300;
-      line-height: 1.0;
-      color: var(--cream);
-      margin: 0;
-      max-width: 14ch;
-    }
-    .about-hero h1 em {
       font-style: italic;
-      display: block;
+      font-size: clamp(36px, 4.5vw, 68px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--cream);
+      margin: 0 0 32px;
+    }
+    .about-hero-bio {
+      font-size: clamp(13px, 1.1vw, 15px);
+      line-height: 1.85;
+      color: rgba(233,212,195,0.78);
+      max-width: 52ch;
+      text-align: center;
     }
 
     /* ── Origin Story ───────────────────────────────────────── */
@@ -98,6 +85,18 @@
       grid-template-columns: 1fr 1fr;
       gap: 0 100px;
       align-items: start;
+    }
+    /* Centered single-column variant (used when quote stands alone) */
+    .origin-inner.origin-centered {
+      grid-template-columns: 1fr;
+      max-width: 860px;
+      text-align: left;
+    }
+    .origin-inner.origin-centered .origin-pull {
+      font-size: clamp(24px, 3.2vw, 48px);
+    }
+    .origin-inner.origin-centered .origin-signature {
+      margin-top: 48px;
     }
     .origin-label {
       font-size: 10px;
@@ -342,8 +341,21 @@
 
     /* ── Responsive ─────────────────────────────────────────── */
     @media (max-width: 1000px) {
-      .about-hero h1 { font-size: clamp(52px, 12vw, 100px); }
+      /* Stack hero: hide video panel, show photo on top */
+      .about-hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 380px auto;
+        min-height: auto;
+      }
+      .about-hero-media:first-child { display: none; } /* hide video on tablet */
+      .about-hero-media:last-child { min-height: 380px; }
+      .about-hero-content {
+        padding: 64px var(--pad-x) 72px;
+        order: 2;
+      }
+      .about-hero-media:last-child { order: 1; }
       .origin-inner { grid-template-columns: 1fr; gap: 60px; }
+      .origin-inner.origin-centered { gap: 0; }
       .origin-body { padding-top: 0; }
       .values-top { flex-direction: column; align-items: flex-start; gap: 24px; }
       .values-sub { text-align: left; }
@@ -355,7 +367,6 @@
       .value-row { grid-template-columns: 1fr; }
       .value-num { display: none; }
       .diff-grid { grid-template-columns: 1fr; }
-      .about-hero h1 { font-size: clamp(48px, 14vw, 80px); }
     }
   </style>
 </head>
@@ -413,32 +424,39 @@
 
     <!-- ── ABOUT HERO ── -->
     <section class="about-hero" aria-labelledby="about-hero-heading">
-      <!-- Background: swap in Franchesca's photo by adding style="background-image: url('../assets/your-photo.jpg');" to .about-hero-bg -->
-      <div class="about-hero-bg" aria-hidden="true"></div>
-      <div class="about-hero-inner">
-        <p class="about-hero-eyebrow" data-fade>Meet Our Founder &amp; CEO</p>
-        <h1 id="about-hero-heading" data-fade>
-          The Mind<br />
-          <em>Behind the</em><br />
-          Maison.
-        </h1>
+
+      <!-- Left: brand video -->
+      <div class="about-hero-media" aria-hidden="true">
+        <video autoplay muted loop playsinline>
+          <source src="assets/About_Hero_Video.mp4" type="video/mp4" />
+        </video>
       </div>
+
+      <!-- Center: founder intro -->
+      <div class="about-hero-content">
+        <p class="about-hero-eyebrow" data-fade>Meet Our Founder &amp; CEO</p>
+        <h1 id="about-hero-heading" data-fade><em>Hi, I'm Franchesca.</em></h1>
+        <p class="about-hero-bio" data-fade>
+          Bio coming soon — send your copy and it'll live right here.
+        </p>
+      </div>
+
+      <!-- Right: founder photo -->
+      <div class="about-hero-media">
+        <img src="assets/Fran.JPG" alt="Franchesca Bethel, Founder & CEO of Marketing Maison" loading="eager" />
+      </div>
+
     </section>
 
     <!-- ── ORIGIN STORY ── -->
     <section class="origin-section" aria-labelledby="origin-heading">
-      <div class="origin-inner">
+      <div class="origin-inner origin-centered">
         <div data-fade>
           <p class="origin-label">The Origin</p>
           <blockquote class="origin-pull" id="origin-heading">
-            "I watched too many great businesses struggle — not because they lacked a product, but because their marketing was <em>scattered, siloed, and uninspired."</em>
+            "I watched too many businesses struggle and be led astray by undeveloped marketing plans and it was time to step in. So many people sell social media marketing as the sole marketing strategy businesses need to have — but there's <em>way more to marketing than that.</em>"
           </blockquote>
-        </div>
-        <div class="origin-body" data-fade>
-          <p>Marketing Maison was founded in 2024 with a conviction that had been building for years: that small and mid-sized businesses deserve the same caliber of strategic marketing that Fortune 500 brands receive — cohesive, integrated, and built to compound.</p>
-          <p>Jacksonville is a city full of ambitious entrepreneurs, growing brands, and businesses with genuine stories to tell. The problem wasn't ambition. It was fragmentation — three agencies, four freelancers, and nobody talking to each other. Every channel working in isolation. Every dollar working against itself.</p>
-          <p>Marketing Maison was the answer to that. Nine service lines, one partner, one strategy. Everything talking to everything. That's how marketing is supposed to work.</p>
-          <div class="origin-signature">
+          <div class="origin-signature" data-fade>
             <div class="origin-sig-photo" aria-hidden="true">F</div>
             <div>
               <span class="origin-sig-name">Franchesca Bethel</span>
@@ -461,17 +479,17 @@
           <div class="value-row" data-fade>
             <span class="value-num" aria-hidden="true">01</span>
             <h2 class="value-title" id="values-heading">Own <em>It.</em></h2>
-            <p class="value-body">We don't believe in outsourcing accountability. When you work with Marketing Maison, we take full ownership of your strategy, your execution, and your results. If something isn't working, we say so — and we fix it. You'll never wonder what we're doing or why. Radical transparency is the baseline.</p>
+            <p class="value-body">Your marketing should belong to you — not to a platform that can change its algorithm tomorrow. We prioritize owned channels: email lists, SMS, referral programs, and direct marketing that you control completely. Social media is a tool, not a strategy. When you rent your audience from Instagram or TikTok, you're one policy change away from losing everything you built. We build the foundation on ground you actually own.</p>
           </div>
           <div class="value-row" data-fade>
             <span class="value-num" aria-hidden="true">02</span>
             <h2 class="value-title">Build <em>It.</em></h2>
-            <p class="value-body">We build marketing systems that hold up — not campaigns that spike and fade. Everything we create is designed to compound over time: content that earns trust, SEO that grows in authority, email programs that deepen relationships, and brand infrastructure that makes every new channel easier to launch. We're playing the long game, and we want you playing it with us.</p>
+            <p class="value-body">Every recommendation we make is rooted in real data — your actual analytics, your real competitors, your industry's actual benchmarks, and your specific business goals. We don't fabricate metrics or chase vanity numbers. Before we build anything, we understand where you actually stand. Marketing built on honest data compounds. Marketing built on made-up numbers collapses.</p>
           </div>
           <div class="value-row" data-fade>
             <span class="value-num" aria-hidden="true">03</span>
             <h2 class="value-title">Scale <em>It.</em></h2>
-            <p class="value-body">Growth without infrastructure collapses under its own weight. Before we scale anything, we make sure what's working has the systems, data, and operational foundation to sustain the momentum. Scaling isn't just spending more — it's spending smarter, measuring precisely, and knowing exactly which levers to pull.</p>
+            <p class="value-body">Everything we do is organic — no paid ads, no shortcuts. We build KPI-based systems that are monitored, reviewable, and tied directly to your business goals. You'll always know what's working, why it's working, and what comes next. Real growth is systematic, not accidental. We scale what can be measured, and we measure everything.</p>
           </div>
         </div>
       </div>
