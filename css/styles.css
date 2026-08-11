@@ -1302,10 +1302,10 @@ button { cursor: pointer; }
   max-width: 280px;
 }
 .footer-wordmark img {
-  width: 320px;
+  width: 160px;
   height: auto;
   display: block;
-  margin: -28px 0 4px -20px; /* compensate for logo's transparent padding */
+  margin: -16px 0 4px -10px; /* compensate for logo's transparent padding */
 }
 .footer-socials {
   display: flex;
