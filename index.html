@@ -112,8 +112,9 @@
     <section class="hero" aria-label="Hero">
 
       <!-- Full-bleed background video -->
-      <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="auto">
-        <source src="assets/HP_Hero.mp4" type="video/mp4" />
+      <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="none" poster="assets/HP_Hero_poster.jpg" id="hero-video">
+        <source src="assets/HP_Hero.webm" type="video/webm" />
+        <source src="assets/HP_Hero.mp4"  type="video/mp4" />
       </video>
 
       <div class="hero-badge" aria-hidden="true">
@@ -636,5 +637,18 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    /* ── Lazy-load hero video after page is interactive ── */
+    (function () {
+      var v = document.getElementById('hero-video');
+      if (!v) return;
+      // Load on idle, or immediately if requestIdleCallback isn't supported
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function () { v.load(); v.play().catch(function(){}); });
+      } else {
+        window.addEventListener('load', function () { v.load(); v.play().catch(function(){}); });
+      }
+    })();
+  </script>
 </body>
 </html>
