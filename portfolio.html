@@ -395,42 +395,50 @@
   <script src="js/main.js"></script>
   <script>
     /* ── Brand logo grid ──────────────────────────────────────
-     * Add the filenames from assets/Brands/ to the array below.
-     * Each entry: { file: 'filename.png', alt: 'Brand Name' }
-     * The script renders them into #brand-grid automatically.
+     * Automatically loads every image from assets/Brands/ via
+     * the GitHub API. Just upload a logo to that folder on
+     * GitHub and it appears here — no code changes needed.
      * ───────────────────────────────────────────────────────── */
     (function () {
-      const brands = [
-        { file: 'Be You For You.jpg.jpg',    alt: 'Be You For You' },
-        { file: 'CMIV.png',                  alt: 'CMIV' },
-        { file: 'Cellus.png',                alt: 'Cellus' },
-        { file: 'Fun on the Fairway.png',    alt: 'Fun on the Fairway' },
-        { file: 'The Duval Babes.jpg',       alt: 'The Duval Babes' },
-        { file: 'Monets.png.png',            alt: 'Monets' },
-      ];
-
       const grid = document.getElementById('brand-grid');
       if (!grid) return;
 
-      if (brands.length === 0) return;
+      const REPO   = 'franchescabethel-fb/marketing-maison-site';
+      const FOLDER = 'assets/Brands';
+      const IMAGE  = /\.(png|jpe?g|gif|webp|svg)$/i;
 
-      brands.forEach(function (brand) {
+      function stripExtensions(name) {
+        // Handles double extensions like "Logo.png.png" → "Logo"
+        return name.replace(/(\.[a-z0-9]+)+$/i, '');
+      }
+
+      function addTile(filename) {
         const tile = document.createElement('div');
         tile.className = 'brand-tile';
 
         const img = document.createElement('img');
-        img.src    = 'assets/Brands/' + brand.file;
-        img.alt    = brand.alt;
-        img.width  = 200;
-        img.height = 100;
+        img.src     = FOLDER + '/' + filename;
+        img.alt     = stripExtensions(filename);
+        img.width   = 200;
+        img.height  = 100;
         img.loading = 'lazy';
-
-        // If the image fails to load, hide the tile so there are no broken gaps
         img.onerror = function () { tile.style.display = 'none'; };
 
         tile.appendChild(img);
         grid.appendChild(tile);
-      });
+      }
+
+      fetch('https://api.github.com/repos/' + REPO + '/contents/' + FOLDER)
+        .then(function (r) { return r.json(); })
+        .then(function (files) {
+          if (!Array.isArray(files)) return;
+          files
+            .filter(function (f) { return f.type === 'file' && IMAGE.test(f.name); })
+            .forEach(function (f) { addTile(f.name); });
+        })
+        .catch(function () {
+          // API unavailable (local preview, rate-limited, etc.) — grid stays empty
+        });
     })();
   </script>
 </body>
