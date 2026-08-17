@@ -15,7 +15,7 @@
 
   <style>
 
-    /* -- Creator Hero ------------------------------------------ */
+    /* ── Creator Hero ───────────────────────────────────────── */
     .cr-hero {
       background: var(--black);
       color: var(--cream);
@@ -83,7 +83,10 @@
       color: var(--cream);
       margin-bottom: 32px;
     }
-    .cr-hero h1 em { font-style: italic; color: var(--stone); }
+    .cr-hero h1 em {
+      font-style: italic;
+      color: var(--stone);
+    }
     .cr-hero-sub {
       font-size: clamp(14px, 1.2vw, 17px);
       color: rgba(233,212,195,0.6);
@@ -118,12 +121,15 @@
       line-height: 1.45;
     }
 
-    /* -- Recent Work -------------------------------------------- */
+    /* ── Recent Work ─────────────────────────────────────────── */
     .cr-work {
       background: #3d4b38;
       padding: clamp(80px, 10vw, 120px) var(--pad-x);
     }
-    .cr-work-inner { max-width: var(--max-w); margin: 0 auto; }
+    .cr-work-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
     .cr-work-heading {
       font-size: clamp(30px, 4.5vw, 56px);
       font-weight: 800;
@@ -192,7 +198,10 @@
       object-fit: cover;
       display: block;
     }
-    .cr-phone-meta { text-align: center; width: 100%; }
+    .cr-phone-meta {
+      text-align: center;
+      width: 100%;
+    }
     .cr-phone-views-num {
       font-family: var(--font-edit);
       font-style: italic;
@@ -210,117 +219,536 @@
       color: rgba(255,255,255,0.45);
     }
 
-    /* -- Who This Is For (removed) ----------------------------- */
+    /* ── Who This Is For (removed — kept for compat) ─────── */
     .cr-for { display: none; }
+
     .cr-section-eyebrow {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.32em;
-      text-transform: uppercase; color: var(--stone);
-      display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
     }
     .cr-section-eyebrow::before {
-      content: ''; width: 28px; height: 1px;
-      background: var(--wine); flex-shrink: 0;
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+      flex-shrink: 0;
+    }
+    .cr-for-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.15;
+      max-width: 600px;
+      margin-bottom: clamp(48px, 6vw, 72px);
+    }
+    .cr-for-head em { font-style: italic; color: var(--stone); }
+    .cr-types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .cr-type-card {
+      background: var(--charcoal);
+      padding: 40px 36px;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-type-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--wine);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+    .cr-type-card:hover::after { transform: scaleX(1); }
+    .cr-type-icon {
+      width: 32px; height: 32px;
+      margin-bottom: 24px;
+      color: var(--stone);
+      stroke-width: 1.5;
+    }
+    .cr-type-name {
+      font-family: var(--font-edit);
+      font-size: clamp(20px, 1.8vw, 28px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .cr-type-desc {
+      font-size: 13px;
+      color: rgba(233,212,195,0.5);
+      line-height: 1.65;
+    }
+    .cr-type-num {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 72px;
+      color: rgba(233,212,195,0.04);
+      line-height: 1;
+      user-select: none;
     }
 
-    /* -- Why Creator Branding ---------------------------------- */
-    .cr-why { background: var(--black); padding: clamp(80px, 10vw, 128px) var(--pad-x); }
-    .cr-why-inner { max-width: var(--max-w); margin: 0 auto; }
+    /* ── Why Creator Branding ───────────────────────────────── */
+    .cr-why {
+      background: var(--black);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-why-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
     .cr-why-top {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: end;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
       margin-bottom: clamp(56px, 7vw, 88px);
     }
-    .cr-why-head { font-family: var(--font-edit); font-size: clamp(28px, 3.5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.15; }
-    .cr-why-head em { font-style: italic; color: var(--stone); }
-    .cr-why-body { font-size: clamp(14px, 1.1vw, 16px); color: rgba(233,212,195,0.55); line-height: 1.8; padding-top: 8px; }
-    .cr-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-    .cr-stat-block { background: var(--charcoal); padding: 40px 32px; position: relative; }
-    .cr-stat-block-num { font-family: var(--font-edit); font-size: clamp(40px, 4.5vw, 64px); font-weight: 300; color: var(--cream); line-height: 1; margin-bottom: 12px; }
-    .cr-stat-block-num em { font-style: italic; color: var(--stone); }
-    .cr-stat-block-text { font-size: 12px; color: rgba(233,212,195,0.45); line-height: 1.6; }
-
-    /* -- What You Get ------------------------------------------ */
-    .cr-deliverables { background: var(--cream); padding: clamp(80px, 10vw, 128px) var(--pad-x); }
-    .cr-deliverables-inner {
-      max-width: var(--max-w); margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: start;
+    .cr-why-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
     }
+    .cr-why-head em { font-style: italic; color: var(--stone); }
+    .cr-why-body {
+      font-size: clamp(14px, 1.1vw, 16px);
+      color: rgba(233,212,195,0.55);
+      line-height: 1.8;
+      padding-top: 8px;
+    }
+    .cr-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .cr-stat-block {
+      background: var(--charcoal);
+      padding: 40px 32px;
+      position: relative;
+    }
+    .cr-stat-block-num {
+      font-family: var(--font-edit);
+      font-size: clamp(40px, 4.5vw, 64px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .cr-stat-block-num em { font-style: italic; color: var(--stone); }
+    .cr-stat-block-text {
+      font-size: 12px;
+      color: rgba(233,212,195,0.45);
+      line-height: 1.6;
+    }
+    .cr-stat-block-source {
+      font-size: 9px;
+      color: rgba(233,212,195,0.2);
+      letter-spacing: 0.08em;
+      margin-top: 16px;
+    }
+
+    /* ── Niche Categories ───────────────────────────────────── */
+    .cr-niches {
+      background: var(--charcoal);
+      padding: clamp(48px, 6vw, 72px) var(--pad-x);
+      overflow: hidden;
+    }
+    .cr-niches-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-niches-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 28px;
+    }
+    .cr-niche-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .cr-niche-pill {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(16px, 1.6vw, 22px);
+      color: rgba(233,212,195,0.5);
+      padding: 8px 20px;
+      border: 1px solid rgba(233,212,195,0.1);
+      transition: color 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+    .cr-niche-pill:hover {
+      color: var(--cream);
+      border-color: rgba(233,212,195,0.3);
+    }
+
+    /* ── What You Get ───────────────────────────────────────── */
+    .cr-deliverables {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-deliverables-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .cr-del-left-col {}
     .cr-del-head-italic {
-      font-family: var(--font-edit); font-style: italic;
-      font-size: clamp(44px, 6vw, 88px); font-weight: 300;
-      color: var(--charcoal); line-height: 1.0; margin-bottom: 0;
-      display: flex; align-items: center; gap: 24px;
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(44px, 6vw, 88px);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.0;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
     .cr-del-head-italic::after {
-      content: ''; flex: 1; height: 1px;
-      background: rgba(19,39,63,0.2); min-width: 32px;
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(19,39,63,0.2);
+      min-width: 32px;
     }
-    .cr-del-body-text { font-size: clamp(14px, 1.1vw, 16px); color: rgba(19,39,63,0.6); line-height: 1.8; margin: 28px 0 20px; }
-    .cr-del-sub-label { font-size: 13px; color: rgba(19,39,63,0.4); font-family: var(--font-edit); font-style: italic; margin-bottom: 36px; }
+    .cr-del-body-text {
+      font-size: clamp(14px, 1.1vw, 16px);
+      color: rgba(19,39,63,0.6);
+      line-height: 1.8;
+      margin: 28px 0 20px;
+    }
+    .cr-del-sub-label {
+      font-size: 13px;
+      color: rgba(19,39,63,0.4);
+      font-family: var(--font-edit);
+      font-style: italic;
+      margin-bottom: 36px;
+    }
     .cr-del-cta-btn {
-      display: inline-block; border: 1.5px solid var(--charcoal);
-      padding: 15px 32px; font-size: 10px; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--charcoal); text-decoration: none;
+      display: inline-block;
+      border: 1.5px solid var(--charcoal);
+      padding: 15px 32px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
       transition: background 0.25s, color 0.25s;
     }
     .cr-del-cta-btn:hover { background: var(--charcoal); color: var(--cream); }
-    .cr-del-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(19,39,63,0.12); }
+    .cr-del-right-col {}
+    .cr-del-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid rgba(19,39,63,0.12);
+    }
     .cr-del-list-item {
       border-bottom: 1px solid rgba(19,39,63,0.12);
-      padding: 20px 0; display: grid;
-      grid-template-columns: 44px 1fr; align-items: center;
+      padding: 20px 0;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: center;
       transition: padding-left 0.2s;
     }
     .cr-del-list-item:hover { padding-left: 8px; }
-    .cr-del-num { font-size: 10px; color: rgba(19,39,63,0.28); letter-spacing: 0.1em; font-weight: 500; }
-    .cr-del-item-name { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--charcoal); }
+    .cr-del-num {
+      font-size: 10px;
+      color: rgba(19,39,63,0.28);
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+    .cr-del-item-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
 
-    /* -- Packages ---------------------------------------------- */
-    .cr-packages { background: var(--black); padding: clamp(80px, 10vw, 128px) var(--pad-x); }
-    .cr-packages-inner { max-width: var(--max-w); margin: 0 auto; }
-    .cr-pkg-head { font-family: var(--font-edit); font-size: clamp(28px, 3.5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: clamp(48px, 6vw, 72px); max-width: 560px; }
+    /* ── Packages ───────────────────────────────────────────── */
+    .cr-packages {
+      background: var(--black);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-packages-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-pkg-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: clamp(48px, 6vw, 72px);
+      max-width: 560px;
+    }
     .cr-pkg-head em { font-style: italic; color: var(--stone); }
-    .cr-pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .cr-pkg-card { background: var(--charcoal); padding: 48px 36px; display: flex; flex-direction: column; position: relative; }
-    .cr-pkg-card.featured { background: var(--wine); }
-    .cr-pkg-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone); margin-bottom: 20px; }
+    .cr-pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .cr-pkg-card {
+      background: var(--charcoal);
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .cr-pkg-card.featured {
+      background: var(--wine);
+    }
+    .cr-pkg-tag {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 20px;
+    }
     .cr-pkg-card.featured .cr-pkg-tag { color: rgba(233,212,195,0.6); }
-    .cr-pkg-name { font-family: var(--font-edit); font-size: clamp(24px, 2.2vw, 36px); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 8px; }
-    .cr-pkg-tagline { font-family: var(--font-edit); font-style: italic; font-size: 14px; color: rgba(233,212,195,0.45); margin-bottom: 36px; line-height: 1.5; }
+    .cr-pkg-name {
+      font-family: var(--font-edit);
+      font-size: clamp(24px, 2.2vw, 36px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .cr-pkg-tagline {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(233,212,195,0.45);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
     .cr-pkg-card.featured .cr-pkg-tagline { color: rgba(233,212,195,0.6); }
-    .cr-pkg-divider { height: 1px; background: rgba(233,212,195,0.08); margin-bottom: 28px; }
+    .cr-pkg-divider {
+      height: 1px;
+      background: rgba(233,212,195,0.08);
+      margin-bottom: 28px;
+    }
     .cr-pkg-card.featured .cr-pkg-divider { background: rgba(233,212,195,0.15); }
-    .cr-pkg-items { list-style: none; margin: 0 0 auto; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-    .cr-pkg-items li { font-size: 13px; color: rgba(233,212,195,0.6); line-height: 1.5; padding-left: 16px; position: relative; }
-    .cr-pkg-items li::before { content: ''; position: absolute; left: 0; top: 8px; width: 4px; height: 1px; background: var(--stone); }
+    .cr-pkg-items {
+      list-style: none;
+      margin: 0 0 auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cr-pkg-items li {
+      font-size: 13px;
+      color: rgba(233,212,195,0.6);
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+    .cr-pkg-items li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 4px; height: 1px;
+      background: var(--stone);
+    }
     .cr-pkg-card.featured .cr-pkg-items li { color: rgba(233,212,195,0.75); }
-    .cr-pkg-cta { margin-top: 40px; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); display: inline-flex; align-items: center; gap: 10px; transition: color 0.2s; text-decoration: none; }
+    .cr-pkg-cta {
+      margin-top: 40px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
     .cr-pkg-cta::after { content: '→'; }
     .cr-pkg-cta:hover { color: var(--cream); }
     .cr-pkg-card.featured .cr-pkg-cta { color: var(--cream); opacity: 0.8; }
     .cr-pkg-card.featured .cr-pkg-cta:hover { opacity: 1; }
 
-    /* -- CTA --------------------------------------------------- */
-    .cr-cta { background: var(--black); padding: clamp(96px, 12vw, 160px) var(--pad-x); text-align: center; position: relative; overflow: hidden; }
-    .cr-cta::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(233,212,195,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(233,212,195,0.015) 1px, transparent 1px); background-size: 80px 80px; pointer-events: none; }
-    .cr-cta-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
-    .cr-cta-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--stone); margin-bottom: 28px; }
-    .cr-cta-head { font-family: var(--font-edit); font-size: clamp(36px, 5vw, 80px); font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 48px; }
-    .cr-cta-head em { font-style: italic; color: var(--stone); }
-    .cr-cta-fine { margin-top: 24px; font-size: 11px; color: rgba(233,212,195,0.25); letter-spacing: 0.08em; }
+    /* ── Process ────────────────────────────────────────────── */
+    .cr-process {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-process-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-process-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.15;
+      max-width: 480px;
+      margin-bottom: clamp(56px, 7vw, 80px);
+    }
+    .cr-process-head em { font-style: italic; color: var(--stone); }
+    .cr-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .cr-step {
+      background: var(--charcoal);
+      padding: 48px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-step-num {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 88px;
+      color: rgba(233,212,195,0.06);
+      line-height: 1;
+      position: absolute;
+      bottom: 12px; right: 16px;
+      user-select: none;
+    }
+    .cr-step-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--wine);
+      margin-bottom: 20px;
+    }
+    .cr-step-name {
+      font-family: var(--font-edit);
+      font-size: clamp(22px, 2vw, 30px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .cr-step-desc {
+      font-size: 13px;
+      color: rgba(233,212,195,0.45);
+      line-height: 1.7;
+    }
 
-    /* -- Brands ------------------------------------------------- */
-    .cr-brands { background: var(--charcoal); padding: clamp(48px, 6vw, 64px) var(--pad-x); }
-    .cr-brands-inner { max-width: var(--max-w); margin: 0 auto; }
-    .cr-brands-label { font-size: 10px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--stone); text-align: center; margin-bottom: 36px; }
-    .cr-brands-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 28px 48px; min-height: 60px; }
-    .cr-brand-tile { display: flex; align-items: center; justify-content: center; }
-    .cr-brand-tile img { max-height: 40px; max-width: 130px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.35; transition: opacity 0.25s; }
+    /* ── CTA ────────────────────────────────────────────────── */
+    .cr-cta {
+      background: var(--black);
+      padding: clamp(96px, 12vw, 160px) var(--pad-x);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(233,212,195,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233,212,195,0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+    .cr-cta-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .cr-cta-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 28px;
+    }
+    .cr-cta-head {
+      font-family: var(--font-edit);
+      font-size: clamp(36px, 5vw, 80px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 48px;
+    }
+    .cr-cta-head em { font-style: italic; color: var(--stone); }
+    .cr-cta-fine {
+      margin-top: 24px;
+      font-size: 11px;
+      color: rgba(233,212,195,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Brands We've Worked With ──────────────────────────── */
+    .cr-brands {
+      background: var(--charcoal);
+      padding: clamp(48px, 6vw, 64px) var(--pad-x);
+    }
+    .cr-brands-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-brands-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .cr-brands-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 28px 48px;
+      min-height: 60px;
+    }
+    .cr-brand-tile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cr-brand-tile img {
+      max-height: 40px;
+      max-width: 130px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.35;
+      transition: opacity 0.25s;
+    }
     .cr-brand-tile img:hover { opacity: 0.7; }
 
-    /* -- Responsive --------------------------------------------- */
+    /* ── Responsive ─────────────────────────────────────────── */
     @media (max-width: 1100px) {
       .cr-hero-inner { grid-template-columns: 1fr; gap: 56px; }
       .cr-hero-aside { grid-template-columns: repeat(3, 1fr); }
@@ -346,7 +774,7 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Navigation -->
+  <!-- ── Navigation ── -->
   <nav class="mm-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-left">
       <div class="nav-socials" aria-label="Social media links">
@@ -363,11 +791,13 @@
       <span class="nav-sep" aria-hidden="true"></span>
       <a href="contact.html" class="nav-book" aria-label="Book a call with Marketing Maison">Book a Call</a>
     </div>
+
     <div class="nav-wordmark">
       <a href="index.html" aria-label="Marketing Maison homepage">
         <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" class="nav-logo" width="190" height="190" loading="eager" />
       </a>
     </div>
+
     <div class="nav-right">
       <ul class="nav-links" role="list">
         <li><a href="about.html">About</a></li>
@@ -394,7 +824,7 @@
 
   <main id="main-content">
 
-    <!-- HERO -->
+    <!-- ── HERO ── -->
     <section class="cr-hero" aria-labelledby="cr-hero-heading">
       <span class="cr-hero-deco" aria-hidden="true">Creator</span>
       <div class="cr-hero-inner">
@@ -414,9 +844,10 @@
             <span class="oval-btn-text">Book a discovery call</span>
           </a>
         </div>
+
         <div class="cr-hero-aside" data-fade>
           <div class="cr-stat-card">
-            <div class="cr-stat-num">9.8<em>x</em></div>
+            <div class="cr-stat-num">9.8<em>×</em></div>
             <div class="cr-stat-label">UGC outperforms influencer content</div>
           </div>
           <div class="cr-stat-card">
@@ -436,14 +867,14 @@
             <div class="cr-stat-label">consumers value authenticity in brands</div>
           </div>
           <div class="cr-stat-card">
-            <div class="cr-stat-num">3<em>x</em></div>
+            <div class="cr-stat-num">3<em>×</em></div>
             <div class="cr-stat-label">more engagement for micro accounts</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- BRANDS WE'VE WORKED WITH -->
+    <!-- ── BRANDS WE'VE WORKED WITH ── -->
     <section class="cr-brands" aria-label="Brands we've worked with">
       <div class="cr-brands-inner">
         <p class="cr-brands-label" data-fade>Brands We've Worked With</p>
@@ -451,10 +882,11 @@
       </div>
     </section>
 
-    <!-- RECENT WORK -->
+    <!-- ── RECENT WORK ── -->
     <section class="cr-work" aria-labelledby="cr-work-heading">
       <div class="cr-work-inner">
         <h2 class="cr-work-heading" id="cr-work-heading" data-fade>Our Most<br />Recent Work</h2>
+
         <div class="cr-phones-grid" data-fade>
 
           <div class="cr-phone-item">
@@ -462,7 +894,9 @@
               <span class="cr-phone-cat-label">Product Launch</span>
               <div class="cr-phone-frame">
                 <div class="cr-phone-screen">
-                  <video autoplay muted loop playsinline><source src="" type="video/mp4" /></video>
+                  <video autoplay muted loop playsinline poster="">
+                    <source src="" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -477,7 +911,9 @@
               <span class="cr-phone-cat-label">Product Showcase</span>
               <div class="cr-phone-frame">
                 <div class="cr-phone-screen">
-                  <video autoplay muted loop playsinline><source src="" type="video/mp4" /></video>
+                  <video autoplay muted loop playsinline poster="">
+                    <source src="" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -492,7 +928,9 @@
               <span class="cr-phone-cat-label">Try-On Content</span>
               <div class="cr-phone-frame">
                 <div class="cr-phone-screen">
-                  <video autoplay muted loop playsinline><source src="" type="video/mp4" /></video>
+                  <video autoplay muted loop playsinline poster="">
+                    <source src="" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -507,7 +945,9 @@
               <span class="cr-phone-cat-label">Giveaway Collab</span>
               <div class="cr-phone-frame">
                 <div class="cr-phone-screen">
-                  <video autoplay muted loop playsinline><source src="" type="video/mp4" /></video>
+                  <video autoplay muted loop playsinline poster="">
+                    <source src="" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -522,7 +962,9 @@
               <span class="cr-phone-cat-label">Product Showcase</span>
               <div class="cr-phone-frame">
                 <div class="cr-phone-screen">
-                  <video autoplay muted loop playsinline><source src="" type="video/mp4" /></video>
+                  <video autoplay muted loop playsinline poster="">
+                    <source src="" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -537,7 +979,9 @@
               <span class="cr-phone-cat-label">Experiential Event</span>
               <div class="cr-phone-frame">
                 <div class="cr-phone-screen">
-                  <video autoplay muted loop playsinline><source src="" type="video/mp4" /></video>
+                  <video autoplay muted loop playsinline poster="">
+                    <source src="" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>
@@ -551,7 +995,7 @@
       </div>
     </section>
 
-    <!-- THE NUMBERS -->
+    <!-- ── THE NUMBERS ── -->
     <section class="cr-why" aria-labelledby="cr-why-heading">
       <div class="cr-why-inner">
         <div class="cr-why-top" data-fade style="display:block;">
@@ -559,6 +1003,7 @@
             The creator economy<br />rewards the<br /><em>ones who show up prepared.</em>
           </h2>
         </div>
+
         <div class="cr-stats-grid" data-fade>
           <div class="cr-stat-block">
             <div class="cr-stat-block-num">$<em>480</em>B</div>
@@ -569,7 +1014,7 @@
             <div class="cr-stat-block-text">of consumers value authenticity when choosing brands</div>
           </div>
           <div class="cr-stat-block">
-            <div class="cr-stat-block-num">3<em>x</em></div>
+            <div class="cr-stat-block-num">3<em>×</em></div>
             <div class="cr-stat-block-text">more engagement for micro vs. macro accounts</div>
           </div>
           <div class="cr-stat-block">
@@ -580,9 +1025,10 @@
       </div>
     </section>
 
-    <!-- WHAT YOU GET -->
+    <!-- ── WHAT YOU GET ── -->
     <section class="cr-deliverables" aria-labelledby="cr-del-heading">
       <div class="cr-deliverables-inner">
+
         <div class="cr-del-left-col" data-fade>
           <h2 class="cr-del-head-italic" id="cr-del-heading">What we do.</h2>
           <p class="cr-del-body-text">At the heart of every creator is a story. It sets you apart, builds trust with your audience, and makes brands eager to work with you. Our team of marketing strategists and designers can help you tell that story in a way that makes an impact.</p>
@@ -590,6 +1036,7 @@
           <p class="cr-del-sub-label">Our most popular creator services</p>
           <a href="contact.html" class="cr-del-cta-btn" aria-label="Book a free discovery call">Book a Free Discovery Call</a>
         </div>
+
         <div class="cr-del-right-col" data-fade>
           <ul class="cr-del-list" role="list">
             <li class="cr-del-list-item">
@@ -626,10 +1073,11 @@
             </li>
           </ul>
         </div>
+
       </div>
     </section>
 
-    <!-- PACKAGES -->
+    <!-- ── PACKAGES ── -->
     <section class="cr-packages" aria-labelledby="cr-pkg-heading">
       <div class="cr-packages-inner">
         <p class="cr-section-eyebrow" data-fade style="color: var(--stone);">Creator Packages</p>
@@ -688,7 +1136,7 @@
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ── CTA ── -->
     <section class="cr-cta" aria-labelledby="cr-cta-heading">
       <div class="cr-cta-inner" data-fade>
         <p class="cr-cta-eyebrow">Ready When You Are</p>
@@ -703,13 +1151,13 @@
           </svg>
           <span class="oval-btn-text">Book a discovery call</span>
         </a>
-        <p class="cr-cta-fine">30 minutes &middot; No commitment &middot; Response within 24 hours</p>
+        <p class="cr-cta-fine">30 minutes · No commitment · Response within 24 hours</p>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- ── Footer ── -->
   <footer class="mm-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-top">
@@ -717,7 +1165,7 @@
           <div class="footer-wordmark">
             <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" width="120" height="120" loading="lazy" />
           </div>
-          <p>Own it. Build it. Scale it. &mdash; Jacksonville, FL's strategic marketing agency.</p>
+          <p>Own it. Build it. Scale it. — Jacksonville, FL's strategic marketing agency.</p>
           <div class="footer-socials" aria-label="Follow Marketing Maison">
             <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
@@ -770,7 +1218,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2024&ndash;2026 Marketing Maison. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2024–2026 Marketing Maison. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links">
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
@@ -789,6 +1237,7 @@
       if (!grid) return;
 
       function stripExt(name) {
+        // Only strip known image extensions; preserve names like "Alibaba.com"
         return name.replace(/\.(png|jpe?g|gif|webp|svg|avif)$/i, '');
       }
 
@@ -796,6 +1245,7 @@
         var tile = document.createElement('div');
         tile.className = 'cr-brand-tile';
         var img = document.createElement('img');
+        // Use download_url directly — already has the correct branch encoded
         img.src = file.download_url;
         img.alt = stripExt(file.name).replace(/[-_]/g, ' ');
         img.loading = 'lazy';
@@ -808,6 +1258,7 @@
         .then(function(r) { return r.json(); })
         .then(function(files) {
           if (!Array.isArray(files)) return;
+          // Accept all files — onerror hides anything that won't render as an image
           files
             .filter(function(f) { return f.type === 'file'; })
             .forEach(function(f) { addTile(f); });
