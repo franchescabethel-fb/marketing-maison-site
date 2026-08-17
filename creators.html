@@ -123,19 +123,37 @@
 
     /* ── Recent Work ─────────────────────────────────────────── */
     .cr-work {
-      background: #3d4b38;
+      background: var(--cream);
       padding: clamp(80px, 10vw, 120px) var(--pad-x);
     }
     .cr-work-inner {
       max-width: var(--max-w);
       margin: 0 auto;
     }
-    .cr-work-heading {
-      font-size: clamp(30px, 4.5vw, 56px);
-      font-weight: 800;
-      letter-spacing: 0.12em;
+    .cr-work-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: #fff;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .cr-work-eyebrow::before,
+    .cr-work-eyebrow::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+    }
+    .cr-work-heading {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 300;
+      color: var(--charcoal);
       line-height: 1.1;
       text-align: center;
       margin-bottom: clamp(48px, 6vw, 72px);
@@ -165,7 +183,7 @@
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      color: rgba(19,39,63,0.45);
       white-space: nowrap;
       align-self: center;
       flex-shrink: 0;
@@ -207,7 +225,7 @@
       font-style: italic;
       font-size: clamp(24px, 2.8vw, 40px);
       font-weight: 300;
-      color: #fff;
+      color: var(--charcoal);
       line-height: 1;
       display: block;
       margin-bottom: 3px;
@@ -216,7 +234,7 @@
       font-family: var(--font-edit);
       font-style: italic;
       font-size: 13px;
-      color: rgba(255,255,255,0.45);
+      color: rgba(19,39,63,0.55);
     }
 
     /* ── Who This Is For (removed — kept for compat) ─────── */
@@ -885,7 +903,8 @@
     <!-- ── RECENT WORK ── -->
     <section class="cr-work" aria-labelledby="cr-work-heading">
       <div class="cr-work-inner">
-        <h2 class="cr-work-heading" id="cr-work-heading" data-fade>Our Most<br />Recent Work</h2>
+        <p class="cr-work-eyebrow" data-fade>Recent Work</p>
+        <h2 class="cr-work-heading" id="cr-work-heading" data-fade>Our Most Recent Work.</h2>
 
         <div class="cr-phones-grid" data-fade>
 
@@ -991,36 +1010,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ── THE NUMBERS ── -->
-    <section class="cr-why" aria-labelledby="cr-why-heading">
-      <div class="cr-why-inner">
-        <div class="cr-why-top" data-fade style="display:block;">
-          <h2 class="cr-why-head" id="cr-why-heading">
-            The creator economy<br />rewards the<br /><em>ones who show up prepared.</em>
-          </h2>
-        </div>
-
-        <div class="cr-stats-grid" data-fade>
-          <div class="cr-stat-block">
-            <div class="cr-stat-block-num">$<em>480</em>B</div>
-            <div class="cr-stat-block-text">Global creator economy by 2027</div>
-          </div>
-          <div class="cr-stat-block">
-            <div class="cr-stat-block-num">90<em>%</em></div>
-            <div class="cr-stat-block-text">of consumers value authenticity when choosing brands</div>
-          </div>
-          <div class="cr-stat-block">
-            <div class="cr-stat-block-num">3<em>×</em></div>
-            <div class="cr-stat-block-text">more engagement for micro vs. macro accounts</div>
-          </div>
-          <div class="cr-stat-block">
-            <div class="cr-stat-block-num">67<em>%</em></div>
-            <div class="cr-stat-block-text">of brands increasing creator spend this year</div>
-          </div>
         </div>
       </div>
     </section>
@@ -1151,7 +1140,7 @@
           </svg>
           <span class="oval-btn-text">Book a discovery call</span>
         </a>
-        <p class="cr-cta-fine">30 minutes · No commitment · Response within 24 hours</p>
+        <p class="cr-cta-fine">30 minutes &middot; No commitment &middot; Response within 24 hours</p>
       </div>
     </section>
 
@@ -1165,7 +1154,7 @@
           <div class="footer-wordmark">
             <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" width="120" height="120" loading="lazy" />
           </div>
-          <p>Own it. Build it. Scale it. — Jacksonville, FL's strategic marketing agency.</p>
+          <p>Own it. Build it. Scale it. &mdash; Jacksonville, FL's strategic marketing agency.</p>
           <div class="footer-socials" aria-label="Follow Marketing Maison">
             <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
@@ -1218,7 +1207,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2024–2026 Marketing Maison. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2024&ndash;2026 Marketing Maison. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links">
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
@@ -1237,7 +1226,6 @@
       if (!grid) return;
 
       function stripExt(name) {
-        // Only strip known image extensions; preserve names like "Alibaba.com"
         return name.replace(/\.(png|jpe?g|gif|webp|svg|avif)$/i, '');
       }
 
@@ -1245,7 +1233,6 @@
         var tile = document.createElement('div');
         tile.className = 'cr-brand-tile';
         var img = document.createElement('img');
-        // Use download_url directly — already has the correct branch encoded
         img.src = file.download_url;
         img.alt = stripExt(file.name).replace(/[-_]/g, ' ');
         img.loading = 'lazy';
@@ -1258,7 +1245,6 @@
         .then(function(r) { return r.json(); })
         .then(function(files) {
           if (!Array.isArray(files)) return;
-          // Accept all files — onerror hides anything that won't render as an image
           files
             .filter(function(f) { return f.type === 'file'; })
             .forEach(function(f) { addTile(f); });
