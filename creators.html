@@ -868,6 +868,7 @@
     </section>
 
     <!-- ── WHAT YOU GET ── -->
+    <!-- ── WHAT YOU GET ── -->
     <section class="cr-deliverables" aria-labelledby="cr-del-heading">
       <div class="cr-deliverables-inner">
         <div class="cr-del-top" data-fade style="display:block;">
@@ -1122,37 +1123,38 @@
   <script src="js/main.js"></script>
   <script>
     (function() {
+      var BRANCH = 'claude/kind-gates-TJRhO';
       var REPO = 'franchescabethel-fb/marketing-maison-site';
       var FOLDER = 'assets/Creator_Brands';
-      var IMAGE = /\.(png|jpe?g|gif|webp|svg)$/i;
       var grid = document.getElementById('cr-brands-grid');
       if (!grid) return;
 
       function stripExt(name) {
-        var n = name, prev;
-        do { prev = n; n = n.replace(/\.[^.]+$/, ''); } while (n !== prev && IMAGE.test(n));
-        return n;
+        // Only strip known image extensions; preserve names like "Alibaba.com"
+        return name.replace(/\.(png|jpe?g|gif|webp|svg|avif)$/i, '');
       }
 
-      function addTile(filename) {
+      function addTile(file) {
         var tile = document.createElement('div');
         tile.className = 'cr-brand-tile';
         var img = document.createElement('img');
-        img.src = 'https://raw.githubusercontent.com/' + REPO + '/main/' + FOLDER + '/' + encodeURIComponent(filename);
-        img.alt = stripExt(filename).replace(/[-_]/g, ' ');
+        // Use download_url directly -- already has the correct branch encoded
+        img.src = file.download_url;
+        img.alt = stripExt(file.name).replace(/[-_]/g, ' ');
         img.loading = 'lazy';
         img.onerror = function() { tile.style.display = 'none'; };
         tile.appendChild(img);
         grid.appendChild(tile);
       }
 
-      fetch('https://api.github.com/repos/' + REPO + '/contents/' + FOLDER)
+      fetch('https://api.github.com/repos/' + REPO + '/contents/' + FOLDER + '?ref=' + BRANCH)
         .then(function(r) { return r.json(); })
         .then(function(files) {
           if (!Array.isArray(files)) return;
+          // Accept all files -- onerror hides anything that won't render as an image
           files
-            .filter(function(f) { return f.type === 'file' && IMAGE.test(f.name); })
-            .forEach(function(f) { addTile(f.name); });
+            .filter(function(f) { return f.type === 'file'; })
+            .forEach(function(f) { addTile(f); });
         })
         .catch(function() {});
     })();
