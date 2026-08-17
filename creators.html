@@ -596,6 +596,48 @@
       letter-spacing: 0.08em;
     }
 
+    /* ── Brands We've Worked With ──────────────────────────── */
+    .cr-brands {
+      background: var(--charcoal);
+      padding: clamp(48px, 6vw, 64px) var(--pad-x);
+    }
+    .cr-brands-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-brands-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .cr-brands-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 28px 48px;
+      min-height: 60px;
+    }
+    .cr-brand-tile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cr-brand-tile img {
+      max-height: 40px;
+      max-width: 130px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.35;
+      transition: opacity 0.25s;
+    }
+    .cr-brand-tile img:hover { opacity: 0.7; }
+
     /* ── Responsive ─────────────────────────────────────────── */
     @media (max-width: 1100px) {
       .cr-hero-inner { grid-template-columns: 1fr; gap: 56px; }
@@ -687,7 +729,7 @@
             <em>Let's build the brand</em><br />
             behind it.
           </h1>
-          <p class="cr-hero-sub">For the creator who's done just posting — and ready to build a presence that commands partnerships, commands rates, and commands a room.</p>
+          <p class="cr-hero-sub">Ready to turn your audience into a business.</p>
           <a href="contact.html" class="oval-btn oval-btn-lg" aria-label="Book a discovery call">
             <svg class="oval-border" viewBox="0 0 320 88" preserveAspectRatio="none" aria-hidden="true">
               <ellipse cx="160" cy="44" rx="156" ry="40"/>
@@ -699,17 +741,25 @@
         <div class="cr-hero-aside" data-fade>
           <div class="cr-stat-card">
             <div class="cr-stat-num">9.8<em>×</em></div>
-            <div class="cr-stat-label">UGC is more impactful than influencer content when consumers make purchasing decisions</div>
+            <div class="cr-stat-label">UGC outperforms influencer content</div>
           </div>
           <div class="cr-stat-card">
             <div class="cr-stat-num">92<em>%</em></div>
-            <div class="cr-stat-label">of consumers trust peer recommendations over any other source — including paid ads</div>
+            <div class="cr-stat-label">trust peer content over paid ads</div>
           </div>
           <div class="cr-stat-card">
             <div class="cr-stat-num">74<em>%</em></div>
-            <div class="cr-stat-label">of consumers rely on social media to inform their purchasing decisions</div>
+            <div class="cr-stat-label">use social to inform purchases</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ── BRANDS WE'VE WORKED WITH ── -->
+    <section class="cr-brands" aria-label="Brands we've worked with">
+      <div class="cr-brands-inner">
+        <p class="cr-brands-label" data-fade>Brands We've Worked With</p>
+        <div class="cr-brands-grid" id="cr-brands-grid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -727,78 +777,67 @@
             <span class="cr-type-num" aria-hidden="true">01</span>
             <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.82v6.36a1 1 0 0 1-1.447.889L15 14M3 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/></svg>
             <h3 class="cr-type-name">UGC Creators</h3>
-            <p class="cr-type-desc">You make content brands want — but your rates, pitches, and positioning aren't reflecting that yet. We fix all three.</p>
           </div>
 
           <div class="cr-type-card">
             <span class="cr-type-num" aria-hidden="true">02</span>
             <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M17 3l2 2M17 13l2-2M20 8h2"/></svg>
             <h3 class="cr-type-name">Lifestyle Influencers</h3>
-            <p class="cr-type-desc">Your audience trusts you. We turn that trust into a brand identity that brands pay a premium to align with.</p>
           </div>
 
           <div class="cr-type-card">
             <span class="cr-type-num" aria-hidden="true">03</span>
             <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
             <h3 class="cr-type-name">Micro-Influencers</h3>
-            <p class="cr-type-desc">Under 100K doesn't mean under-valued. We build the strategy and collateral that makes brands choose you over a million-follower account.</p>
           </div>
 
           <div class="cr-type-card">
             <span class="cr-type-num" aria-hidden="true">04</span>
             <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             <h3 class="cr-type-name">Content Entrepreneurs</h3>
-            <p class="cr-type-desc">You're building something bigger — a course, a product, a brand. We align your content identity with your business goals.</p>
           </div>
 
           <div class="cr-type-card">
             <span class="cr-type-num" aria-hidden="true">05</span>
             <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <h3 class="cr-type-name">Niche Creators</h3>
-            <p class="cr-type-desc">Home, fitness, food, travel, beauty, pets — whatever your world is, we build the positioning that makes you the go-to in it.</p>
           </div>
 
           <div class="cr-type-card">
             <span class="cr-type-num" aria-hidden="true">06</span>
             <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             <h3 class="cr-type-name">Brand Starters</h3>
-            <p class="cr-type-desc">You know what you want to build — but need the identity, strategy, and roadmap to actually get there. That's exactly what we do.</p>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ── WHY CREATOR BRANDING ── -->
+    <!-- ── THE NUMBERS ── -->
     <section class="cr-why" aria-labelledby="cr-why-heading">
       <div class="cr-why-inner">
-        <div class="cr-why-top" data-fade>
+        <div class="cr-why-top" data-fade style="display:block;">
           <h2 class="cr-why-head" id="cr-why-heading">
             The creator economy<br />rewards the<br /><em>ones who show up prepared.</em>
           </h2>
-          <p class="cr-why-body">Brands aren't just looking for followers — they're looking for creators who can walk into a partnership conversation with a clear identity, a compelling pitch, and a rate that doesn't apologize. That's what we build.</p>
         </div>
 
         <div class="cr-stats-grid" data-fade>
           <div class="cr-stat-block">
             <div class="cr-stat-block-num">$<em>480</em>B</div>
-            <div class="cr-stat-block-text">Global creator economy value, projected by 2027. The brands chasing this budget are already looking for their next partnerships.</div>
-            <div class="cr-stat-block-source">Goldman Sachs, 2023</div>
+            <div class="cr-stat-block-text">Global creator economy by 2027</div>
           </div>
           <div class="cr-stat-block">
             <div class="cr-stat-block-num">90<em>%</em></div>
-            <div class="cr-stat-block-text">of consumers say authenticity matters when choosing which brands to support — and creators are the most authentic voice a brand can have.</div>
-            <div class="cr-stat-block-source">Stackla, Consumer Trends</div>
+            <div class="cr-stat-block-text">of consumers value authenticity when choosing brands</div>
           </div>
           <div class="cr-stat-block">
             <div class="cr-stat-block-num">3<em>×</em></div>
-            <div class="cr-stat-block-text">more engagement for micro-influencers compared to macro accounts. Niche, targeted audiences convert better than mass reach.</div>
-            <div class="cr-stat-block-source">Markerly Research</div>
+            <div class="cr-stat-block-text">more engagement for micro vs. macro accounts</div>
           </div>
           <div class="cr-stat-block">
             <div class="cr-stat-block-num">67<em>%</em></div>
-            <div class="cr-stat-block-text">of brands plan to increase their creator marketing spend this year — meaning the window to get properly positioned is right now.</div>
-            <div class="cr-stat-block-source">Influencer Marketing Hub</div>
+            <div class="cr-stat-block-text">of brands increasing creator spend this year</div>
           </div>
         </div>
       </div>
@@ -831,14 +870,11 @@
     <!-- ── WHAT YOU GET ── -->
     <section class="cr-deliverables" aria-labelledby="cr-del-heading">
       <div class="cr-deliverables-inner">
-        <div class="cr-del-top" data-fade>
-          <div>
-            <p class="cr-section-eyebrow">What's Included</p>
-            <h2 class="cr-del-head" id="cr-del-heading">
-              Eight deliverables.<br /><em>One complete brand.</em>
-            </h2>
-          </div>
-          <p class="cr-del-sub">Every creator engagement includes the full stack — from your visual identity to the pitch deck you hand brands. Nothing is left half-built.</p>
+        <div class="cr-del-top" data-fade style="display:block;">
+          <p class="cr-section-eyebrow">What's Included</p>
+          <h2 class="cr-del-head" id="cr-del-heading">
+            Eight deliverables.<br /><em>One complete brand.</em>
+          </h2>
         </div>
 
         <div class="cr-del-grid" data-fade>
@@ -847,56 +883,48 @@
             <span class="cr-del-deco-num" aria-hidden="true">01</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M2 12h20"/></svg>
             <h3 class="cr-del-name">Personal Brand Identity System</h3>
-            <p class="cr-del-desc">Fonts, colors, visual direction, and tone-of-voice guidelines — everything that makes you instantly recognizable.</p>
           </div>
 
           <div class="cr-del-card">
             <span class="cr-del-deco-num" aria-hidden="true">02</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             <h3 class="cr-del-name">Niche Positioning + Content Pillars</h3>
-            <p class="cr-del-desc">Clarify exactly who you are, who you're for, and what content categories you own — so brands immediately understand your value.</p>
           </div>
 
           <div class="cr-del-card">
             <span class="cr-del-deco-num" aria-hidden="true">03</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
             <h3 class="cr-del-name">Social Media Strategy + Profile Audit</h3>
-            <p class="cr-del-desc">A platform-by-platform growth strategy and a full audit of your current profiles — bio, highlights, grid, and link-in-bio.</p>
           </div>
 
           <div class="cr-del-card">
             <span class="cr-del-deco-num" aria-hidden="true">04</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             <h3 class="cr-del-name">Brand Partnership Pitch Deck</h3>
-            <p class="cr-del-desc">A polished, designed deck that tells your story, shows your stats, and makes brands want to say yes before the meeting ends.</p>
           </div>
 
           <div class="cr-del-card">
             <span class="cr-del-deco-num" aria-hidden="true">05</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             <h3 class="cr-del-name">Media Kit Design</h3>
-            <p class="cr-del-desc">A professionally designed media kit with your audience stats, demographics, past brand work, and rate structure — ready to send.</p>
           </div>
 
           <div class="cr-del-card">
             <span class="cr-del-deco-num" aria-hidden="true">06</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             <h3 class="cr-del-name">Brand Partnership Outreach Strategy</h3>
-            <p class="cr-del-desc">A step-by-step outreach playbook — how to find brands, who to contact, what to say, and how to follow up without feeling awkward.</p>
           </div>
 
           <div class="cr-del-card">
             <span class="cr-del-deco-num" aria-hidden="true">07</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             <h3 class="cr-del-name">Rate Card + Negotiation Guidance</h3>
-            <p class="cr-del-desc">Know exactly what to charge, how to package your offerings, and how to negotiate when brands try to lowball you.</p>
           </div>
 
           <div class="cr-del-card">
             <span class="cr-del-deco-num" aria-hidden="true">08</span>
             <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             <h3 class="cr-del-name">Creator Growth Roadmap</h3>
-            <p class="cr-del-desc">A 90-day action plan — content cadence, partnership targets, platform priorities, and milestones to hit your next growth tier.</p>
           </div>
 
         </div>
@@ -916,7 +944,7 @@
           <div class="cr-pkg-card">
             <p class="cr-pkg-tag">Foundation</p>
             <h3 class="cr-pkg-name">The Launch</h3>
-            <p class="cr-pkg-tagline">For the creator building their brand identity from scratch.</p>
+            <p class="cr-pkg-tagline">For the creator building their brand from scratch.</p>
             <div class="cr-pkg-divider"></div>
             <ul class="cr-pkg-items">
               <li>Personal brand identity system</li>
@@ -931,12 +959,12 @@
           <div class="cr-pkg-card featured">
             <p class="cr-pkg-tag">Most Popular</p>
             <h3 class="cr-pkg-name">The Pitch</h3>
-            <p class="cr-pkg-tagline">For the creator ready to land brand partnerships — fast.</p>
+            <p class="cr-pkg-tagline">For the creator ready to land brand partnerships.</p>
             <div class="cr-pkg-divider"></div>
             <ul class="cr-pkg-items">
               <li>Everything in The Launch</li>
               <li>Brand partnership pitch deck</li>
-              <li>Brand partnership outreach strategy</li>
+              <li>Outreach strategy</li>
               <li>Rate card + negotiation guidance</li>
               <li>90-day creator growth roadmap</li>
             </ul>
@@ -946,7 +974,7 @@
           <div class="cr-pkg-card">
             <p class="cr-pkg-tag">Full Build</p>
             <h3 class="cr-pkg-name">The Brand</h3>
-            <p class="cr-pkg-tagline">For the creator building a long-term business, not just a following.</p>
+            <p class="cr-pkg-tagline">For the creator building a long-term business.</p>
             <div class="cr-pkg-divider"></div>
             <ul class="cr-pkg-items">
               <li>All eight deliverables</li>
@@ -976,28 +1004,24 @@
             <span class="cr-step-num" aria-hidden="true">01</span>
             <p class="cr-step-label">Step One</p>
             <h3 class="cr-step-name">Discover</h3>
-            <p class="cr-step-desc">We start with a deep-dive session — your goals, your content, your audience, and where you want to take this. No templates, no shortcuts.</p>
           </div>
 
           <div class="cr-step">
             <span class="cr-step-num" aria-hidden="true">02</span>
             <p class="cr-step-label">Step Two</p>
             <h3 class="cr-step-name">Brand</h3>
-            <p class="cr-step-desc">We build your identity from the ground up — visual system, positioning, content pillars, and the voice that makes your audience stop scrolling.</p>
           </div>
 
           <div class="cr-step">
             <span class="cr-step-num" aria-hidden="true">03</span>
             <p class="cr-step-label">Step Three</p>
             <h3 class="cr-step-name">Pitch</h3>
-            <p class="cr-step-desc">We arm you with everything brands need to say yes — a media kit, pitch deck, rate card, and an outreach strategy that actually gets responses.</p>
           </div>
 
           <div class="cr-step">
             <span class="cr-step-num" aria-hidden="true">04</span>
             <p class="cr-step-label">Step Four</p>
             <h3 class="cr-step-name">Grow</h3>
-            <p class="cr-step-desc">You leave with a 90-day roadmap and the confidence to execute it. We stay available to support as your brand scales and opportunities grow.</p>
           </div>
 
         </div>
@@ -1096,5 +1120,42 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    (function() {
+      var REPO = 'franchescabethel-fb/marketing-maison-site';
+      var FOLDER = 'assets/Brands';
+      var IMAGE = /\.(png|jpe?g|gif|webp|svg)$/i;
+      var grid = document.getElementById('cr-brands-grid');
+      if (!grid) return;
+
+      function stripExt(name) {
+        var n = name, prev;
+        do { prev = n; n = n.replace(/\.[^.]+$/, ''); } while (n !== prev && IMAGE.test(n));
+        return n;
+      }
+
+      function addTile(filename) {
+        var tile = document.createElement('div');
+        tile.className = 'cr-brand-tile';
+        var img = document.createElement('img');
+        img.src = 'https://raw.githubusercontent.com/' + REPO + '/main/' + FOLDER + '/' + encodeURIComponent(filename);
+        img.alt = stripExt(filename).replace(/[-_]/g, ' ');
+        img.loading = 'lazy';
+        img.onerror = function() { tile.style.display = 'none'; };
+        tile.appendChild(img);
+        grid.appendChild(tile);
+      }
+
+      fetch('https://api.github.com/repos/' + REPO + '/contents/' + FOLDER)
+        .then(function(r) { return r.json(); })
+        .then(function(files) {
+          if (!Array.isArray(files)) return;
+          files
+            .filter(function(f) { return f.type === 'file' && IMAGE.test(f.name); })
+            .forEach(function(f) { addTile(f.name); });
+        })
+        .catch(function() {});
+    })();
+  </script>
 </body>
 </html>
