@@ -1140,7 +1140,7 @@
           </svg>
           <span class="oval-btn-text">Book a discovery call</span>
         </a>
-        <p class="cr-cta-fine">30 minutes &middot; No commitment &middot; Response within 24 hours</p>
+        <p class="cr-cta-fine">30 minutes · No commitment · Response within 24 hours</p>
       </div>
     </section>
 
@@ -1154,7 +1154,7 @@
           <div class="footer-wordmark">
             <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" width="120" height="120" loading="lazy" />
           </div>
-          <p>Own it. Build it. Scale it. &mdash; Jacksonville, FL's strategic marketing agency.</p>
+          <p>Own it. Build it. Scale it. — Jacksonville, FL's strategic marketing agency.</p>
           <div class="footer-socials" aria-label="Follow Marketing Maison">
             <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
@@ -1207,7 +1207,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2024&ndash;2026 Marketing Maison. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2024–2026 Marketing Maison. All rights reserved.</p>
         <nav class="footer-legal" aria-label="Legal links">
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
@@ -1226,6 +1226,7 @@
       if (!grid) return;
 
       function stripExt(name) {
+        // Only strip known image extensions; preserve names like "Alibaba.com"
         return name.replace(/\.(png|jpe?g|gif|webp|svg|avif)$/i, '');
       }
 
@@ -1233,6 +1234,7 @@
         var tile = document.createElement('div');
         tile.className = 'cr-brand-tile';
         var img = document.createElement('img');
+        // Use download_url directly — already has the correct branch encoded
         img.src = file.download_url;
         img.alt = stripExt(file.name).replace(/[-_]/g, ' ');
         img.loading = 'lazy';
@@ -1245,6 +1247,7 @@
         .then(function(r) { return r.json(); })
         .then(function(files) {
           if (!Array.isArray(files)) return;
+          // Accept all files — onerror hides anything that won't render as an image
           files
             .filter(function(f) { return f.type === 'file'; })
             .forEach(function(f) { addTile(f); });
