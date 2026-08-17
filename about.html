@@ -404,6 +404,7 @@
         <li><a href="about.html" aria-current="page">About</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="services.html">Services</a></li>
+        <li><a href="creators.html">Creators</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-overlay">
@@ -417,6 +418,7 @@
     <a href="about.html" aria-current="page">About</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="services.html">Services</a>
+    <a href="creators.html">Creators</a>
     <a href="contact.html">Contact</a>
     <a href="contact.html">Book a Call</a>
   </div>
@@ -428,8 +430,9 @@
 
       <!-- Left: brand video -->
       <div class="about-hero-media" aria-hidden="true">
-        <video autoplay muted loop playsinline>
-          <source src="assets/About_Hero_Video.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline preload="none" poster="assets/About_Hero_Video_poster.jpg" id="about-video">
+          <source src="assets/About_Hero_Video.webm" type="video/webm" />
+          <source src="assets/About_Hero_Video.mp4"  type="video/mp4" />
         </video>
       </div>
 
@@ -625,5 +628,17 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    /* ── Lazy-load about video after page is interactive ── */
+    (function () {
+      var v = document.getElementById('about-video');
+      if (!v) return;
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function () { v.load(); v.play().catch(function(){}); });
+      } else {
+        window.addEventListener('load', function () { v.load(); v.play().catch(function(){}); });
+      }
+    })();
+  </script>
 </body>
 </html>
