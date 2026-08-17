@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Marketing | Marketing Maison — Jacksonville FL</title>
+  <meta name="description" content="Built for creators ready to turn their audience into a business. Personal brand identity, media kits, brand partnership strategy, and creator growth roadmaps — from Marketing Maison." />
+  <link rel="canonical" href="https://www.themarketingmaison.co/creators.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.themarketingmaison.co/creators.html" />
+  <meta property="og:title" content="Creator Marketing | Marketing Maison" />
+  <meta property="og:description" content="Your audience is already watching. Let's build the brand behind it." />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+
+    /* ── Creator Hero ───────────────────────────────────────── */
+    .cr-hero {
+      background: var(--black);
+      color: var(--cream);
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 80px) var(--pad-x) clamp(80px, 10vw, 120px);
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(233,212,195,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233,212,195,0.018) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+    .cr-hero-deco {
+      position: absolute;
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(180px, 25vw, 360px);
+      color: rgba(233,212,195,0.03);
+      line-height: 1;
+      right: -2vw;
+      bottom: -0.1em;
+      user-select: none;
+      pointer-events: none;
+    }
+    .cr-hero-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 0 80px;
+      align-items: center;
+    }
+    .cr-hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .cr-hero-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+      flex-shrink: 0;
+    }
+    .cr-hero h1 {
+      font-family: var(--font-edit);
+      font-size: clamp(40px, 5.5vw, 88px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 32px;
+    }
+    .cr-hero h1 em {
+      font-style: italic;
+      color: var(--stone);
+    }
+    .cr-hero-sub {
+      font-size: clamp(14px, 1.2vw, 17px);
+      color: rgba(233,212,195,0.6);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 48px;
+    }
+    .cr-hero-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .cr-stat-card {
+      border: 1px solid rgba(233,212,195,0.08);
+      padding: 28px 32px;
+      background: rgba(233,212,195,0.03);
+    }
+    .cr-stat-num {
+      font-family: var(--font-edit);
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .cr-stat-num em { font-style: italic; color: var(--stone); }
+    .cr-stat-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(233,212,195,0.45);
+      line-height: 1.5;
+    }
+
+    /* ── Who This Is For ────────────────────────────────────── */
+    .cr-for {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-for-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-section-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .cr-section-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--wine);
+      flex-shrink: 0;
+    }
+    .cr-for-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.15;
+      max-width: 600px;
+      margin-bottom: clamp(48px, 6vw, 72px);
+    }
+    .cr-for-head em { font-style: italic; color: var(--stone); }
+    .cr-types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .cr-type-card {
+      background: var(--charcoal);
+      padding: 40px 36px;
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-type-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--wine);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+    .cr-type-card:hover::after { transform: scaleX(1); }
+    .cr-type-icon {
+      width: 32px; height: 32px;
+      margin-bottom: 24px;
+      color: var(--stone);
+      stroke-width: 1.5;
+    }
+    .cr-type-name {
+      font-family: var(--font-edit);
+      font-size: clamp(20px, 1.8vw, 28px);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .cr-type-desc {
+      font-size: 13px;
+      color: rgba(233,212,195,0.5);
+      line-height: 1.65;
+    }
+    .cr-type-num {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 72px;
+      color: rgba(233,212,195,0.04);
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* ── Why Creator Branding ───────────────────────────────── */
+    .cr-why {
+      background: var(--black);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-why-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-why-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: clamp(56px, 7vw, 88px);
+    }
+    .cr-why-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+    }
+    .cr-why-head em { font-style: italic; color: var(--stone); }
+    .cr-why-body {
+      font-size: clamp(14px, 1.1vw, 16px);
+      color: rgba(233,212,195,0.55);
+      line-height: 1.8;
+      padding-top: 8px;
+    }
+    .cr-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .cr-stat-block {
+      background: var(--charcoal);
+      padding: 40px 32px;
+      position: relative;
+    }
+    .cr-stat-block-num {
+      font-family: var(--font-edit);
+      font-size: clamp(40px, 4.5vw, 64px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .cr-stat-block-num em { font-style: italic; color: var(--stone); }
+    .cr-stat-block-text {
+      font-size: 12px;
+      color: rgba(233,212,195,0.45);
+      line-height: 1.6;
+    }
+    .cr-stat-block-source {
+      font-size: 9px;
+      color: rgba(233,212,195,0.2);
+      letter-spacing: 0.08em;
+      margin-top: 16px;
+    }
+
+    /* ── Niche Categories ───────────────────────────────────── */
+    .cr-niches {
+      background: var(--charcoal);
+      padding: clamp(48px, 6vw, 72px) var(--pad-x);
+      overflow: hidden;
+    }
+    .cr-niches-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-niches-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 28px;
+    }
+    .cr-niche-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .cr-niche-pill {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: clamp(16px, 1.6vw, 22px);
+      color: rgba(233,212,195,0.5);
+      padding: 8px 20px;
+      border: 1px solid rgba(233,212,195,0.1);
+      transition: color 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+    .cr-niche-pill:hover {
+      color: var(--cream);
+      border-color: rgba(233,212,195,0.3);
+    }
+
+    /* ── What You Get ───────────────────────────────────────── */
+    .cr-deliverables {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-deliverables-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-del-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+      margin-bottom: clamp(56px, 7vw, 80px);
+    }
+    .cr-del-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.15;
+    }
+    .cr-del-head em { font-style: italic; color: var(--stone); }
+    .cr-del-sub {
+      font-size: clamp(14px, 1.1vw, 16px);
+      color: rgba(19,39,63,0.5);
+      line-height: 1.8;
+      padding-top: 8px;
+    }
+    .cr-del-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .cr-del-card {
+      background: var(--charcoal);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-del-deco-num {
+      position: absolute;
+      top: 12px; right: 16px;
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 64px;
+      color: rgba(233,212,195,0.05);
+      line-height: 1;
+      user-select: none;
+    }
+    .cr-del-icon {
+      width: 28px; height: 28px;
+      color: var(--stone);
+      stroke-width: 1.5;
+      margin-bottom: 20px;
+    }
+    .cr-del-name {
+      font-family: var(--font-edit);
+      font-size: clamp(17px, 1.4vw, 22px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .cr-del-desc {
+      font-size: 12px;
+      color: rgba(233,212,195,0.45);
+      line-height: 1.65;
+    }
+
+    /* ── Packages ───────────────────────────────────────────── */
+    .cr-packages {
+      background: var(--black);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-packages-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-pkg-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: clamp(48px, 6vw, 72px);
+      max-width: 560px;
+    }
+    .cr-pkg-head em { font-style: italic; color: var(--stone); }
+    .cr-pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .cr-pkg-card {
+      background: var(--charcoal);
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .cr-pkg-card.featured {
+      background: var(--wine);
+    }
+    .cr-pkg-tag {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 20px;
+    }
+    .cr-pkg-card.featured .cr-pkg-tag { color: rgba(233,212,195,0.6); }
+    .cr-pkg-name {
+      font-family: var(--font-edit);
+      font-size: clamp(24px, 2.2vw, 36px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .cr-pkg-tagline {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(233,212,195,0.45);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+    .cr-pkg-card.featured .cr-pkg-tagline { color: rgba(233,212,195,0.6); }
+    .cr-pkg-divider {
+      height: 1px;
+      background: rgba(233,212,195,0.08);
+      margin-bottom: 28px;
+    }
+    .cr-pkg-card.featured .cr-pkg-divider { background: rgba(233,212,195,0.15); }
+    .cr-pkg-items {
+      list-style: none;
+      margin: 0 0 auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cr-pkg-items li {
+      font-size: 13px;
+      color: rgba(233,212,195,0.6);
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+    .cr-pkg-items li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 4px; height: 1px;
+      background: var(--stone);
+    }
+    .cr-pkg-card.featured .cr-pkg-items li { color: rgba(233,212,195,0.75); }
+    .cr-pkg-cta {
+      margin-top: 40px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .cr-pkg-cta::after { content: '→'; }
+    .cr-pkg-cta:hover { color: var(--cream); }
+    .cr-pkg-card.featured .cr-pkg-cta { color: var(--cream); opacity: 0.8; }
+    .cr-pkg-card.featured .cr-pkg-cta:hover { opacity: 1; }
+
+    /* ── Process ────────────────────────────────────────────── */
+    .cr-process {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 128px) var(--pad-x);
+    }
+    .cr-process-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cr-process-head {
+      font-family: var(--font-edit);
+      font-size: clamp(28px, 3.5vw, 52px);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.15;
+      max-width: 480px;
+      margin-bottom: clamp(56px, 7vw, 80px);
+    }
+    .cr-process-head em { font-style: italic; color: var(--stone); }
+    .cr-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .cr-step {
+      background: var(--charcoal);
+      padding: 48px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-step-num {
+      font-family: var(--font-edit);
+      font-style: italic;
+      font-size: 88px;
+      color: rgba(233,212,195,0.06);
+      line-height: 1;
+      position: absolute;
+      bottom: 12px; right: 16px;
+      user-select: none;
+    }
+    .cr-step-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--wine);
+      margin-bottom: 20px;
+    }
+    .cr-step-name {
+      font-family: var(--font-edit);
+      font-size: clamp(22px, 2vw, 30px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .cr-step-desc {
+      font-size: 13px;
+      color: rgba(233,212,195,0.45);
+      line-height: 1.7;
+    }
+
+    /* ── CTA ────────────────────────────────────────────────── */
+    .cr-cta {
+      background: var(--black);
+      padding: clamp(96px, 12vw, 160px) var(--pad-x);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cr-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(233,212,195,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233,212,195,0.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+    .cr-cta-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .cr-cta-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 28px;
+    }
+    .cr-cta-head {
+      font-family: var(--font-edit);
+      font-size: clamp(36px, 5vw, 80px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 48px;
+    }
+    .cr-cta-head em { font-style: italic; color: var(--stone); }
+    .cr-cta-fine {
+      margin-top: 24px;
+      font-size: 11px;
+      color: rgba(233,212,195,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .cr-hero-inner { grid-template-columns: 1fr; gap: 56px; }
+      .cr-hero-aside { flex-direction: row; }
+      .cr-stat-card { flex: 1; }
+      .cr-why-top { grid-template-columns: 1fr; gap: 32px; }
+      .cr-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .cr-del-top { grid-template-columns: 1fr; gap: 32px; }
+      .cr-del-grid { grid-template-columns: repeat(2, 1fr); }
+      .cr-pkg-grid { grid-template-columns: 1fr; gap: 8px; }
+      .cr-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 800px) {
+      .cr-types-grid { grid-template-columns: 1fr; gap: 2px; }
+      .cr-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .cr-del-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .cr-hero-aside { flex-direction: column; }
+      .cr-stats-grid { grid-template-columns: 1fr; }
+      .cr-steps { grid-template-columns: 1fr; }
+      .cr-niche-list { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ── Navigation ── -->
+  <nav class="mm-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-left">
+      <div class="nav-socials" aria-label="Social media links">
+        <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://facebook.com/marketingmaison" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/marketingmaison" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="contact.html" class="nav-book" aria-label="Book a call with Marketing Maison">Book a Call</a>
+    </div>
+
+    <div class="nav-wordmark">
+      <a href="index.html" aria-label="Marketing Maison homepage">
+        <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" class="nav-logo" width="190" height="190" loading="eager" />
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" role="list">
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="creators.html" aria-current="page">Creators</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-overlay">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <img src="assets/logos/mm-white-primary-logo.png" alt="" class="nav-overlay-logo" aria-hidden="true" />
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="services.html">Services</a>
+    <a href="creators.html" aria-current="page">Creators</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html">Book a Call</a>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ── HERO ── -->
+    <section class="cr-hero" aria-labelledby="cr-hero-heading">
+      <span class="cr-hero-deco" aria-hidden="true">Creator</span>
+      <div class="cr-hero-inner">
+        <div data-fade>
+          <p class="cr-hero-eyebrow">Creator Marketing · Marketing Maison</p>
+          <h1 id="cr-hero-heading">
+            Your audience is<br />
+            already watching.<br />
+            <em>Let's build the brand</em><br />
+            behind it.
+          </h1>
+          <p class="cr-hero-sub">For the creator who's done just posting — and ready to build a presence that commands partnerships, commands rates, and commands a room.</p>
+          <a href="contact.html" class="oval-btn oval-btn-lg" aria-label="Book a discovery call">
+            <svg class="oval-border" viewBox="0 0 320 88" preserveAspectRatio="none" aria-hidden="true">
+              <ellipse cx="160" cy="44" rx="156" ry="40"/>
+            </svg>
+            <span class="oval-btn-text">Book a discovery call</span>
+          </a>
+        </div>
+
+        <div class="cr-hero-aside" data-fade>
+          <div class="cr-stat-card">
+            <div class="cr-stat-num">9.8<em>×</em></div>
+            <div class="cr-stat-label">UGC is more impactful than influencer content when consumers make purchasing decisions</div>
+          </div>
+          <div class="cr-stat-card">
+            <div class="cr-stat-num">92<em>%</em></div>
+            <div class="cr-stat-label">of consumers trust peer recommendations over any other source — including paid ads</div>
+          </div>
+          <div class="cr-stat-card">
+            <div class="cr-stat-num">74<em>%</em></div>
+            <div class="cr-stat-label">of consumers rely on social media to inform their purchasing decisions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHO THIS IS FOR ── -->
+    <section class="cr-for" aria-labelledby="cr-for-heading">
+      <div class="cr-for-inner">
+        <p class="cr-section-eyebrow" data-fade>Who This Is For</p>
+        <h2 class="cr-for-head" id="cr-for-heading" data-fade>
+          You create. We build the<br /><em>business around it.</em>
+        </h2>
+
+        <div class="cr-types-grid" data-fade>
+
+          <div class="cr-type-card">
+            <span class="cr-type-num" aria-hidden="true">01</span>
+            <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.82v6.36a1 1 0 0 1-1.447.889L15 14M3 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/></svg>
+            <h3 class="cr-type-name">UGC Creators</h3>
+            <p class="cr-type-desc">You make content brands want — but your rates, pitches, and positioning aren't reflecting that yet. We fix all three.</p>
+          </div>
+
+          <div class="cr-type-card">
+            <span class="cr-type-num" aria-hidden="true">02</span>
+            <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M17 3l2 2M17 13l2-2M20 8h2"/></svg>
+            <h3 class="cr-type-name">Lifestyle Influencers</h3>
+            <p class="cr-type-desc">Your audience trusts you. We turn that trust into a brand identity that brands pay a premium to align with.</p>
+          </div>
+
+          <div class="cr-type-card">
+            <span class="cr-type-num" aria-hidden="true">03</span>
+            <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <h3 class="cr-type-name">Micro-Influencers</h3>
+            <p class="cr-type-desc">Under 100K doesn't mean under-valued. We build the strategy and collateral that makes brands choose you over a million-follower account.</p>
+          </div>
+
+          <div class="cr-type-card">
+            <span class="cr-type-num" aria-hidden="true">04</span>
+            <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <h3 class="cr-type-name">Content Entrepreneurs</h3>
+            <p class="cr-type-desc">You're building something bigger — a course, a product, a brand. We align your content identity with your business goals.</p>
+          </div>
+
+          <div class="cr-type-card">
+            <span class="cr-type-num" aria-hidden="true">05</span>
+            <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <h3 class="cr-type-name">Niche Creators</h3>
+            <p class="cr-type-desc">Home, fitness, food, travel, beauty, pets — whatever your world is, we build the positioning that makes you the go-to in it.</p>
+          </div>
+
+          <div class="cr-type-card">
+            <span class="cr-type-num" aria-hidden="true">06</span>
+            <svg class="cr-type-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <h3 class="cr-type-name">Brand Starters</h3>
+            <p class="cr-type-desc">You know what you want to build — but need the identity, strategy, and roadmap to actually get there. That's exactly what we do.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHY CREATOR BRANDING ── -->
+    <section class="cr-why" aria-labelledby="cr-why-heading">
+      <div class="cr-why-inner">
+        <div class="cr-why-top" data-fade>
+          <h2 class="cr-why-head" id="cr-why-heading">
+            The creator economy<br />rewards the<br /><em>ones who show up prepared.</em>
+          </h2>
+          <p class="cr-why-body">Brands aren't just looking for followers — they're looking for creators who can walk into a partnership conversation with a clear identity, a compelling pitch, and a rate that doesn't apologize. That's what we build.</p>
+        </div>
+
+        <div class="cr-stats-grid" data-fade>
+          <div class="cr-stat-block">
+            <div class="cr-stat-block-num">$<em>480</em>B</div>
+            <div class="cr-stat-block-text">Global creator economy value, projected by 2027. The brands chasing this budget are already looking for their next partnerships.</div>
+            <div class="cr-stat-block-source">Goldman Sachs, 2023</div>
+          </div>
+          <div class="cr-stat-block">
+            <div class="cr-stat-block-num">90<em>%</em></div>
+            <div class="cr-stat-block-text">of consumers say authenticity matters when choosing which brands to support — and creators are the most authentic voice a brand can have.</div>
+            <div class="cr-stat-block-source">Stackla, Consumer Trends</div>
+          </div>
+          <div class="cr-stat-block">
+            <div class="cr-stat-block-num">3<em>×</em></div>
+            <div class="cr-stat-block-text">more engagement for micro-influencers compared to macro accounts. Niche, targeted audiences convert better than mass reach.</div>
+            <div class="cr-stat-block-source">Markerly Research</div>
+          </div>
+          <div class="cr-stat-block">
+            <div class="cr-stat-block-num">67<em>%</em></div>
+            <div class="cr-stat-block-text">of brands plan to increase their creator marketing spend this year — meaning the window to get properly positioned is right now.</div>
+            <div class="cr-stat-block-source">Influencer Marketing Hub</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── NICHE CATEGORIES ── -->
+    <section class="cr-niches" aria-label="Creator niches we work with">
+      <div class="cr-niches-inner" data-fade>
+        <p class="cr-niches-label">Niches We Work With</p>
+        <div class="cr-niche-list" role="list">
+          <span class="cr-niche-pill" role="listitem">Beauty</span>
+          <span class="cr-niche-pill" role="listitem">Skincare</span>
+          <span class="cr-niche-pill" role="listitem">Fashion</span>
+          <span class="cr-niche-pill" role="listitem">Lifestyle</span>
+          <span class="cr-niche-pill" role="listitem">Home &amp; Interior</span>
+          <span class="cr-niche-pill" role="listitem">Wellness</span>
+          <span class="cr-niche-pill" role="listitem">Fitness</span>
+          <span class="cr-niche-pill" role="listitem">Food &amp; Beverage</span>
+          <span class="cr-niche-pill" role="listitem">Travel</span>
+          <span class="cr-niche-pill" role="listitem">Pets</span>
+          <span class="cr-niche-pill" role="listitem">Parenting</span>
+          <span class="cr-niche-pill" role="listitem">Tech</span>
+          <span class="cr-niche-pill" role="listitem">Finance</span>
+          <span class="cr-niche-pill" role="listitem">Entertainment</span>
+          <span class="cr-niche-pill" role="listitem">Sports</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHAT YOU GET ── -->
+    <section class="cr-deliverables" aria-labelledby="cr-del-heading">
+      <div class="cr-deliverables-inner">
+        <div class="cr-del-top" data-fade>
+          <div>
+            <p class="cr-section-eyebrow">What's Included</p>
+            <h2 class="cr-del-head" id="cr-del-heading">
+              Eight deliverables.<br /><em>One complete brand.</em>
+            </h2>
+          </div>
+          <p class="cr-del-sub">Every creator engagement includes the full stack — from your visual identity to the pitch deck you hand brands. Nothing is left half-built.</p>
+        </div>
+
+        <div class="cr-del-grid" data-fade>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">01</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M2 12h20"/></svg>
+            <h3 class="cr-del-name">Personal Brand Identity System</h3>
+            <p class="cr-del-desc">Fonts, colors, visual direction, and tone-of-voice guidelines — everything that makes you instantly recognizable.</p>
+          </div>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">02</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <h3 class="cr-del-name">Niche Positioning + Content Pillars</h3>
+            <p class="cr-del-desc">Clarify exactly who you are, who you're for, and what content categories you own — so brands immediately understand your value.</p>
+          </div>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">03</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            <h3 class="cr-del-name">Social Media Strategy + Profile Audit</h3>
+            <p class="cr-del-desc">A platform-by-platform growth strategy and a full audit of your current profiles — bio, highlights, grid, and link-in-bio.</p>
+          </div>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">04</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <h3 class="cr-del-name">Brand Partnership Pitch Deck</h3>
+            <p class="cr-del-desc">A polished, designed deck that tells your story, shows your stats, and makes brands want to say yes before the meeting ends.</p>
+          </div>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">05</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <h3 class="cr-del-name">Media Kit Design</h3>
+            <p class="cr-del-desc">A professionally designed media kit with your audience stats, demographics, past brand work, and rate structure — ready to send.</p>
+          </div>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">06</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h3 class="cr-del-name">Brand Partnership Outreach Strategy</h3>
+            <p class="cr-del-desc">A step-by-step outreach playbook — how to find brands, who to contact, what to say, and how to follow up without feeling awkward.</p>
+          </div>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">07</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <h3 class="cr-del-name">Rate Card + Negotiation Guidance</h3>
+            <p class="cr-del-desc">Know exactly what to charge, how to package your offerings, and how to negotiate when brands try to lowball you.</p>
+          </div>
+
+          <div class="cr-del-card">
+            <span class="cr-del-deco-num" aria-hidden="true">08</span>
+            <svg class="cr-del-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <h3 class="cr-del-name">Creator Growth Roadmap</h3>
+            <p class="cr-del-desc">A 90-day action plan — content cadence, partnership targets, platform priorities, and milestones to hit your next growth tier.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PACKAGES ── -->
+    <section class="cr-packages" aria-labelledby="cr-pkg-heading">
+      <div class="cr-packages-inner">
+        <p class="cr-section-eyebrow" data-fade style="color: var(--stone);">Creator Packages</p>
+        <h2 class="cr-pkg-head" data-fade id="cr-pkg-heading">
+          Choose where you're<br /><em>starting from.</em>
+        </h2>
+
+        <div class="cr-pkg-grid" data-fade>
+
+          <div class="cr-pkg-card">
+            <p class="cr-pkg-tag">Foundation</p>
+            <h3 class="cr-pkg-name">The Launch</h3>
+            <p class="cr-pkg-tagline">For the creator building their brand identity from scratch.</p>
+            <div class="cr-pkg-divider"></div>
+            <ul class="cr-pkg-items">
+              <li>Personal brand identity system</li>
+              <li>Niche positioning + content pillars</li>
+              <li>Social media strategy + profile audit</li>
+              <li>Media kit design</li>
+              <li>Rate card guidance</li>
+            </ul>
+            <a href="contact.html" class="cr-pkg-cta">Start here</a>
+          </div>
+
+          <div class="cr-pkg-card featured">
+            <p class="cr-pkg-tag">Most Popular</p>
+            <h3 class="cr-pkg-name">The Pitch</h3>
+            <p class="cr-pkg-tagline">For the creator ready to land brand partnerships — fast.</p>
+            <div class="cr-pkg-divider"></div>
+            <ul class="cr-pkg-items">
+              <li>Everything in The Launch</li>
+              <li>Brand partnership pitch deck</li>
+              <li>Brand partnership outreach strategy</li>
+              <li>Rate card + negotiation guidance</li>
+              <li>90-day creator growth roadmap</li>
+            </ul>
+            <a href="contact.html" class="cr-pkg-cta">Book a call</a>
+          </div>
+
+          <div class="cr-pkg-card">
+            <p class="cr-pkg-tag">Full Build</p>
+            <h3 class="cr-pkg-name">The Brand</h3>
+            <p class="cr-pkg-tagline">For the creator building a long-term business, not just a following.</p>
+            <div class="cr-pkg-divider"></div>
+            <ul class="cr-pkg-items">
+              <li>All eight deliverables</li>
+              <li>Ongoing strategic support</li>
+              <li>Content strategy sessions</li>
+              <li>Partnership negotiation support</li>
+              <li>Priority access + direct line</li>
+            </ul>
+            <a href="contact.html" class="cr-pkg-cta">Let's talk</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROCESS ── -->
+    <section class="cr-process" aria-labelledby="cr-process-heading">
+      <div class="cr-process-inner">
+        <p class="cr-section-eyebrow" data-fade>How It Works</p>
+        <h2 class="cr-process-head" data-fade id="cr-process-heading">
+          Four steps.<br /><em>One complete transformation.</em>
+        </h2>
+
+        <div class="cr-steps" data-fade>
+
+          <div class="cr-step">
+            <span class="cr-step-num" aria-hidden="true">01</span>
+            <p class="cr-step-label">Step One</p>
+            <h3 class="cr-step-name">Discover</h3>
+            <p class="cr-step-desc">We start with a deep-dive session — your goals, your content, your audience, and where you want to take this. No templates, no shortcuts.</p>
+          </div>
+
+          <div class="cr-step">
+            <span class="cr-step-num" aria-hidden="true">02</span>
+            <p class="cr-step-label">Step Two</p>
+            <h3 class="cr-step-name">Brand</h3>
+            <p class="cr-step-desc">We build your identity from the ground up — visual system, positioning, content pillars, and the voice that makes your audience stop scrolling.</p>
+          </div>
+
+          <div class="cr-step">
+            <span class="cr-step-num" aria-hidden="true">03</span>
+            <p class="cr-step-label">Step Three</p>
+            <h3 class="cr-step-name">Pitch</h3>
+            <p class="cr-step-desc">We arm you with everything brands need to say yes — a media kit, pitch deck, rate card, and an outreach strategy that actually gets responses.</p>
+          </div>
+
+          <div class="cr-step">
+            <span class="cr-step-num" aria-hidden="true">04</span>
+            <p class="cr-step-label">Step Four</p>
+            <h3 class="cr-step-name">Grow</h3>
+            <p class="cr-step-desc">You leave with a 90-day roadmap and the confidence to execute it. We stay available to support as your brand scales and opportunities grow.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cr-cta" aria-labelledby="cr-cta-heading">
+      <div class="cr-cta-inner" data-fade>
+        <p class="cr-cta-eyebrow">Ready When You Are</p>
+        <h2 class="cr-cta-head" id="cr-cta-heading">
+          You've built the audience.<br />
+          <em>Now let's build</em><br />
+          the business.
+        </h2>
+        <a href="contact.html" class="oval-btn oval-btn-lg" aria-label="Book a creator discovery call">
+          <svg class="oval-border" viewBox="0 0 320 88" preserveAspectRatio="none" aria-hidden="true">
+            <ellipse cx="160" cy="44" rx="156" ry="40"/>
+          </svg>
+          <span class="oval-btn-text">Book a discovery call</span>
+        </a>
+        <p class="cr-cta-fine">30 minutes · No commitment · Response within 24 hours</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="mm-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-wordmark">
+            <img src="assets/logos/mm-white-primary-logo.png" alt="Marketing Maison" width="120" height="120" loading="lazy" />
+          </div>
+          <p>Own it. Build it. Scale it. — Jacksonville, FL's strategic marketing agency.</p>
+          <div class="footer-socials" aria-label="Follow Marketing Maison">
+            <a href="https://instagram.com/marketingmaison" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://facebook.com/marketingmaison" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://linkedin.com/company/marketingmaison" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul role="list">
+            <li><a href="services.html#biz-dev">Brand Development</a></li>
+            <li><a href="services.html#content">Content Creation</a></li>
+            <li><a href="services.html#social">Social Media</a></li>
+            <li><a href="services.html#email-sms">Email &amp; SMS</a></li>
+            <li><a href="services.html#seo">SEO Optimization</a></li>
+            <li><a href="services.html#organic-campaigns">Organic Campaigns</a></li>
+            <li><a href="services.html#website">Website Creation</a></li>
+            <li><a href="services.html#ai-tools">AI Tools</a></li>
+            <li><a href="services.html#events">Event Management</a></li>
+            <li><a href="services.html#creator-marketing">Creator Marketing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="creators.html" aria-current="page">Creators</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul role="list">
+            <li><a href="contact.html">Book a Strategy Call</a></li>
+            <li><span>Jacksonville, FL</span></li>
+            <li><a href="mailto:hello@marketingmaison.com">hello@marketingmaison.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024–2026 Marketing Maison. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
