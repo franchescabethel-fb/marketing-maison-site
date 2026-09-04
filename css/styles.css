@@ -596,7 +596,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: 14px;
-  color: var(--stone);
+  color: var(--charcoal);
   line-height: 1.65;
   max-height: 0;
   opacity: 0;
@@ -1065,7 +1065,7 @@ button { cursor: pointer; }
 .faq-sub {
   font-size: 14px;
   line-height: 1.8;
-  color: rgba(19,39,63,0.78);
+  color: var(--charcoal);
   margin-bottom: 32px;
 }
 .faq-link {
