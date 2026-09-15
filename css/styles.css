@@ -313,6 +313,8 @@ button { cursor: pointer; }
 .line-wrap {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
 }
 .line-inner {
   display: block;
