@@ -467,7 +467,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: 11px;
-  color: var(--stone);
+  color: var(--charcoal);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   letter-spacing: 0.16em;
@@ -577,7 +577,7 @@ button { cursor: pointer; }
   font-family: var(--font-edit);
   font-style: italic;
   font-size: 13px;
-  color: var(--stone);
+  color: var(--charcoal);
   opacity: 0.4;
   transition: opacity 0.3s, color 0.3s;
   align-self: flex-start;
