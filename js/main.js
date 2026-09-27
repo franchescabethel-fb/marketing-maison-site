@@ -277,3 +277,39 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }, 5000);
   });
 })();
+
+/* ── Custom spiral cursor ─────────────────────────────────── */
+(function initCursor() {
+  // Build the cursor element once
+  const el = document.createElement('div');
+  el.id = 'mm-cursor';
+  el.setAttribute('aria-hidden', 'true');
+  // Spiral SVG: two arcs that form a loose spiral look
+  el.innerHTML = `<svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"
+      stroke-dasharray="20 38" stroke-linecap="round"/>
+    <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5"
+      stroke-dasharray="10 22" stroke-linecap="round"/>
+    <circle cx="11" cy="11" r="1.5" fill="currentColor"/>
+  </svg>`;
+  document.body.appendChild(el);
+
+  let raf, cx = -100, cy = -100;
+
+  document.addEventListener('mousemove', function(e) {
+    cx = e.clientX;
+    cy = e.clientY;
+    if (!raf) {
+      raf = requestAnimationFrame(function move() {
+        el.style.transform = 'translate(' + (cx - 11) + 'px,' + (cy - 11) + 'px)';
+        raf = null;
+      });
+    }
+  });
+
+  // Hide on touch devices
+  document.addEventListener('touchstart', function() {
+    el.style.display = 'none';
+    document.querySelectorAll('*').forEach(function(n) { n.style.cursor = ''; });
+  }, { once: true });
+})();
