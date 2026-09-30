@@ -979,15 +979,53 @@ button { cursor: pointer; }
 }
 
 .pr {
-  display: grid;
-  grid-template-columns: 1fr 160px 160px;
-  gap: 0 40px;
-  align-items: center;
   padding: 36px 0;
   border-top: 1px solid rgba(19,39,63,0.07);
   transition: padding-left 0.3s var(--ease);
 }
 .pr:last-child { border-bottom: 1px solid rgba(19,39,63,0.07); }
+.pr-top {
+  display: grid;
+  grid-template-columns: 1fr 160px 160px;
+  gap: 0 40px;
+  align-items: center;
+}
+
+/* Hover feature list */
+.pr-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 6px 32px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease), margin-top 0.3s var(--ease);
+  margin-top: 0;
+}
+.pr:hover .pr-features,
+.pr:focus-within .pr-features {
+  max-height: 160px;
+  opacity: 1;
+  margin-top: 20px;
+}
+.pr-features li {
+  font-family: var(--font-edit);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--charcoal);
+  opacity: 0.75;
+  padding-left: 14px;
+  position: relative;
+}
+.pr-features li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--stone);
+}
+.pr.featured .pr-features li { color: var(--cream); opacity: 0.8; }
+.pr.featured .pr-features li::before { color: var(--stone); }
 
 /* Featured row */
 .pr.featured {
@@ -1425,7 +1463,7 @@ button { cursor: pointer; }
 @media (max-width: 1100px) {
   .who-inner { grid-template-columns: 1fr; gap: 60px; }
   .who-ghost { display: none; }
-  .pr { grid-template-columns: 1fr auto; }
+  .pr-top { grid-template-columns: 1fr auto; }
   .pr.featured { margin: 8px 0; }
   .pr-cta { display: none; }
   .faq-inner { grid-template-columns: 1fr; gap: 60px; }
@@ -1451,7 +1489,7 @@ button { cursor: pointer; }
   .footer-top { grid-template-columns: 1fr; }
   .stat-col { padding-left: 20px; padding-right: 20px; }
   .stat-col:first-child { padding-left: 0; }
-  .pr { display: block; }
+  .pr-top { display: block; }
   .pr-price { text-align: left; margin-top: 12px; margin-bottom: 20px; }
   .pr-cta { display: block; text-align: left; }
   .pr.featured { padding: 28px 24px; }
